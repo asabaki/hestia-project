@@ -1,0 +1,52 @@
+//Navbar, totop-btn
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var band = document.getElementById("nav-band");
+var sticky = navbar.offsetTop;
+
+//var sitter1=document.getElementsById("sitter1");
+//var sitter2=document.getElementsById("sitter2");
+//var mq = window.matchMedia("@media screen and (max-width: 70rem)");
+
+
+
+
+function myFunction() 
+{
+    if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) //go down
+    {
+        navbar.classList.add("navbar-sticky");
+        band.classList.add("navbar-band");
+        navbar.classList.remove("navbar-header");
+
+        document.getElementById("toTopBtn").style.visibility = "visible";
+
+    } 
+    else //go up
+    {
+        navbar.classList.remove("navbar-sticky");
+        band.classList.remove("navbar-band");
+        navbar.classList.add("navbar-header");
+
+        document.getElementById("toTopBtn").style.visibility = "hidden";
+    }
+ }
+
+//Smoot Scoll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+
+
+var mq = window.matchMedia("@media screen and (max-width: 70rem)");
+if(mq)
+{
+    
+}
