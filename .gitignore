@@ -1,0 +1,6 @@
+node_modules/
+.DS_Store
+seeds.js
+server.cert
+server.key
+package-lock.json
