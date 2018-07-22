@@ -8,7 +8,7 @@ const express			= require("express"),
 	  fs   				= require("fs"),
 	  http				= require("http"),
 	  https				= require("https");
-	  // seedDB 			= require("./seeds");
+const  seedDB 			= require("./seeds");
 
 
 // ===================== Routing Setup =======================
@@ -30,7 +30,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(__dirname+"/public"));
-// seedDB();
+seedDB();
 
 // ===================== Route Setup ========================
 app.use(indexRoutes);

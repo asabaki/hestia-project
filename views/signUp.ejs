@@ -64,9 +64,9 @@
                     <div class="signup-box">
                         <h4>register</h4>
                         <div>
-                            <form action="#" class="signup-box-form">
+                            <form action="/signup" method="POST" class="signup-box-form">
                                 <input class="signup-box-form--input" type="text" name="name" id="" placeholder="Name" pattern="(?=^.{0,40}$)^[a-zA-Z-]+\s[a-zA-Z-]+$" title="Name contains only alpha characters and one space">
-                                <input class="signup-box-form--input" type="email" name="email" id="" placeholder="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Email formatting wrong">
+                                <input class="signup-box-form--input" type="email" name="username" id="" placeholder="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Email formatting wrong">
                                 <input class="signup-box-form--input" type="password" name="password" id="" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
                                 <input class="signup-box-form--input" type="password" name="confirm-password" id="" placeholder="Confirm-Password">
                                 <input class="signup-box-form-check" type="checkbox" name="agree" id="" placeholder="agree term and condition">

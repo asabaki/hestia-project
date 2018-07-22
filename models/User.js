@@ -14,10 +14,18 @@ var UserSchema = new mongoose.Schema({
     	// unique : true
     },
     google: {
-      id: String,
-      token: String,
-      name: String,
-      email: String
+      id: {
+      	type : String,
+      	default: null},
+      token: {
+      	type : String,
+      	default: null},
+      name: {
+      	type : String,
+      	default: null},
+      email: {
+      	type : String,
+      	default: null}
     },
     userinfo: {
     	type : mongoose.Schema.Types.ObjectId,

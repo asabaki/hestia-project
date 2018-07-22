@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+        <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                
+                <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+                <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
+                <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+                <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+                <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+                <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+        
+        
+                <!--<link rel="stylesheet" href="css/icon-font.css">-->
+                <link rel="stylesheet" href="css/style.css">
+                <link rel="stylesheet" href="css/font-icon-1.css">
+
+                
+
+                <link rel="shortcut icon" type="image/png" href="img/favicon.png"">
+        
+                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+                <script type= "text/javascript" src = "js/countries.js"></script>
+                <title>Hestia | Sign Up</title>
+            </head>
+
+    <body>
+
+    <nav class="navbar navbar-sticky">
+        <div >
+            <ul>
+                <li><a href="index.html" class="navbar-band navbar-left">&nbsp</a></li>
+                <li><a href="index.html#about" class="navbar-left">About</a></li>
+                <li><a href="index.html#book" class="navbar-left">Our Services</a></li>
+                <li><a href="index.html#sitters" class="navbar-left">Sitters</a></li>
+                <li><a href="index.html#store" class="navbar-left">Store</a></li>
+                <li><a href="index.html#joinUs" class="navbar-left">Join us</a></li>
+                <li><a href="#login" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</a></li>
+                <li><a href="signUp.html" class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="section-signUp" id="signUp">
+            
+            <div class="signup-box--detail">
+            <h3>Let's us know you</h3> 
+            <i class="icon-basic-home icon_form icon_form-top"></i>
+           
+
+            <form action="/signupInfo/<%= userid %>" method="POST" >
+                <input class="signup-box-form--input" type="text" name="housenumber" placeholder="House no.">
+                <input class="signup-box-form--input" type="text" name="street" placeholder="Street">
+                <input class="signup-box-form--input" type="text" name="zipcode" placeholder="Zip code">
+                <input class="signup-box-form--input" type="text" name="city" placeholder="City">
+                <select class="signup-box-form--input " id="country" name="country" placeholder="State"></select>
+                <select class="signup-box-form--input " name="state" id="state" placeholder="State"></select>
+                <input class="signup-box-form--input" type="text" name="phonenumber" placeholder="Phone number">
+                <button name="signup" value="Sign Up" class="signup-box--detail-btn">Save </button>
+            </form>
+           
+            </div>
+    </section>
+    <script language="javascript">
+        populateCountries("country", "state"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+        populateCountries("country2");
+        populateCountries("country2");
+    </script>
+    
+</body>
+</html>
+

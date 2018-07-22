@@ -85,6 +85,7 @@ router.post("/signupInfo/:id",function(req,res) {
             console.log(err);
         }
         else {
+            console.log(newlyCreated);
             User.findByIdAndUpdate({_id: information.username},{$set: {userinfo: newlyCreated._id}},{new: true}, function(error,updated) {
                 if(error) {
                     console.log(error);
