@@ -16,7 +16,7 @@ const indexRoutes = require("./routes/index.js");
 
 // ===================== Database Connect ====================
 // mongoose.connect("mongodb://localhost:27017/ht_app_v2",{useNewUrlParser: true});
-mongoose.connect("mongodb://<asabaki>:<1i1e129e>@ds147411.mlab.com:47411/hestia-project" || "mongodb://localhost:27017/ht_app_v2",{useNewUrlParser: true})
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/ht_app_v2",{useNewUrlParser: true})
 
 // ===================== App Setup ===========================
 app.set('view engine', 'ejs');
