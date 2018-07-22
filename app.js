@@ -38,12 +38,14 @@ app.use(indexRoutes);
 
 // ===================== Run server =========================
 const port = process.env.PORT || 3000;
-https.createServer({
-	key: fs.readFileSync('server.key'),
-	cert: fs.readFileSync('server.cert')
-},app)
-.listen(port,() => {
-	console.log("HTTPS server running on port "+port);
+// 	  port2 = process.env.PORT || 800
+// https.createServer({
+// 	key: fs.readFileSync('server.key'),
+// 	cert: fs.readFileSync('server.cert')
+// },app)
+// .listen(port,() => {
+// 	console.log("HTTPS server running on port "+port);
+// });
+app.listen(port,() => {
+	console.log("Server has started");
 });
-
-http.createServer(app).listen(8000);
