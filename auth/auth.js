@@ -10,7 +10,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.use(new GoogleStrategy({
 	clientID: '162849827402-injo6q3vakoktt47nt5beckdo38uaiqo.apps.googleusercontent.com',
     clientSecret: '0GD4PNhsOdQd6tHYTGz22p03',
-    callbackURL: "https://murmuring-wave-63151.herokuapp.com/auth/google/callback" 
+    callbackURL: "https://hestia-project.herokuapp.com/auth/google/callback" 
 },
 (token,refreshToken,profile,done) => {
 	process.nextTick(() => {
