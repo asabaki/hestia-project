@@ -22,10 +22,12 @@ router.get("/",function(req,res) {
 
 // ================== Sign up Route ======================
 router.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile'] }));
+  passport.authenticate('google', { scope: [ 'https://www.googleapis.com/auth/plus.login',
+      'https://www.googleapis.com/auth/plus.profile.emails.read' ] }));
 
 router.get('/auth/google/callback', 
-  passport.authenticate('google', { scope:[ 'email', 'profile'],failureRedirect: '/login' }),
+  passport.authenticate('google', { scope:[ 'https://www.googleapis.com/auth/plus.login',
+      'https://www.googleapis.com/auth/plus.profile.emails.read' ],failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
     res.redirect('/');
