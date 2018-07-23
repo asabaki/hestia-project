@@ -23,11 +23,11 @@ router.get("/",function(req,res) {
 // ================== Sign up Route ======================
 router.get('/auth/google',
   passport.authenticate('google', { scope: [ 'https://www.googleapis.com/auth/plus.login',
-      'https://www.googleapis.com/auth/plus.profile' ] }));
+      'https://www.googleapis.com/auth/userinfo.email' ] }));
 
 router.get('/auth/google/callback', 
   passport.authenticate('google', { scope:[ 'https://www.googleapis.com/auth/plus.login',
-      'https://www.googleapis.com/auth/plus.profile.emails.read' ],failureRedirect: '/login' }),
+      'https://www.googleapis.com/auth/userinfo.email' ],failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
     res.redirect('/');
