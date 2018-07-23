@@ -17,6 +17,7 @@
     "express-session": "^1.15.6",
     "faker": "^4.1.0",
     "fs": "0.0.1-security",
+    "googleapis": "^32.0.0",
     "http": "0.0.0",
     "https": "^1.0.0",
     "https-proxy-agent": "^2.2.1",
