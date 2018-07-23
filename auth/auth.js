@@ -23,16 +23,16 @@ passport.use(new GoogleStrategy({
 				// This sample assumes a client object has been created.
 				// To learn more about creating a client, check out the starter:
 				//  https://developers.google.com/+/quickstart/javascript
-				var request = gapi.client.plus.people.get({
-				  'userId' : 'me'
-				});
+				// var request = gapi.client.plus.people.get({
+				//   'userId' : 'me'
+				// });
 
-				request.execute(function(resp) {
-				  console.log('ID: ' + resp.id);
-				  console.log('Display Name: ' + resp.displayName);
-				  console.log('Image URL: ' + resp.image.url);
-				  console.log('Profile URL: ' + resp.url);
-				});
+				// request.execute(function(resp) {
+				//   console.log('ID: ' + resp.id);
+				//   console.log('Display Name: ' + resp.displayName);
+				//   console.log('Image URL: ' + resp.image.url);
+				//   console.log('Profile URL: ' + resp.url);
+				// });
 				console.log(profile);
 				var newUser = new User();
 				// console.log(profile);
