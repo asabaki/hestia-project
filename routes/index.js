@@ -11,12 +11,20 @@ const express         = require('express'),
 router.get("/",function(req,res) {
 
     // var hisName = req.session.name;
-    console.log("hisName is "+req.flash('realName'));
+    // updatedName as realName
+    // console.log("hisName is "+req.flash('realName'));
+    name=req.flash('realName');
     // console.log(req.session.name);
-    console.log("fakename is "+req.flash('fakename'));
+    // console.log("fakename is "+req.flash('fakename'));
     // req.session.name=null;
     // var faker = require('faker');
-    res.render("home",{name: req.flash('realName')});
+    if (name=='') {
+        console.log("null");
+        res.render("home",{name: null});
+    } else {
+    console.log('not null '+name+'...')
+    res.render("home",{name: name});
+    }
 });
 // =======================================================
 
@@ -61,7 +69,7 @@ router.post("/signup", function(req, res){
         }
         passport.authenticate("local")(req, res, function(){
            console.log(user);
-           res.render("signupInfo",{userid: user._id,faker: faker});
+           res.render("signupInfo",{userid: user._id,user: null});
         });
     });
 });
@@ -120,7 +128,7 @@ function isLoggedIn(req, res, next) {
 }
 // ============================================================
 router.get("*",function(req,res) {
-	res.redirect("/");
+	res.redirect("/404");
 })
 
 module.exports = router;

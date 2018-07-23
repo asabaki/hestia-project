@@ -35,9 +35,13 @@
                     <li><a href="#sitter" class="navbar-left">Sitters</a></li>
                     <li><a href="#store" class="navbar-left">Store</a></li>
                     <li><a href="#tour" class="navbar-left">Join us</a></li>
-
-                    <%= <li><a href="signUp-detail.html" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</a></li> %>
-                    <%= <li><a href="/signup" class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a></li> %>
+                    <% if(name!=null) { %>
+                    <li><a href="/signup" class="navbar-right"><i class="fas fa-user-plus"></i>&nbsp<%= name %></a></li>
+                    <li><a href="/account" class="navbar-right"><i class="fas fa-user"></i>&nbspMy Account</a></li>
+                    <% } else { %>
+                    <li><a href="signUp-detail.html" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</a></li>
+                    <li><a href="/signup" class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a></li>
+                    <% } %>
                 </ul>
             </div>
         </nav>
