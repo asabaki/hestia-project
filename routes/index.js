@@ -103,10 +103,14 @@ router.post("/signupInfo/:id",function(req,res) {
                 else {
                     console.log("Updated: ");
                     console.log(updated);
-                    var faker = require('faker');
                     // req.session.name = updated.name;
-                    req.flash('fakename',faker.name.findName());
-                    req.flash('realName',updated.name);
+                    if (updated.google.name != null) {
+                        req.flash('realName',updated.google.name)
+                    }
+                    else {
+                        req.flash('realName',updated.name);
+                    }
+                    
                     res.redirect("/");
                     // res.render("home",{name: updated.name});
                 }
