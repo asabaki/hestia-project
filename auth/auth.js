@@ -7,6 +7,7 @@ const	User					= require('../models/User.js'),
 		GoogleStrategy			= require('passport-google-oauth20').Strategy;
 		const {google} = require('googleapis');
  const CREDENTIALS = require("../credential.json");
+ // const plus = require('plus');
 const googleAuth = new google.auth.OAuth2(
   CREDENTIALS.web.client_id,
   CREDENTIALS.web.client_secret,
@@ -14,17 +15,17 @@ const googleAuth = new google.auth.OAuth2(
 );
 
 
-googleAuth.setCredentials({
-  access_token: 'ya29.GlsBBqj0a3lCNyvQQ39arfuNJ-lfnOnOIxwsBmuawi5jG7tO7AM9twZqS2NLIrJ85y0ippzpsnyDnKBhg9L-Dor2ykgkv6g6XjKcYD9sCztEVCESYFh4KyeqE3EF'
-});
+// googleAuth.setCredentials({
+//   access_token: 'ya29.GlsBBqj0a3lCNyvQQ39arfuNJ-lfnOnOIxwsBmuawi5jG7tO7AM9twZqS2NLIrJ85y0ippzpsnyDnKBhg9L-Dor2ykgkv6g6XjKcYD9sCztEVCESYFh4KyeqE3EF'
+// });
 
-plus.people.get({
-    auth: googleAuth,
-    userId: '107474188524303590929'
-}, function (err, user) {
-    if( err ) { res.json( JSON.stringify( err ) );  return; }
-    console.log(user.emails);
-});
+// google.plus.people.get({
+//     auth: googleAuth,
+//     userId: '107474188524303590929'
+// }, function (err, user) {
+//     if( err ) { res.json( JSON.stringify( err ) );  return; }
+//     console.log(user.emails);
+// });
 
 passport.use(new LocalStrategy(User.authenticate()));
 passport.use(new GoogleStrategy({
