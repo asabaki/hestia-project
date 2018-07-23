@@ -7,7 +7,7 @@ const	User					= require('../models/User.js'),
 		GoogleStrategy			= require('passport-google-oauth20').Strategy;
 		const {google} = require('googleapis');
  const CREDENTIALS = require("../credential.json");
-const oauth2Client = new google.auth.OAuth2(
+const googleAuth = new google.auth.OAuth2(
   CREDENTIALS.web.client_id,
   CREDENTIALS.web.client_secret,
   CREDENTIALS.web.redirect_uris[0]
