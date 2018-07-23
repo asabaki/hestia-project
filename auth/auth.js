@@ -41,24 +41,13 @@ passport.use(new GoogleStrategy({
 			if(user) {
 				return done(null,user);
 			} else {
-				// This sample assumes a client object has been created.
-				// To learn more about creating a client, check out the starter:
-				//  https://developers.google.com/+/quickstart/javascript
-				// var request = gapi.client.plus.people.get({
-				//   'userId' : 'me'
-				// });
-
-				// request.execute(function(resp) {
-				//   console.log('ID: ' + resp.id);
-				//   console.log('Display Name: ' + resp.displayName);
-				//   console.log('Image URL: ' + resp.image.url);
-				//   console.log('Profile URL: ' + resp.url);
-				// });
 				console.log(profile);
 				var newUser = new User();
 				// console.log(profile);
 				newUser.google.id = profile.id;
 				newUser.google.name = profile.displayName;
+				newUser.google.email = profile.emails[0].value;
+				newUser.google.token = token;
 
 				newUser.save((err) => {
 					if(err) throw err;
