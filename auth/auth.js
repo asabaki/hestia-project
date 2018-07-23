@@ -20,7 +20,7 @@ passport.use(new GoogleStrategy({
 			if(user) {
 				return done(null,user);
 			} else {
-				console.log(user);
+				console.log(profile);
 				var newUser = new User();
 				// console.log(profile);
 				newUser.google.id = profile.id;
