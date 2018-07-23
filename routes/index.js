@@ -30,7 +30,9 @@ router.get('/auth/google/callback',
     // Successful authentication, redirect home.
     res.redirect('/');
   });
-
+router.get('/login',(req,res) => {
+    res.redirect('signup');
+})
 
 router.get("/auth/facebook",passport.authenticate('facebook'),function (req,res) {
     
