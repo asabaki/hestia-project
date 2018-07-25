@@ -96,6 +96,8 @@ router.post("/signupInfo/:id",function(req,res) {
                     // req.session.name = updated.name;
                     if (updated.google.name != null) {
                         req.flash('realName',updated.google.name)
+                    } else if(updated.facebook.name != null) {
+                        req.flash('realName',updated.facebook.name);
                     }
                     else {
                         req.flash('realName',updated.name);
