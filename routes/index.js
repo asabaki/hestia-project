@@ -37,10 +37,8 @@ router.get('/login',(req,res) => {
 router.get('/auth/facebook',
     passport.authenticate('facebook', {scope: [ 'public_profile' , 'email' ]}))
 router.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/' }),
-  function(req, res) {
-    res.redirect('/signupInfo');
-});
+  passport.authenticate('facebook', { scope: [ 'public_profile' , 'email' ],failureRedirect: '/' , successRedirect: 'signupInfo'})
+);
 router.get("/signup",function(req,res) {
     var faker = require('faker');
     res.render("signUp",{faker: faker});
