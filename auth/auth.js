@@ -32,6 +32,8 @@ passport.use(new GoogleStrategy({
 	clientID: '162849827402-injo6q3vakoktt47nt5beckdo38uaiqo.apps.googleusercontent.com',
     clientSecret: '0GD4PNhsOdQd6tHYTGz22p03',
     callbackURL: "https://hestia-project.herokuapp.com/auth/google/callback" 
+    
+
 },
 (token,refreshToken,profile,done) => {
 	process.nextTick(() => {
@@ -61,7 +63,8 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
 	clientID: '958516977654487',
     clientSecret: '9d27910be7589a89483dead78118440e',
-    callbackURL: "https://www.hestia-project.herokuapp.com/auth/facebook/callback"
+    callbackURL: 'https://www.hestia-project.herokuapp.com/auth/facebook/callback'
+    profileFields: ['id', 'email', 'gender', 'link', 'locale', 'name', 'timezone', 'updated_time', 'verified']
 },
 (accessToken,refreshToken,profile,done) => {
 	process.nextTick(() => {
