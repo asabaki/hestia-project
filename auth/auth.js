@@ -37,7 +37,7 @@ passport.use(new GoogleStrategy({
 },
 (token,refreshToken,profile,done) => {
 	process.nextTick(() => {
-		User.findOne({'google.id' : profile.id },(err,user) => {
+		User.findOne({ google.id : profile.id },(err,user) => {
 			if(err) 
 				return done(err);
 			if(user) {
