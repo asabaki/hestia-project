@@ -25,7 +25,7 @@ router.get("/",function(req,res) {
 // =======================================================
 
 // ================== Sign up Route ======================
-router.get('/auth/google',isLoggedIn,
+router.get('/auth/google',isNotLoggedIn,
   passport.authenticate('google', { scope: [ 'https://www.googleapis.com/auth/plus.login',
       'https://www.googleapis.com/auth/userinfo.email','https://www.googleapis.com/auth/userinfo.profile' ] }));
 
@@ -37,7 +37,7 @@ router.get('/login',isNotLoggedIn,(req,res) => {
     res.redirect('signup');
 })
 
-router.get('/auth/facebook',isLoggedIn,
+router.get('/auth/facebook',isNotLoggedIn,
     passport.authenticate('facebook', {scope: [ 'public_profile' , 'email' ]}));
 router.get('/auth/facebook/callback', 
   passport.authenticate('facebook', { scope:[ 'public_profile',
