@@ -30,15 +30,8 @@ router.get('/auth/google',
       'https://www.googleapis.com/auth/userinfo.email','https://www.googleapis.com/auth/userinfo.profile' ] }));
 
 router.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/failure' }),
-  (req,res) => {
-    if(req.user) {
-        res.redirect('/');
-    }
-    else {
-        res.redirect('/signupInfo');
-    }
-  }
+  passport.authenticate('google', { failureRedirect: '/failure' , successRedirect: 'signupInfo'}),
+  
   );
 router.get('/login',isNotLoggedIn,(req,res) => {
     res.redirect('signup');
@@ -56,6 +49,9 @@ router.get("/signup",function(req,res) {
 })
 router.get("/signupInfo",isLoggedIn ,function(req,res) {
     console.log("Req.user = "+req.user);
+    if (req.user.userinfo) {
+        res.redirect('/');
+    } else
     res.render("signupInfo", {
         user : req.user });
 })
