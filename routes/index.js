@@ -30,10 +30,17 @@ router.get('/auth/google',
       'https://www.googleapis.com/auth/userinfo.email','https://www.googleapis.com/auth/userinfo.profile' ] }));
 
 router.get('/auth/google/callback', 
-  passport.authenticate('google', { scope:[ 'https://www.googleapis.com/auth/plus.login',
-      'https://www.googleapis.com/auth/userinfo.email','https://www.googleapis.com/auth/userinfo.profile' ],failureRedirect: '/login' ,successRedirect: '/signupInfo'}),
+  passport.authenticate('google', { failureRedirect: '/failure' }),
+  (req,res) => {
+    if(req.user) {
+        res.redirect('/');
+    }
+    else {
+        res.redirect('/signupInfo');
+    }
+  }
   );
-router.get('/login',(req,res) => {
+router.get('/login',isNotLoggedIn,(req,res) => {
     res.redirect('signup');
 })
 
@@ -66,7 +73,7 @@ router.post("/signup", function(req, res){
         });
     });
 });
-router.post("/signupInfo/:id",function(req,res) {
+router.post("/signupInfo/:id",isLoggedIn,function(req,res) {
     var information = new UserInfo(
         {
             username: req.params.id, 
@@ -118,6 +125,11 @@ function isLoggedIn(req, res, next) {
         return next();
 
     // if they aren't redirect them to the home page
+    res.redirect('/');
+}
+function isNotLoggedIn(req,res,next) {
+    if(!req.isAuthenticated())
+        return next();
     res.redirect('/');
 }
 // ============================================================
