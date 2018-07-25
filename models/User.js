@@ -40,7 +40,7 @@ var UserSchema = new mongoose.Schema({
       email: {
         type : String,
         default: null}
-    }
+    },
     userinfo: {
     	type : mongoose.Schema.Types.ObjectId,
     	ref : 'UserInfo',
