@@ -36,8 +36,15 @@
                 <li><a href="index.html#sitters" class="navbar-left">Sitters</a></li>
                 <li><a href="index.html#store" class="navbar-left">Store</a></li>
                 <li><a href="index.html#joinUs" class="navbar-left">Join us</a></li>
-                <li><a href="#login" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</a></li>
-                <li><a href="signUp.html" class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a></li>
+                <% if(user) { %>
+                <li><a href="/logout" class="navbar-right">Logout</a></li>
+                <li><a href="/account" class="navbar-right"><i class="fas fa-user"></i>&nbspMy Account</a></li>
+                <li><a href="#" class="navbar-right">Hi, <%= user.name %></a></li>
+
+                <% } else { %>
+                <li><a href="signUp-detail.html" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</li>
+                <li><a href="/signup" class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a>>
+                <% } %>
             </ul>
         </div>
     </nav>

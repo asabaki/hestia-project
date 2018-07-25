@@ -105,6 +105,11 @@ router.post("/signupInfo/:id",function(req,res) {
         }
     });
 });
+// ===============================================================================
+router.get("/logout",(req,res) => {
+    req.logout();
+    res.redirect('/');
+});
 
 function isLoggedIn(req, res, next) {
 
