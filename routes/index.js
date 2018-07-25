@@ -30,7 +30,7 @@ router.get('/auth/google',
       'https://www.googleapis.com/auth/userinfo.email','https://www.googleapis.com/auth/userinfo.profile' ] }));
 
 router.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/failure' , successRedirect: 'signupInfo'}),
+  passport.authenticate('google', { failureRedirect: '/failure' , successRedirect: '/signupInfo'}),
   
   );
 router.get('/login',isNotLoggedIn,(req,res) => {
