@@ -50,7 +50,7 @@ passport.use(new GoogleStrategy({
 				newUser.google.name = profile.displayName;
 				newUser.google.email = profile.emails[0].value;
 				newUser.google.token = token;
-
+				newUser.name = newUser.google.name;
 				newUser.save((err) => {
 					if(err) throw err;
 					return done(null,newUser);
@@ -80,6 +80,7 @@ passport.use(new FacebookStrategy({
 				newUser.facebook.name = profile.name.givenName+' '+profile.name.familyName;
 				newUser.facebook.email = profile.emails[0].value;
 				newUser.facebook.token = accessToken;
+				newUser.name = newUser.facebook.name;
 				newUser.save((err) => {
 					if (err) throw err;
 					return done(null,newUser);

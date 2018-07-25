@@ -10,14 +10,17 @@ const express         = require('express'),
 // ================== Home Page Route ====================
 router.get("/",function(req,res) {
 
-    name=req.flash('realName');
-    if (name=='') {
-        console.log("null");
-        res.render("home",{name: null});
-    } else {
-    console.log('not null '+name+'...')
-    res.render("home",{name: name});
-    }
+    // name=req.flash('realName');
+    // if (name=='') {
+    //     console.log("null");
+    //     res.render("home",{name: null});
+    // } else {
+    // console.log('not null '+req.user.name+'...')
+    if (req.user!=null) 
+    res.render("home",{name: req.user.name,user: req.user});
+    else
+        res.render("home",{user: null});
+    // }
 });
 // =======================================================
 
@@ -45,7 +48,7 @@ router.get("/signup",function(req,res) {
     res.render("signUp",{faker: faker});
 })
 router.get("/signupInfo",isLoggedIn ,function(req,res) {
-    console.log(req.user);
+    console.log("Req.user = "+req.user);
     res.render("signupInfo", {
         user : req.user });
 })
@@ -58,14 +61,12 @@ router.post("/signup", function(req, res){
             res.render('signUpError',{error: err});
         }
         passport.authenticate("local")(req, res, function(){
-           console.log(user);
-           res.render("signupInfo",{userid: user._id,user: null});
+           // console.log(user);
+           res.render("signupInfo",{userid: user._id,user: user});
         });
     });
 });
 router.post("/signupInfo/:id",function(req,res) {
-    console.log(req.params.id);
-    console.log(req.body.housenumber);
     var information = new UserInfo(
         {
             username: req.params.id, 
@@ -94,14 +95,6 @@ router.post("/signupInfo/:id",function(req,res) {
                     console.log("Updated: ");
                     console.log(updated);
                     // req.session.name = updated.name;
-                    if (updated.google.name != null) {
-                        req.flash('realName',updated.google.name)
-                    } else if(updated.facebook.name != null) {
-                        req.flash('realName',updated.facebook.name);
-                    }
-                    else {
-                        req.flash('realName',updated.name);
-                    }
                     
                     res.redirect("/");
                     // res.render("home",{name: updated.name});
@@ -124,7 +117,8 @@ function isLoggedIn(req, res, next) {
 }
 // ============================================================
 router.get("*",function(req,res) {
-	res.redirect("/404");
+    var url = req.protocol + '://' + req.get('host') + req.originalUrl;
+	res.render("404",{url:url});
 })
 
 module.exports = router;
