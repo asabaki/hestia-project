@@ -27,6 +27,20 @@ var UserSchema = new mongoose.Schema({
       	type : String,
       	default: null}
     },
+    facebook: {
+      id: {
+        type : String,
+        default: null},
+      token: {
+        type : String,
+        default: null},
+      name: {
+        type : String,
+        default: null},
+      email: {
+        type : String,
+        default: null}
+    }
     userinfo: {
     	type : mongoose.Schema.Types.ObjectId,
     	ref : 'UserInfo',

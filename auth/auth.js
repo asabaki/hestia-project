@@ -58,6 +58,33 @@ passport.use(new GoogleStrategy({
 	});
 }));
 
+passport.use(new FacebookStrategy({
+	clientID: '958516977654487',
+    clientSecret: '9d27910be7589a89483dead78118440e',
+    callbackURL: "https://www.hestia-project.herokuapp.com/auth/facebook/callback"
+},
+(accessToken,refreshToken,profile,done) => {
+	process.nextTick(() => {
+		User.findOne({'facebook.id' : profile.id },(err,user) => {
+			if (err) 
+				return done(err);
+			if (user) {
+				return done(null,user);
+			} else {
+				console.log(profile);
+				// var newUser = new User();
+				var newUser = new User();
+				newUser.facebook.id = profile.id;
+				newUser.save((err) => {
+					if (err) throw err;
+					return done(null,newUser);
+				});
+			}
+		});
+	})
+	
+}));
+
 passport.use(User.createStrategy());
 require('./init.js')(User, passport);
 

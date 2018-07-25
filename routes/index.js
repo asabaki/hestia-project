@@ -10,14 +10,7 @@ const express         = require('express'),
 // ================== Home Page Route ====================
 router.get("/",function(req,res) {
 
-    // var hisName = req.session.name;
-    // updatedName as realName
-    // console.log("hisName is "+req.flash('realName'));
     name=req.flash('realName');
-    // console.log(req.session.name);
-    // console.log("fakename is "+req.flash('fakename'));
-    // req.session.name=null;
-    // var faker = require('faker');
     if (name=='') {
         console.log("null");
         res.render("home",{name: null});
@@ -41,14 +34,12 @@ router.get('/login',(req,res) => {
     res.redirect('signup');
 })
 
-router.get("/auth/facebook",passport.authenticate('facebook'),function (req,res) {
-    
-    
-});
+router.get('/auth/facebook',
+    passport.authenticate('facebook', {scope: [ 'public_profile' , 'email' ]}))
 router.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/' }),
   function(req, res) {
-    res.redirect('/account');
+    res.redirect('/signupInfo');
 });
 router.get("/signup",function(req,res) {
     var faker = require('faker');
