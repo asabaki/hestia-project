@@ -1,52 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <!--FONT-->
-        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-
-        <!--font-icon-->
-        <link rel="stylesheet" href="css/icon-font.css">
-        <!--style.css-->
-        <link rel="stylesheet" href="css/style.css">
-        <!--font-awesome-->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-        <!--favicon-->
-        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+<% include ./partials/header %>
         <title>Hestia | Sign Up</title>
+        
     </head>
-
     <body>
 
     <nav class="navbar navbar-sticky">
         <div >
             <ul>
-                <li><a href="index.html" class="navbar-band navbar-left">&nbsp</a></li>
-                <li><a href="index.html#about" class="navbar-left">About</a></li>
-                <li><a href="index.html#services" class="navbar-left">Our Services</a></li>
-                <li><a href="#sitters" class="navbar-left">Sitters</a></li>
-                <li><a href="#store" class="navbar-left">Store</a></li>
-                <li><a href="#joinUs" class="navbar-left">Join us</a></li>
+                <li><a href="/" class="navbar-band navbar-left">&nbsp</a></li>
+                <li><a href="/#about" class="navbar-left">About</a></li>
+                <li><a href="/#services" class="navbar-left">Our Services</a></li>
+                <li><a href="/#sitters" class="navbar-left">Sitters</a></li>
+                <li><a href="/#store" class="navbar-left">Store</a></li>
+                <li><a href="/#joinUs" class="navbar-left">Join us</a></li>
                 <li><a href="#login" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</a></li>
-                <li><a href="#" class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a></li>
+                <li><a href="." class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a></li>
             </ul>
         </div>
     </nav>
-
     <section class="section-signUp" id="signUp">
-            <!--<div class="u-center-text u-margin-bottom-big">
-                <h1 class="heading-secondary">
-                Sign Up
-                </h1>
-            </div>-->
-
             <div class="row">
                 <div class="col-1-of-2">
                     <div class="signup-benefit">
@@ -62,33 +34,48 @@
                 </div>
                 <div class="col-1-of-2 ">
                     <div class="signup-box">
-                        <h4>register</h4>
+                        <h4>Register</h4>
+                        <div class="refer-box">     
+                                <p class="refer-or">Sign up with your social media account</p>         
+                                <a href="/auth/facebook" class="refer-icon refer-icon-facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="/auth/google" class="refer-icon refer-icon-gmail"><i class="fab fa-google"></i></a>
+                                <a href="/auth/twitter" class="refer-icon refer-icon-twitter"><i class="fab fa-twitter"></i></a>
+                                <hr>
+                            </div> 
                         <div>
-                            <form action="/signup" method="POST" class="signup-box-form">
-                                <input class="signup-box-form--input" type="text" name="name" id="" placeholder="Name" pattern="(?=^.{0,40}$)^[a-zA-Z-]+\s[a-zA-Z-]+$" title="Name contains only alpha characters and one space">
-                                <input class="signup-box-form--input" type="email" name="username" id="" placeholder="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Email formatting wrong">
-                                <input class="signup-box-form--input" type="password" name="password" id="" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
-                                <input class="signup-box-form--input" type="password" name="confirm-password" id="" placeholder="Confirm-Password">
-                                <input class="signup-box-form-check" type="checkbox" name="agree" id="" placeholder="agree term and condition">
+                            <p class="refer-or">Or</p>
+                            <form action="signup" method="POST" class="signup-box-form">
+                                <input class="signup-box-form--input" type="text" name="name" id="" placeholder="Name" pattern="(?=^.{0,40}$)^[a-zA-Z-]+\s[a-zA-Z-]+$" title="Name contains only alpha characters and one space" required>
+                                <input class="signup-box-form--input" type="email" name="username" id="" placeholder="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Email formatting wrong" required>
+                                <input class="signup-box-form--input" type="password" name="password" id="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                                <input class="signup-box-form--input" type="password" name="confirm-password" id="confirm-password" placeholder="Confirm-Password" required>
+                                <input class="signup-box-form-check" type="checkbox" name="agree" id="" placeholder="agree term and condition" required>
                                 <div class="signup-box-form--term">
                                      I agree to the  <a href="#">terms and conditions.</a>
                                 </div>
                                 <button name="signup" id="" value="Sign Up" class="btn-signup ">Sign up</button>
                             </form>
+                            <script type="text/javascript">
+                                var password = document.getElementById("password")
+                                , confirm_password = document.getElementById("confirm-password");
+
+                                function validatePassword(){
+                                  if(password.value != confirm_password.value) {
+                                    confirm_password.setCustomValidity("Passwords Don't Match");
+                                  } else {
+                                    confirm_password.setCustomValidity('');
+                                  }
+                                }
+                                password.onchange = validatePassword;
+                                confirm_password.onkeyup = validatePassword;
+                            </script>
+                            <div class="signup-box-form--term">
+                                    Already account? <a href="#login">login</a>
+                                </div>
                         </div>
-                        <div class="refer-box">
-                            <p class="refer-or">- or -</p>
-                            <hr>                    
-                            <a href="/auth/facebook/" class="refer-icon refer-icon-facebook"><i class="fab fa-facebook-f"></i></a>
-                            <a href="/auth/google/" class="refer-icon refer-icon-gmail"><i class="fab fa-google"></i></a>
-                            <a href="#" class="refer-icon refer-icon-twitter"><i class="fab fa-twitter"></i></a>
-                        </div> 
+                        
                     </div>
                 </div>
             </div>
-
     </section>
-
-</body>
-</html>
-
+<% include ./partials/footer %>

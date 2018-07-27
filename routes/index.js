@@ -10,14 +10,14 @@ const express         = require('express'),
 // ================== Home Page Route ====================
 router.get("/",function(req,res) {
 
-    // name=req.flash('realName');
-    // if (name=='') {
-    //     console.log("null");
-    //     res.render("home",{name: null});
-    // } else {
-    // console.log('not null '+req.user.name+'...')
     if (req.user!=null) 
-    res.render("home",{name: req.user.name,user: req.user});
+    {
+        console.log("address: "+req.user.userinfo);
+        if(req.user.userinfo==undefined) 
+            res.redirect('signupInfo');
+        else
+            res.render("home",{user: req.user});
+    }
     else
         res.render("home",{user: null});
     // }
@@ -34,8 +34,12 @@ router.get('/auth/google/callback',
   
   );
 router.get('/login',isNotLoggedIn,(req,res) => {
-    res.redirect('signup');
-})
+    console.log(req.session.messages);
+    messages=req.session.messages;
+    req.session.messages=null;
+    res.render('login',{messages:messages});
+    // req.session.messages=[];
+});
 
 router.get('/auth/facebook',isNotLoggedIn,
     passport.authenticate('facebook', {scope: [ 'public_profile' , 'email' ]}));
@@ -43,9 +47,8 @@ router.get('/auth/facebook/callback',
   passport.authenticate('facebook', { scope:[ 'public_profile',
       'email'],failureRedirect: '/login' ,successRedirect: '/signupInfo'}),
   );
-router.get("/signup",function(req,res) {
-    var faker = require('faker');
-    res.render("signUp",{faker: faker});
+router.get("/signup",isNotLoggedIn,function(req,res) {
+    res.render("signUp");
 })
 router.get("/signupInfo",isLoggedIn ,function(req,res) {
     console.log("Req.user = "+req.user);
@@ -53,11 +56,18 @@ router.get("/signupInfo",isLoggedIn ,function(req,res) {
         res.redirect('/');
     } else
     res.render("signupInfo", {
-        user : req.user });
-})
+        user : req.user , userid: req.user._id});
+});
+// ================================= POST METHOD ===================================
+
+router.post('/login',passport.authenticate('local',{
+    successRedirect: "/",
+    failureRedirect: "/login",
+    failureMessage : "Invalid username or password"
+}));
+
 router.post("/signup", function(req, res){
     var newUser = new User({name: req.body.name, username: req.body.username})
-    var faker = require('faker');
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err);
@@ -65,7 +75,9 @@ router.post("/signup", function(req, res){
         }
         passport.authenticate("local")(req, res, function(){
            // console.log(user);
-           res.render("signupInfo",{userid: user._id,user: user});
+           console.log(req.user);
+           // res.render("signupInfo",{userid: req.user._id,user: req.user});
+           res.redirect('/signupInfo');
         });
     });
 });
@@ -126,12 +138,18 @@ function isLoggedIn(req, res, next) {
 function isNotLoggedIn(req,res,next) {
     if(!req.isAuthenticated())
         return next();
-    res.redirect('/');
+    res.redirect('/login');
+}
+function isProvideInfo(req,res,next) {
+    if(req.user.userinfo!=undefined)
+        return next();
+    res.redirect('signupInfo');
+
 }
 // ============================================================
 router.get("*",function(req,res) {
     var url = req.protocol + '://' + req.get('host') + req.originalUrl;
-	res.render("404",{url:url});
+	res.render("404",{url:url,user:req.user});
 })
 
 module.exports = router;

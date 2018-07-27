@@ -33,7 +33,7 @@ function myFunction()
     }
  }
 
-//Smoot Scoll
+//Smooth Scoll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -43,10 +43,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+//alway on top when reload page
+window.onbeforeunload=function(){
+    window.scrollTo(0,-1);
+};
 
 
-var mq = window.matchMedia("@media screen and (max-width: 70rem)");
-if(mq)
-{
-    
-}
+

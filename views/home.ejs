@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <!--FONT-->
-        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-
-        <!--font-icon-->
-        <link rel="stylesheet" href="css/icon-font.css">
-        <!--style.css-->
-        <link rel="stylesheet" href="css/style.css">
-        <!--font-awesome-->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-        <!--favicon-->
-        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+<% include ./partials/header  %>
         <title>Hestia | find sitters around you</title>
     </head>
 
@@ -28,6 +7,7 @@
             window.onbeforeunload = function () {
               window.scrollTo(0, 0);
             }
+            
         </script>
         <a href="#headder" class="btn-totop" id="toTopBtn">&uarr;</a>
         
@@ -46,7 +26,7 @@
                     <li><a href="#" class="navbar-right">Hi, <%= user.name %></a></li>
 
                     <% } else { %>
-                    <li><a href="signUp-detail.html" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</a></li>
+                    <li><a href="/#login" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</a></li>
                     <li><a href="/signup" class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a></li>
                     <% } %>
                 </ul>
@@ -376,44 +356,4 @@
                     <a href="#" class="btn-text-yellow">see all &rarr;</a>
                 </div>
         </section>
-        <footer class="footer">
-            <!--<div class="footer__logo-box">
-                <img src="img/favicon.png" alt="Full logo" class="footer__logo">
-            </div>-->
-            <div class="row">
-                <div class="col-1-of-2">
-                    <div class="footer__navigation">
-                        <ul class="footer__list">
-                            <li class="footer__item"><a href="#" class="footer__link">company</a></li>
-                            <li class="footer__item"><a href="#" class="footer__link">contact us</a></li>
-                            <li class="footer__item"><a href="#" class="footer__link">carrers</a></li>
-                            <li class="footer__item"><a href="#" class="footer__link">privacy policy</a></li>
-                            <li class="footer__item"><a href="#" class="footer__link">terms</a></li>
-                        </ul>
-                        <div class="footer-icon__box">
-                            <a href="#" class="footer-icon"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="footer-icon"><i class="fab fa-google"></i></a>
-                            <a href="#" class="footer-icon"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class=" footer-icon"><i class="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                    
-                   
-                    <div class="footer__contact"><a href="#" class="footer-icon"><i class="fab fa-whatsapp"></i></a>+91 55555555</div>
-                    <div class="footer__contact"><a href="#" class="footer-icon"><i class="fas fa-phone"></i></a>+91 55555555-2</div>
-                    <div class="footer__contact"><a href="#" class="footer-icon"><i class="far fa-envelope"></i></a>customer-service@hestia.in</div>
-                    <div class="footer__contact"><a href="#" class="footer-icon"><i class="fas fa-map-marker-alt"></i></a>Horsur main road, Bangalore 560029</div>
-                    
-                </div>
-                <div class="col-1-of-2">
-                    <p class="footer__copyright">
-                        Build by <a href="#" class="footer__link">Hestia Team</a> Student of 3rd year BCA at <a href="#" class="footer__link">Christ (Deemed to be university)</a>.<br> Copyright2018 &copy;. This website is project of web technology project subject 5th semester
-                    </p>
-                </div>
-            </div>
-        </footer>
-    </main>
-
-    <script type="text/javascript" src="js/main.js"></script>
-    </body>
-</html>
+        <% include ./partials/footer %>
