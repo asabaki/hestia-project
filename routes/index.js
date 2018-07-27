@@ -146,10 +146,13 @@ function isProvideInfo(req,res,next) {
     res.redirect('signupInfo');
 
 }
+router.get('/404',function(req,res) {
+    res.render('404',{user:req.user})
+})
 // ============================================================
 router.get("*",function(req,res) {
     var url = req.protocol + '://' + req.get('host') + req.originalUrl;
-	res.render("404",{url:url,user:req.user});
+	res.redirect('/404');
 })
 
 module.exports = router;
