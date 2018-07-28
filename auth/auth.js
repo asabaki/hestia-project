@@ -109,8 +109,8 @@ passport.use(new TwitterStrategy({
 			} else {
 				console.log(profile);
 				// var newUser = new User();
-				// var newUser = new User();
-				// newUser.twitter.id = profile.id;
+				var newUser = new User();
+				newUser.twitter.id = profile.id;
 				// newUser.twitter.name = profile.name.givenName+' '+profile.name.familyName;
 				// newUser.twitter.email = profile.emails[0].value;
 				// newUser.twitter.token = token;
