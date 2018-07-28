@@ -113,10 +113,9 @@ passport.use(new TwitterStrategy({
 				var newUser = new User();
 				newUser.twitter.id = profile.id;
 				newUser.twitter.name = profile.displayName;
-				// newUser.twitter.name = profile.name.givenName+' '+profile.name.familyName;
-				// newUser.twitter.email = profile.emails[0].value;
-				// newUser.twitter.token = token;
-				// newUser.name = newUser.twitter.name;
+				newUser.twitter.email = profile.emails[0].value;
+				newUser.twitter.token = token;
+				newUser.name = newUser.twitter.name;
 				newUser.save((err) => {
 					if (err) throw err;
 					return done(null,newUser);
