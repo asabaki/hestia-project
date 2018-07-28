@@ -4,6 +4,7 @@ const	User					= require('../models/User.js'),
 		LocalStrategy			= require('passport-local'),
 		passportLocalMongoose	= require('passport-local-mongoose'),
 		FacebookStrategy		= require('passport-facebook'),
+		TwitterStrategy			= require('passport-twitter'),
 		GoogleStrategy			= require('passport-google-oauth20').Strategy;
 		const {google} = require('googleapis');
  const CREDENTIALS = require("../credential.json");
@@ -93,9 +94,9 @@ passport.use(new FacebookStrategy({
 	
 }));
 
-passport.use(new FacebookStrategy({
-	consumerKey: niQ92KnSAnYZkocJuOZNchAdy,
-    consumerSecret: CJCXtiqnFMpDxQQRqQtd5VySDy23is86K3ZKDfVoKei9qn4LgZ,
+passport.use(new TwitterStrategy({
+	consumerKey: 'niQ92KnSAnYZkocJuOZNchAdy',
+    consumerSecret: 'CJCXtiqnFMpDxQQRqQtd5VySDy23is86K3ZKDfVoKei9qn4LgZ',
     callbackURL: "https://hestia-project.herokuapp.com/auth/twitter/callback"
 },
 (token,tokenSecret,profile,done) => {
