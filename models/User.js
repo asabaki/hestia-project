@@ -1,4 +1,4 @@
-const passportLocalMongoose = require('passport-local-mongoose');
+  const passportLocalMongoose = require('passport-local-mongoose');
 const mongoose = require('mongoose');
 
 
@@ -28,6 +28,20 @@ var UserSchema = new mongoose.Schema({
       	default: null}
     },
     facebook: {
+      id: {
+        type : String,
+        default: null},
+      token: {
+        type : String,
+        default: null},
+      name: {
+        type : String,
+        default: null},
+      email: {
+        type : String,
+        default: null}
+    },
+    twitter: {
       id: {
         type : String,
         default: null},

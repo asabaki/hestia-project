@@ -33,6 +33,11 @@ router.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/failure' , successRedirect: '/signupInfo'}),
   
   );
+router.get('/auth/twitter',isNotLoggedIn,
+    passport.authenticate('twitter'));
+router.get('/auth/twitter/callback',
+    passport.authenticate('twitter',{failureRedirect: '/login', successRedirect: 'signupInfo'}));
+
 router.get('/login',isNotLoggedIn,(req,res) => {
     console.log(req.session.messages);
     messages=req.session.messages;

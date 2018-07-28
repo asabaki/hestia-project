@@ -93,6 +93,37 @@ passport.use(new FacebookStrategy({
 	
 }));
 
+passport.use(new FacebookStrategy({
+	consumerKey: niQ92KnSAnYZkocJuOZNchAdy,
+    consumerSecret: CJCXtiqnFMpDxQQRqQtd5VySDy23is86K3ZKDfVoKei9qn4LgZ,
+    callbackURL: "https://hestia-project.herokuapp.com/auth/twitter/callback"
+},
+(token,tokenSecret,profile,done) => {
+		User.findOne({'twitter.id' : profile.id },(err,user) => {
+			if (err) 
+				return done(err);
+			console.log("user:"+user);
+			if (user) {
+				return done(null,user);
+			} else {
+				console.log(profile);
+				// var newUser = new User();
+				// var newUser = new User();
+				// newUser.twitter.id = profile.id;
+				// newUser.twitter.name = profile.name.givenName+' '+profile.name.familyName;
+				// newUser.twitter.email = profile.emails[0].value;
+				// newUser.twitter.token = token;
+				// newUser.name = newUser.twitter.name;
+				newUser.save((err) => {
+					if (err) throw err;
+					return done(null,newUser);
+				});
+			}
+		});
+	
+	
+}));
+
 passport.use(User.createStrategy());
 require('./init.js')(User, passport);
 
