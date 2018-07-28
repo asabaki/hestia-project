@@ -36,7 +36,7 @@ router.get('/auth/google/callback',
 router.get('/auth/twitter',isNotLoggedIn,
     passport.authenticate('twitter'));
 router.get('/auth/twitter/callback',
-    passport.authenticate('twitter',{failureRedirect: '/login', successRedirect: 'signupInfo'}));
+    passport.authenticate('twitter',{failureRedirect: '/login', successRedirect: '/signupInfo'}));
 
 router.get('/login',isNotLoggedIn,(req,res) => {
     console.log(req.session.messages);
