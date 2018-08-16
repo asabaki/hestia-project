@@ -1,6 +1,6 @@
 <% include ./partials/header %>
         <title>Hestia | Sign Up</title>
-        
+        <script src='https://www.google.com/recaptcha/api.js'></script>    
     </head>
     <body>
 
@@ -53,6 +53,7 @@
                                 <div class="signup-box-form--term">
                                      I agree to the  <a href="#">terms and conditions.</a>
                                 </div>
+                                <div class="g-recaptcha" data-sitekey="6LeiO2oUAAAAACiulDrR0LZQK4P6Cy98VGu1DvRf"></div>
                                 <button name="signup" id="" value="Sign Up" class="btn-signup ">Sign up</button>
                             </form>
                             <script type="text/javascript">
@@ -69,6 +70,7 @@
                                 password.onchange = validatePassword;
                                 confirm_password.onkeyup = validatePassword;
                             </script>
+                            
                             <div class="signup-box-form--term">
                                     Already account? <a href="#login">login</a>
                                 </div>

@@ -1005,6 +1005,21 @@ body {
     border: 1px solid #707070;
     opacity: .5; }
 
+.section-signUp__detail {
+  height: 100%;
+  background-size: cover;
+  background-position: top;
+  background-blend-mode: initial;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  color: white;
+  position: relative; }
+  .section-signUp__detail hr {
+    width: 20rem;
+    margin: 1rem auto;
+    border: 1px solid #707070;
+    opacity: .5; }
+
 .refer {
   position: absolute; }
   .refer-box {
@@ -1239,47 +1254,277 @@ body {
     color: orangered;
     font-weight: 700; }
 
-.account__menu {
-  background-color: white; }
-
-.account__details {
-  padding: 1rem;
-  width: 75%;
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
-  .account__details ul {
-    list-style: none;
-    width: 70%;
-    margin: 0 auto; }
-    .account__details ul li {
-      text-align: left;
+.account {
+  height: 100%;
+  margin-top: 5rem;
+  margin-bottom: 5rem; }
+  .account__menu {
+    background-color: white; }
+  .account__details {
+    padding: 1rem;
+    width: 75%;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+    .account__details ul {
+      list-style: none;
+      width: 70%;
+      margin: 0 auto; }
+      .account__details ul li {
+        text-align: left;
+        font-size: 2rem;
+        padding: 1rem;
+        transition: all .3s; }
+        .account__details ul li:not(:last-child) {
+          border-bottom: 1px solid #eee; }
+        .account__details ul li:hover {
+          color: #f8e1a3;
+          font-size: 2.5rem;
+          font-weight: 400;
+          padding-right: .5rem; }
+        .account__details ul li:link, .account__details ul li:visited {
+          font-size: 1.5; }
+    .account__details-link:link, .account__details-link:visited {
+      font-size: 1.5;
+      text-decoration: none;
+      font-weight: 300;
+      color: gray;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      background-size: 250%;
       font-size: 2rem;
-      padding: 1rem;
-      transition: all .3s; }
-      .account__details ul li:not(:last-child) {
-        border-bottom: 1px solid #eee; }
-      .account__details ul li:hover {
-        color: #f8e1a3;
-        font-size: 2.5rem; }
-      .account__details ul li:link, .account__details ul li:visited {
-        font-size: 1.5; }
-  .account__details-link:link, .account__details-link:visited {
-    font-size: 1.5;
-    text-decoration: none;
-    font-weight: 300;
-    color: gray;
-    text-transform: uppercase;
-    padding: 1rem 2rem;
-    background-size: 250%;
-    font-size: 2rem;
-    transition: all ease .4s;
-    display: inline-block; }
-  .account__details-link:hover {
-    background-position: 100%;
-    color: #388ca1;
-    transform: translateX(1rem); }
-  .account__details-link:active {
-    color: #388ca1;
-    transform: translatex(1rem) scale(1.1); }
+      transition: all ease .2s;
+      display: inline-block; }
+    .account__details-link:hover {
+      background-position: 100%;
+      color: #388ca1;
+      transform: translateX(1rem); }
+    .account__details-link:active {
+      color: #388ca1;
+      transform: translatex(1rem) scale(1.1); }
+    .account__details-link-active {
+      background-position: 100%;
+      color: #388ca1;
+      background-color: #f7f7f7; }
+  .account-setting {
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    margin-left: -12rem;
+    position: relative;
+    width: 130%; }
+    .account-setting h2 {
+      font-size: 2.5rem;
+      padding-bottom: 2rem;
+      text-align: left;
+      color: black;
+      text-transform: capitalize; }
+    .account-setting h3 {
+      color: gray;
+      text-transform: capitalize; }
+    .account-setting label {
+      font-size: 1.4rem; }
+    .account-setting table {
+      display: block;
+      margin: 2rem; }
+      .account-setting table tr {
+        padding-top: 5rem; }
+    .account-setting-td {
+      padding: .5rem 1rem .5rem 1rem; }
+    .account-setting-input {
+      font-size: 1.4rem;
+      border-radius: .5rem;
+      border: none;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      width: 150%;
+      height: 3rem; }
+    .account-setting__password-box {
+      display: inline-block;
+      padding-bottom: 1rem; }
+      .account-setting__password-box:not(:first-child) {
+        padding-left: 2rem; }
+    .account-setting__basic-box {
+      margin-left: 3rem; }
+    .account-setting .redStar {
+      color: red; }
+    .account-setting-btn {
+      font-size: 1.4rem;
+      color: #000;
+      display: inline-block;
+      border-radius: 10rem;
+      border: none;
+      transition: all .2s;
+      position: relative;
+      padding: 0.5rem 2rem; }
+      .account-setting-btn:not(:first-child) {
+        margin-left: .7rem; }
+      .account-setting-btn-save {
+        color: gray;
+        background-color: #f7f7f7;
+        border: 1px solid #c4c4c4; }
+        .account-setting-btn-save:hover {
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+          color: #388ca1;
+          border: 1px solid #388ca1; }
+      .account-setting-btn-clear {
+        color: gray;
+        background-color: #f7f7f7;
+        border: 1px solid #c4c4c4; }
+        .account-setting-btn-clear:hover {
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+          color: #fce190;
+          border: 1px solid #fce190; }
+      .account-setting-btn:active, .account-setting-btn:visited {
+        transform: translateY(0.5rem);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4); }
+
+.center-form {
+  margin-left: 10rem;
+  margin-right: 10rem; }
+
+.myBooking {
+  height: 100%;
+  margin-top: 5rem;
+  margin-bottom: 5rem; }
+  .myBooking-setting {
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    margin-left: -12rem;
+    position: relative;
+    width: 130%; }
+    .myBooking-setting h2 {
+      font-size: 2.5rem;
+      padding-bottom: 2rem;
+      text-align: left;
+      color: black;
+      text-transform: capitalize; }
+    .myBooking-setting h3 {
+      color: gray;
+      text-transform: capitalize; }
+    .myBooking-setting label {
+      font-size: 1.4rem; }
+    .myBooking-setting table {
+      display: block;
+      margin: 2rem; }
+      .myBooking-setting table tr {
+        padding-top: 5rem; }
+
+.bookingHistory {
+  height: 100%;
+  margin-top: 5rem;
+  margin-bottom: 5rem; }
+  .bookingHistory-setting {
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    margin-left: -12rem;
+    position: relative;
+    width: 130%; }
+    .bookingHistory-setting h2 {
+      font-size: 2.5rem;
+      padding-bottom: 2rem;
+      text-align: left;
+      color: black;
+      text-transform: capitalize; }
+    .bookingHistory-setting h3 {
+      color: gray;
+      text-transform: capitalize; }
+    .bookingHistory-setting label {
+      font-size: 1.4rem; }
+    .bookingHistory-setting table {
+      display: block;
+      margin: 2rem; }
+      .bookingHistory-setting table tr {
+        padding-top: 5rem; }
+
+.paymentMethod {
+  height: 100%;
+  margin-top: 5rem;
+  margin-bottom: 5rem; }
+  .paymentMethod-setting {
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    margin-left: -12rem;
+    position: relative;
+    width: 130%; }
+    .paymentMethod-setting h2 {
+      font-size: 2.5rem;
+      padding-bottom: 2rem;
+      text-align: left;
+      color: black;
+      text-transform: capitalize; }
+    .paymentMethod-setting h3 {
+      color: gray;
+      text-transform: capitalize; }
+    .paymentMethod-setting label {
+      font-size: 1.4rem; }
+    .paymentMethod-setting table {
+      display: block;
+      margin: 2rem; }
+      .paymentMethod-setting table tr {
+        padding-top: 5rem; }
+
+.paymentHistory {
+  height: 100%;
+  margin-top: 5rem;
+  margin-bottom: 5rem; }
+  .paymentHistory-setting {
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    margin-left: -12rem;
+    position: relative;
+    width: 130%; }
+    .paymentHistory-setting h2 {
+      font-size: 2.5rem;
+      padding-bottom: 2rem;
+      text-align: left;
+      color: black;
+      text-transform: capitalize; }
+    .paymentHistory-setting h3 {
+      color: gray;
+      text-transform: capitalize; }
+    .paymentHistory-setting label {
+      font-size: 1.4rem; }
+    .paymentHistory-setting table {
+      display: block;
+      margin: 2rem; }
+      .paymentHistory-setting table tr {
+        padding-top: 5rem; }
+
+.help {
+  height: 100%;
+  margin-top: 5rem;
+  margin-bottom: 5rem; }
+  .help-setting {
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    margin-left: -12rem;
+    position: relative;
+    width: 130%; }
+    .help-setting h2 {
+      font-size: 2.5rem;
+      padding-bottom: 2rem;
+      text-align: left;
+      color: black;
+      text-transform: capitalize; }
+    .help-setting h3 {
+      color: gray;
+      text-transform: capitalize; }
+    .help-setting label {
+      font-size: 1.4rem; }
+    .help-setting table {
+      display: block;
+      margin: 2rem; }
+      .help-setting table tr {
+        padding-top: 5rem; }
 
 /*
 npm run compile:sass //to transform to css file

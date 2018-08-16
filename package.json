@@ -10,6 +10,7 @@
   "author": "Asi and team",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
     "ejs": "^2.6.1",
@@ -22,6 +23,7 @@
     "https": "^1.0.0",
     "https-proxy-agent": "^2.2.1",
     "mongoose": "^5.2.4",
+    "omise": "^0.5.4",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-google-oauth20": "^1.0.0",
