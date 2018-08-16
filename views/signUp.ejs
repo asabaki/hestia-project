@@ -1,6 +1,12 @@
 <% include ./partials/header %>
         <title>Hestia | Sign Up</title>
-        <script src='https://www.google.com/recaptcha/api.js'></script>    
+        <script type="text/javascript">
+            var onloadCallback = function() {
+              grecaptcha.render('html_element', {
+                'sitekey' : '6LeiO2oUAAAAACiulDrR0LZQK4P6Cy98VGu1DvRf'
+              });
+            };
+          </script>
     </head>
     <body>
 
@@ -59,6 +65,9 @@
                             </br>
                                 <button name="signup" id="" value="Sign Up" class="btn-signup ">Sign up</button>
                             </form>
+                            <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+                            async defer>
+                            </script>
                             <script type="text/javascript">
                                 var password = document.getElementById("password")
                                 , confirm_password = document.getElementById("confirm-password");
