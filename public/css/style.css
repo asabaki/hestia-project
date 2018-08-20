@@ -126,6 +126,9 @@ body {
     .heading-secondary--white:hover {
       transform: scale(1.1);
       text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.7); }
+  .heading-secondary--yellow {
+    color: #fce190;
+    text-shadow: 0 0rem 3rem rgba(252, 225, 144, 0.4); }
 
 .heading-tertiry {
   font-size: 1.6rem;
@@ -771,6 +774,21 @@ body {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0.5);
     transition: all .5s .2s; }
+    .popup__content-login {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30%;
+      padding: 5rem 5rem 1rem 5rem;
+      background-color: white;
+      box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+      display: table;
+      overflow: hidden;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.5);
+      transition: all .5s .2s; }
   .popup__left {
     width: 33.3333333%;
     display: table-cell; }
@@ -1007,6 +1025,7 @@ body {
 
 .section-signUp__detail {
   height: 100%;
+  background-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/img/signUp_bg.jpeg);
   background-size: cover;
   background-position: top;
   background-blend-mode: initial;
@@ -1070,24 +1089,24 @@ body {
     color: black;
     font-size: 3rem; }
   .signup-box--detail {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 2%;
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.7);
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    margin-left: 30%;
-    margin-right: 30%; }
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-left: 25%;
+    width: 50%; }
     .signup-box--detail h3 {
       color: #388ca1;
       font-size: 4rem;
       text-align: center;
       letter-spacing: 1rem; }
     .signup-box--detail .icon_form {
-      position: absolute; }
-      .signup-box--detail .icon_form-top {
-        font-size: 7rem;
-        color: #f8e1a3;
-        margin-left: 3.5rem; }
+      position: relative;
+      font-size: 7rem;
+      color: #f7c052;
+      margin: 2rem 45% 2rem 45%;
+      margin-top: 2rem; }
     .signup-box--detail-btn {
       width: 30rem;
       height: 4rem;
@@ -1218,12 +1237,16 @@ body {
   float: left;
   padding-top: 2rem;
   font-size: 1.4rem; }
+  .left-link:active {
+    color: black; }
 
 .right-link {
   text-align: right;
   float: right;
   padding-top: 2rem;
   font-size: 1.4rem; }
+  .right-link:active {
+    color: black; }
 
 .notfound {
   width: 100%;
@@ -1262,7 +1285,7 @@ body {
     background-color: white; }
   .account__details {
     padding: 1rem;
-    width: 75%;
+    width: 80%;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
     .account__details ul {
       list-style: none;
@@ -1344,6 +1367,8 @@ body {
         padding-left: 2rem; }
     .account-setting__basic-box {
       margin-left: 3rem; }
+    .account-setting__icon-1 {
+      color: #388ca1; }
     .account-setting .redStar {
       color: red; }
     .account-setting-btn {
@@ -1354,7 +1379,8 @@ body {
       border: none;
       transition: all .2s;
       position: relative;
-      padding: 0.5rem 2rem; }
+      padding: 0.5rem 2rem;
+      text-decoration: none; }
       .account-setting-btn:not(:first-child) {
         margin-left: .7rem; }
       .account-setting-btn-save {
@@ -1439,11 +1465,11 @@ body {
       .bookingHistory-setting table tr {
         padding-top: 5rem; }
 
-.paymentMethod {
+.bookingPayment {
   height: 100%;
   margin-top: 5rem;
   margin-bottom: 5rem; }
-  .paymentMethod-setting {
+  .bookingPayment-setting {
     height: 100%;
     background-color: #fff;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
@@ -1451,22 +1477,76 @@ body {
     margin-left: -12rem;
     position: relative;
     width: 130%; }
-    .paymentMethod-setting h2 {
+    .bookingPayment-setting h2 {
       font-size: 2.5rem;
       padding-bottom: 2rem;
       text-align: left;
       color: black;
       text-transform: capitalize; }
-    .paymentMethod-setting h3 {
+    .bookingPayment-setting h3 {
       color: gray;
       text-transform: capitalize; }
-    .paymentMethod-setting label {
+    .bookingPayment-setting label {
       font-size: 1.4rem; }
-    .paymentMethod-setting table {
+    .bookingPayment-setting table {
       display: block;
       margin: 2rem; }
-      .paymentMethod-setting table tr {
+      .bookingPayment-setting table tr {
         padding-top: 5rem; }
+    .bookingPayment-setting a {
+      color: #388ca1;
+      font-style: oblique;
+      transition: all .2s;
+      display: inline-block; }
+      .bookingPayment-setting a:hover {
+        transform: scale(1.1); }
+      .bookingPayment-setting a:active {
+        transform: scale(0.9); }
+    .bookingPayment-setting .btn-pay {
+      color: #388ca1;
+      border: 1px solid rgba(56, 140, 161, 0.3);
+      background-color: white;
+      box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
+      border-radius: 10rem;
+      display: inline;
+      text-decoration: none;
+      text-align: center;
+      font-style: normal;
+      padding: .1rem 2rem;
+      transition: all .2s; }
+      .bookingPayment-setting .btn-pay:hover {
+        transform: translateY(-0.3rem);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+      .bookingPayment-setting .btn-pay:active {
+        transform: translateY(0rem);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+        color: #777;
+        border: 1px solid rgba(119, 119, 119, 0.3); }
+      .bookingPayment-setting .btn-pay-paid {
+        color: #f7c052;
+        text-align: center; }
+    .bookingPayment-setting table, .bookingPayment-setting tr, .bookingPayment-setting td {
+      border-collapse: collapse; }
+    .bookingPayment-setting tr, .bookingPayment-setting td {
+      border: 2px solid rgba(255, 255, 255, 0.4); }
+    .bookingPayment-setting tr:nth-child(even) {
+      background-color: rgba(216, 245, 252, 0.7); }
+    .bookingPayment-setting__thead {
+      font-weight: 700;
+      background-color: #9bcdda;
+      color: #fff; }
+      .bookingPayment-setting__thead td {
+        padding: .4rem .5rem;
+        width: 12rem;
+        text-align: center;
+        text-transform: capitalize; }
+    .bookingPayment-setting__tr {
+      padding-top: 3rem; }
+      .bookingPayment-setting__tr td {
+        padding: .1rem .4rem;
+        text-align: center; }
+        .bookingPayment-setting__tr td:not(:last-child) {
+          text-transform: capitalize; }
 
 .paymentHistory {
   height: 100%;
@@ -1497,6 +1577,52 @@ body {
       .paymentHistory-setting table tr {
         padding-top: 5rem; }
 
+.paymentMethod {
+  height: 100%;
+  margin-top: 5rem;
+  margin-bottom: 5rem; }
+  .paymentMethod-setting {
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    margin-left: -12rem;
+    position: relative;
+    width: 130%; }
+    .paymentMethod-setting h2 {
+      font-size: 2.5rem;
+      padding-bottom: 2rem;
+      text-align: left;
+      color: black;
+      text-transform: capitalize; }
+    .paymentMethod-setting h3 {
+      color: gray;
+      text-transform: capitalize; }
+    .paymentMethod-setting label {
+      font-size: 1.4rem; }
+    .paymentMethod-setting table {
+      display: block;
+      margin: 2rem; }
+      .paymentMethod-setting table tr {
+        padding-top: 5rem; }
+    .paymentMethod-setting td {
+      position: relative;
+      padding: 1rem 1rem .5rem 1rem;
+      text-align: center;
+      border: 0; }
+    .paymentMethod-setting_btn {
+      float: initial;
+      margin: 1rem auto;
+      padding-left: 22.5%;
+      padding-right: 22.5%; }
+  .paymentMethod_selectedCard:hover {
+    background-color: #d8f5fc; }
+    .paymentMethod_selectedCard:hover td {
+      border: none; }
+  .paymentMethod_selectedCard-img {
+    width: 4rem;
+    background-color: red; }
+
 .help {
   height: 100%;
   margin-top: 5rem;
@@ -1508,7 +1634,8 @@ body {
     padding: 2rem;
     margin-left: -12rem;
     position: relative;
-    width: 130%; }
+    width: 130%;
+    width: 120%; }
     .help-setting h2 {
       font-size: 2.5rem;
       padding-bottom: 2rem;
@@ -1525,6 +1652,114 @@ body {
       margin: 2rem; }
       .help-setting table tr {
         padding-top: 5rem; }
+    .help-setting-row {
+      margin-left: 4rem;
+      margin-right: -1rem;
+      margin-top: -3rem; }
+    .help-setting .help-topic {
+      width: 20rem;
+      margin-left: -5rem;
+      transition: all .2s; }
+      .help-setting .help-topic__number {
+        border-radius: 50%;
+        background-color: #84cfe2;
+        width: 5rem;
+        height: 5rem;
+        color: #fff;
+        font-size: 3rem;
+        text-align: center;
+        margin: 0 auto;
+        z-index: 1;
+        position: relative;
+        top: 2.5rem; }
+      .help-setting .help-topic__content {
+        background-color: white;
+        border: 2px solid #f7f7f7;
+        margin: 0rem 0rem;
+        padding: 3rem 1rem;
+        width: 100%;
+        height: 17rem;
+        text-align: center;
+        font-size: 1.4rem; }
+      .help-setting .help-topic__header {
+        border-bottom: 2px solid #f7c052;
+        text-align: center;
+        color: #000;
+        font-size: 2rem; }
+      .help-setting .help-topic:hover {
+        transform: scale(1.05);
+        z-index: 3; }
+    .help-setting__form {
+      margin-left: -1rem;
+      margin-right: 1rem;
+      display: inline;
+      font-size: 1.4rem;
+      padding: 1rem 1.5rem; }
+      .help-setting__form-input {
+        border: 1px solid #c4c4c4;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        background-color: white;
+        width: 75%; }
+      .help-setting__form-submit {
+        background-color: #84cfe2;
+        border: 1px solid #84cfe2;
+        color: #fff;
+        border-bottom-right-radius: 5px;
+        border-top-right-radius: 5px;
+        margin-left: -1.5rem;
+        width: 25%;
+        transition: all .2s; }
+        .help-setting__form-submit:hover {
+          border-bottom-left-radius: 5px;
+          border-top-left-radius: 5px; }
+
+.payment {
+  height: 100%; }
+  .payment label {
+    font-size: 1.3rem;
+    color: #494949; }
+  .payment_form {
+    margin: 0rem auto 3em auto;
+    padding: 2rem 5rem 2rem 3rem;
+    width: 100%;
+    box-shadow: 0.2rem 1rem 2rem rgba(0, 0, 0, 0.3); }
+  .payment_field-input {
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 1rem 1rem;
+    border-radius: 5px;
+    border: 1px solid gray; }
+    .payment_field-input--error {
+      border: 1px solid red;
+      box-shadow: 0rem 0rem 1rem red;
+      color: red; }
+    .payment_field-input:not(:last-child) {
+      margin-bottom: 2rem; }
+  .payment_field-select {
+    font-size: 1.4rem;
+    margin-left: 2rem; }
+  .payment_field-img {
+    height: 5rem; }
+  .payment-btn {
+    display: block;
+    position: relative;
+    margin: 2rem 24%; }
+  .payment_header {
+    color: #388ca1;
+    font-size: 3rem;
+    text-align: center; }
+
+.sitterBio {
+  height: 100vh; }
+
+.sitterApply {
+  height: 100vh; }
+  .sitterApply-form {
+    margin: 3rem auto;
+    padding: 1rem auto; }
+  .sitterApply-tr:hover {
+    background-color: #d8f5fc; }
 
 /*
 npm run compile:sass //to transform to css file

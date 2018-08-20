@@ -7,8 +7,8 @@ var UserSchema = new mongoose.Schema({
     name :  String,
     username: {
     	type : String,
-    	// required : true,
-    	// unique : true
+    	required : true,
+    	unique : true
     },
     google: {
       id: String,
@@ -43,14 +43,16 @@ var UserSchema = new mongoose.Schema({
         type : Boolean,
         default : false
     },
+    isAdmin: {
+      type: Boolean,
+      default: false
+    },
     payment : {
       cust_id : String,
       cards : [
         {
-          id : { 
-            type: String,
-            unique: true
-          },
+          id : String,
+          name: String,
           digits : String,
           brand: String,
           expMonth: Number,

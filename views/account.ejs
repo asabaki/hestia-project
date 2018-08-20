@@ -1,4 +1,5 @@
 <% include ./partials/header  %>
+<script type= "text/javascript" src = "js/countries.js"></script>
     <title>Hestia | My account - Setting</title>
 </head>
 
@@ -30,14 +31,15 @@
         <div class="col-1-of-2">
             <div class="account-menu">
                 <div class="account__details">
-                    <ul>
-                        <li class="account__details-link-active"><i class="fas fa-user"></i><a href="myAccount_accountSetting.html" class="account__details-link">Account setting</a></li>
-                        <li><i class="fas fa-book"></i><a href="myAccount_myBooking.html" class="account__details-link">My Booking</a></li>
-                        <li><i class="fas fa-history"></i><a href="myAccount_bookingHistory.html" class="account__details-link">Booking History</a></li>
-                        <li><i class="fas fa-credit-card"></i><a href="myAccount_paymentMethod.html" class="account__details-link">Payment Method</a></li>
-                        <li><i class="far fa-credit-card"></i><a href="myAccount_paymentHistory.html" class="account__details-link">Payment History</a></li>
-                        <li><i class="fas fa-question-circle"></i><a href="myAccount_help.html" class="account__details-link">Help</a></li>
-                    </ul>
+                        <ul>
+                                <li class="account__details-link-active"><i class="fas fa-user"></i><a href="/account" class="account__details-link">Account setting</a></li>
+                                <li><i class="fas fa-book"></i><a href="/booking" class="account__details-link">My Booking</a></li>
+                                <li><i class="fas fa-history"></i><a href="/history" class="account__details-link">Booking History</a></li>
+                                <li><i class="far fa-credit-card"></i><a href="/cards" class="account__details-link">Payment Method</a></li>
+                                <li><i class="fas fa-credit-card"></i><a href="/payment" class="account__details-link">Booking Payment</a></li>
+                                <li><i class="fas fa-file-invoice-dollar"></i><a href="/phistory" class="account__details-link">Payment History</a></li>
+                                <li><i class="fas fa-question-circle"></i><a href="/help" class="account__details-link">Help</a></li>
+                        </ul>
                 </div>
             </div>
 
@@ -58,7 +60,7 @@
                                 </tr>
                                 <tr>
                                     <td class="account-setting-td"><label for="new-password">New Password <span class="redStar">*</span></label></td>
-                                    <td class="account-setting-td"><input type="password" name="newPassword" id="street" class="account-setting-input"></td>
+                                    <td class="account-setting-td"><input type="password" name="newPassword"  class="account-setting-input"></td>
                                 </tr>
                                 <tr>
                                     <td class="account-setting-td"><label for="confirm-password">Confirm Password <span class="redStar">*</span></label></td>
@@ -92,12 +94,13 @@
                                 <td class="account-setting-td"><input type="text" name="zipCode" id="zipCode" class="account-setting-input" value="<%= user.address.zipCode %>"></td>
                             </tr>
                             <tr class="account-setting-tr">
-                                <td class="account-setting-td"><label for="city">City <span class="redStar">*</span></label></td>
-                                <td class="account-setting-td"><input type="text" name="city" id="city" class="account-setting-input" value="<%= user.address.city %>"></td>
+                                <td class="account-setting-td"><label for="state">Country <span class="redStar">*</span></label></td>
+                                <td class="account-setting-td"><select class="signup-box-form--input" id="country" name="country" ></select></td>
+                                
                             </tr>
                             <tr class="account-setting-tr">
-                                <td class="account-setting-td"><label for="state">State <span class="redStar">*</span></label></td>
-                                <td class="account-setting-td"><input type="text" name="state" id="state" class="account-setting-input" value="<%= user.address.state %>"></td>
+                                <td class="account-setting-td"><label for="state">City <span class="redStar">*</span></label></td>
+                                <td class="account-setting-td"><select class="signup-box-form--input" name="state" id="state"></select></td>
                             </tr>
                             <tr class="account-setting-tr">
                                 <td class="account-setting-td"><label for="phoneNumber">Phone number <span class="redStar">*</span></label></td>
@@ -114,7 +117,30 @@
         </div>
     </div>
 </section>
-
+<script language="javascript">
+        
+        populateCountries("country", "state"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+        populateCountries("country2");
+        populateCountries("country2");
+    </script>
+<script>
+    var country = document.getElementById('country').options,
+        state = document.getElementById('state').options;
+    Array.prototype.forEach.call(country, each => {
+        if(each.value === "<%= user.address.country %>") {
+            document.getElementById('country').selectedIndex=each.index;
+            console.log(each);
+        }
+        
+});
+Array.prototype.forEach.call(state, each => {
+        if(each.value === "<%= user.address.state %>") {
+            document.getElementById('state').value=each.value;
+            console.log(each);
+        }
+    });
+        // document.getElementById('country').value = '<%= user.address.country %>';
+</script>
 
 
 

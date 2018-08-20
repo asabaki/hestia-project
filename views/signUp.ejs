@@ -50,12 +50,12 @@
                             </div> 
                         <div>
                             <p class="refer-or">Or</p>
-                            <form action="signup" method="POST" class="signup-box-form">
-                                <input class="signup-box-form--input" type="text" name="name" id="" placeholder="Name" pattern="(?=^.{0,40}$)^[a-zA-Z-]+\s[a-zA-Z-]+$" title="Name contains only alpha characters and one space" required>
-                                <input class="signup-box-form--input" type="email" name="username" id="" placeholder="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Email formatting wrong" required>
+                            <form action="signup" method="POST" class="signup-box-form" id="signup-form">
+                                <input class="signup-box-form--input" type="text" name="name"  placeholder="Name" pattern="(?=^.{0,40}$)^[a-zA-Z-]+\s[a-zA-Z-]+$" title="Name contains only alpha characters and one space" required>
+                                <input class="signup-box-form--input" type="email" name="username"  placeholder="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" title="Email formatting wrong" required>
                                 <input class="signup-box-form--input" type="password" name="password" id="password" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
                                 <input class="signup-box-form--input" type="password" name="confirm-password" id="confirm-password" placeholder="Confirm-Password" required>
-                                <input class="signup-box-form-check" type="checkbox" name="agree" id="" placeholder="agree term and condition" required>
+                                <input class="signup-box-form-check" type="checkbox" name="agree"  placeholder="agree term and condition" required>
                                 <div class="signup-box-form--term">
                                      I agree to the  <a href="#">terms and conditions.</a>
                                 </div>
@@ -63,7 +63,7 @@
                                 <div id="html_element"></div>
 
                             </br>
-                                <button name="signup" id="" value="Sign Up" class="btn-signup ">Sign up</button>
+                                <button name="signup"  value="Sign Up" class="btn-signup ">Sign up</button>
                             </form>
                             <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
                             async defer>
@@ -81,6 +81,14 @@
                                 }
                                 password.onchange = validatePassword;
                                 confirm_password.onkeyup = validatePassword;
+                                var form = document.getElementById('signup-form');
+                                form.addEventListener("submit", function(event){
+                                    if (grecaptcha.getResponse() === '') {                            
+                                    event.preventDefault();
+                                    alert('Please check the recaptcha');
+                                    }
+                                }
+                                , false);
                             </script>
                             
                             <div class="signup-box-form--term">

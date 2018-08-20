@@ -18,11 +18,14 @@
       NOTE: Using `data-name` to prevent sending credit card information fields to the backend server via HTTP Post
       (according to the security best practice https://www.omise.co/security-best-practices#never-send-card-data-through-your-servers).
       */
+      const expiry = document.getElementById('expiryDate').value,
+            month  = parseInt(expiry.substr(0,2)),
+            year   = parseInt(expiry.substr(5,expiry.length-5))%2000;
       var cardInformation = {
         name:             document.querySelector('[data-name="nameOnCard"]').value,
         number:           document.querySelector('[data-name="cardNumber"]').value,
-        expiration_month: document.querySelector('[data-name="expiryMonth"]').value,
-        expiration_year:  document.querySelector('[data-name="expiryYear"]').value,
+        expiration_month: month,
+        expiration_year:  year,
         security_code:    document.querySelector('[data-name="securityCode"]').value
       };
       Omise.createToken('card', cardInformation, function(statusCode, response) {
@@ -36,7 +39,7 @@
           checkoutForm.submit();
         }
         else {
-            document.querySelector('[data-name="cardNumber"]').setCustomValidity(response.message);
+            document.querySelector('[data-name="cardNumber"]').classList.add("payment_field-input--error");
             console.log(response.message+' '+response.code);
             
           // Error: display an error message. Note that `response.message` contains

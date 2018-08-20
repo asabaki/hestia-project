@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>reCAPTCHA demo: Simple page</title>
+     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  </head>
+  <body>
+    <form action="?" method="POST" id="ctct-custom-form">
+      <div class="g-recaptcha" data-sitekey="6LeiO2oUAAAAACiulDrR0LZQK4P6Cy98VGu1DvRf"></div>
+      <br/>
+      <input type="submit" value="Submit">
+        <script>
+            var onSuccess = function(response) {
+                var errorDivs = document.getElementsByClassName("g-recaptcha");
+                if (errorDivs.length) {
+                errorDivs[0].className = "";
+                }
+                var errorMsgs = document.getElementsByClassName("recaptcha-error-message");
+                if (errorMsgs.length) {
+                errorMsgs[0].parentNode.removeChild(errorMsgs[0]);
+                }
+            };
+        </script>
+      
+    </form>
+    <script>
+    var form = document.getElementById('ctct-custom-form');
+    form.addEventListener("submit", function(event){
+        if (grecaptcha.getResponse() === '') {                            
+        event.preventDefault();
+        alert('Please check the recaptcha');
+        }
+    }
+    , false);
+  </script>
+  </body>
+</html>

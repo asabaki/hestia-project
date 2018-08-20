@@ -1,0 +1,137 @@
+<% include ./partials/header %>
+    <title>Hestia | payment</title>
+</head>
+
+<body>
+        <div class="popup" id="addCard">
+                <div class="popup__content popup__content-login">
+                        <a href="/cards" class="popup__close">&times;</a>
+                        
+                        <h1 class="payment_header">Add new card</h1>
+                            <div class="card-wrapper"></div>
+                            <div class="form-container active">
+                                <form action="/cards" method="POST" id="checkout-form" class="addcard">
+                                    <label for="number">Card Number</label>
+                                    <input placeholder="Card number" type="tel" name="number" class="payment_field-input" data-name="cardNumber">
+                                    <label for="name">Card Holder's name</label>
+                                    <input placeholder="Full name" type="text" name="name" class="payment_field-input" pattern="[A-Za-z\s]+" data-name="nameOnCard">
+                                    <div class="row">
+                                        <div class="col-1-of-2">
+                                            <label for="expiry">Expiration</label>
+                                            <input placeholder="MM/YY" id="expiryDate" type="tel" name="expiry" class="payment_field-input"> 
+                                        </div>
+                                        <div class="col-1-of-2">
+                                            <label for="cvc">CVV</label>
+                                            <input placeholder="CVC" type="number" name="cvc" class="payment_field-input" data-name="securityCode"  maxlength="2" size="2">
+                                   
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="payment-btn">
+                                        <input type="submit" class="account-setting-btn account-setting-btn-save">
+                                        <input type="reset" name="clear" class="account-setting-btn account-setting-btn-save">
+                                    </div>
+                                    <input type="hidden" name="omiseToken" />
+                                </form>
+                                <script src="https://cdn.omise.co/omise.js"></script>
+                                <script src="js/app.js"></script>
+                               
+                            </div>
+                        </div>
+                    
+                        
+                    </div>
+            </div>
+    <nav class="navbar navbar-sticky page">
+        <div >
+            <ul>
+                <li><a href="/" class="navbar-band navbar-left">&nbsp</a></li>
+                <li><a href="/#about" class="navbar-left">About</a></li>
+                <li><a href="/#book" class="navbar-left">Our Services</a></li>
+                <li><a href="/#sitters" class="navbar-left">Sitters</a></li>
+                <li><a href="/#store" class="navbar-left">Store</a></li>
+                <li><a href="/#joinUs" class="navbar-left">Join us</a></li>
+                <% if(user) { %>
+                    <li><a href="/logout" class="navbar-right"><i class="fas fa-sign-out-alt"></i>&nbspLogout</a></li>
+                    <li><a href="/account" class="navbar-right"><i class="fas fa-user"></i>&nbspMy Account</a></li>
+                    <li><a href="#" class="navbar-right">Hi, <%= user.name %></a></li>
+
+                    <% } else { %>
+                    <li><a href="/#login" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</a></li>
+                    <li><a href="/signup" class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a></li>
+                    <% } %>
+            </ul>
+        </div>
+    </nav>
+
+
+
+<section class="paymentMethod">
+    <h1 class="heading-of-page">My Account</h1>
+    <div class="row">
+        <div class="col-1-of-2">
+                <div class="account-menu">
+                        <div class="account__details">
+                            <ul>
+                                <li><i class="fas fa-user"></i><a href="/account" class="account__details-link">Account setting</a></li>
+                                <li><i class="fas fa-book"></i><a href="/booking" class="account__details-link">My Booking</a></li>
+                                <li><i class="fas fa-history"></i><a href="/history" class="account__details-link">Booking History</a></li>
+                                <li class="account__details-link-active"><i class="far fa-credit-card"></i><a href="/cards" class="account__details-link">Payment Method</a></li>
+                                <li><i class="fas fa-credit-card"></i><a href="/payment" class="account__details-link">Booking Payment</a></li>
+                                <li><i class="fas fa-file-invoice-dollar"></i><a href="/phistory" class="account__details-link">Payment History</a></li>
+                                <li><i class="fas fa-question-circle"></i><a href="/help" class="account__details-link">Help</a></li>
+                            </ul>
+                        </div>
+                    </div>           
+        </div>
+        <div class="col-1-of-2">
+            <div class="paymentMethod-setting">
+                <h2>Payment methods</h2>
+                <hr>
+                <h3>Saved card</h3>
+                <form>
+                <table>
+                    <tr class="">
+                        <td></td>
+                        <td>Card number</td>
+                        <td>Holder's name</td>
+                        <td>Expiary date</td>
+                    </tr>
+                    <% if(card) { %>
+                        <% card.forEach(element => { %>
+                            <tr class="paymentMethod_selectedCard">
+                                    <td><input type="radio" name="card" value="<%= element.id %>" ></td>
+                                    <td>•••• •••• •••• <%= element.digits %></td>
+                                    <td><%= element.name %></td>
+                                    <td><%= element.expMonth %>/<%= element.expYear %></td>   
+                                    <td><img src="img/card_icon/<%=element.brand%>.png" alt="" class="paymentMethod_selectedCard-img"></td>  
+                                </tr>
+                       <% }) }%>                  
+                </table> 
+                <div class="paymentMethod-setting_btn">
+                        <button formaction="#addCard" class="account-setting-btn account-setting-btn-save "> Add card </button>
+                        <button formaction="/rcard" formmethod="POST" class="account-setting-btn account-setting-btn-save "> Delete card </button>
+                        <a href="#" class="account-setting-btn account-setting-btn-save "> Set default</a>
+                </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+    
+    
+    
+
+
+</section>
+
+
+<script src="js/card.js"></script>
+<script>
+    new Card({
+        form: document.querySelector('form.addcard'),
+        container: '.card-wrapper'
+    });
+</script>
+
+<% include ./partials/footer %>
