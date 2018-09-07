@@ -37,8 +37,9 @@ passport.use(new GoogleStrategy({
 				newUser.google.email = profile.emails[0].value;
 				newUser.google.token = token;
 				newUser.name = newUser.google.name;
+				newUser.username = newUser.google.email;
 				newUser.save((err) => {
-					if(err) throw err;
+					if(err) done(err);
 					return done(null,newUser);
 				});
 			}
@@ -67,8 +68,9 @@ passport.use(new FacebookStrategy({
 				newUser.facebook.email = profile.emails[0].value;
 				newUser.facebook.token = accessToken;
 				newUser.name = newUser.facebook.name;
+				newUser.username = newUser.facebook.email;
 				newUser.save((err) => {
-					if (err) throw err;
+					if (err) done(err);
 					return done(null,newUser);
 				});
 			}
@@ -99,8 +101,9 @@ passport.use(new TwitterStrategy({
 				newUser.twitter.email = profile.emails[0].value;
 				newUser.twitter.token = token;
 				newUser.name = newUser.twitter.name;
+				newUser.username = newUser.twitter.email;
 				newUser.save((err) => {
-					if (err) throw err;
+					if (err) done(err);
 					return done(null,newUser);
 				});
 			}
