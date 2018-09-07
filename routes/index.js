@@ -205,8 +205,6 @@ router.post("/signup", async function(req, res){
                 console.log(`${customer.id} created successfully`);
                 res.redirect('/signupInfo');
             });
-            
-
         } catch (e) {
             console.log(e);
             res.status(400).send(e.message);

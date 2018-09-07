@@ -15,7 +15,7 @@ const googleAuth = new google.auth.OAuth2(
   CREDENTIALS.web.redirect_uris[0]
 );
 passport.use(new LocalStrategy(User.authenticate()));
-passport.use(new LocalStrategy(Sitter.authenticate()));
+
 passport.use(new GoogleStrategy({
 	clientID: CREDENTIALS.google.clientID,
     clientSecret: CREDENTIALS.google.clientSecret,
@@ -110,8 +110,7 @@ passport.use(new TwitterStrategy({
 		});
 }));
 passport.use(User.createStrategy());
-passport.use(Sitter.createStrategy());
 require('./init.js')(User, passport);
-require('./init.js')(Sitter, passport);
+
 
 module.exports = passport;
