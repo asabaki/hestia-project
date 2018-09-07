@@ -3,55 +3,64 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-sticky page">
-        <div >
-            <ul>
-                <li><a href="/" class="navbar-band navbar-left">&nbsp</a></li>
-                <li><a href="/#about" class="navbar-left">About</a></li>
-                <li><a href="/#book" class="navbar-left">Our Services</a></li>
-                <li><a href="/#sitters" class="navbar-left">Sitters</a></li>
-                <li><a href="/#store" class="navbar-left">Store</a></li>
-                <li><a href="/#joinUs" class="navbar-left">Join us</a></li>
-                <% if(user) { %>
-                    <li><a href="/logout" class="navbar-right"><i class="fas fa-sign-out-alt"></i>&nbspLogout</a></li>
-                    <li><a href="/account" class="navbar-right"><i class="fas fa-user"></i>&nbspMy Account</a></li>
-                    <li><a href="#" class="navbar-right">Hi, <%= user.name %></a></li>
-
-                    <% } else { %>
-                    <li><a href="/#login" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</a></li>
-                    <li><a href="/signup" class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a></li>
-                    <% } %>
-            </ul>
-        </div>
-    </nav>
-<section class="myBooking">
-    <h1 class="heading-of-page">My Account</h1>
-    <div class="row">
-        <div class="col-1-of-2">
-            <div class="account-menu">
-                <div class="account__details">
-                    <ul>
-                        <li><i class="fas fa-user"></i><a href="/account" class="account__details-link">Account setting</a></li>
-                        <li class="account__details-link-active"><i class="fas fa-book"></i><a href="/booking" class="account__details-link">My Booking</a></li>
-                        <li><i class="fas fa-history"></i><a href="/history" class="account__details-link">Booking History</a></li>
-                        <li><i class="far fa-credit-card"></i><a href="/cards" class="account__details-link">Payment Method</a></li>
-                        <li><i class="fas fa-credit-card"></i><a href="/payment" class="account__details-link">Booking Payment</a></li>
-                        <li><i class="fas fa-file-invoice-dollar"></i><a href="/phistory" class="account__details-link">Payment History</a></li>
-                        <li><i class="fas fa-question-circle"></i><a href="/help" class="account__details-link">Help</a></li>
-                    </ul>
+    <% include ./partials/navbarStick %>
+    <section class="myBooking">
+            <h1 class="heading-of-page">My Account</h1>
+            <div class="row">
+                <div class="col-1-of-2">
+                    <div class="account-menu">
+                        <div class="account__details">
+                            <ul>
+                                <li><i class="fas fa-user"></i><a href="myAccount_accountSetting.html" class="account__details-link">Account setting</a></li>
+                                <li class="account__details-link-active"><i class="fas fa-book"></i><a href="myAccount_myBooking.html" class="account__details-link">My Booking</a></li>
+                                <li><i class="fas fa-history"></i><a href="myAccount_bookingHistory.html" class="account__details-link">Booking History</a></li>
+                                <li><i class="far fa-credit-card"></i><a href="myAccount_paymentMethod.html" class="account__details-link">Payment Method</a></li>
+                                <li><i class="fas fa-credit-card"></i><a href="myAccount_bookingPayment.html" class="account__details-link">Booking Payment</a></li>
+                                <li><i class="fas fa-file-invoice-dollar"></i><a href="myAccount_paymentHistory.html" class="account__details-link">Payment History</a></li>
+                                <li><i class="fas fa-question-circle"></i><a href="myAccount_help.html" class="account__details-link">Help</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="col-1-of-2">
-            <div class="myBooking-setting">
-                <h2>My Booking</h2>
-                <hr>
-                <p>No Booking</p>
-            </div>
-        </div>
-    </div>
-</section>
+        
+                <div class="col-1-of-2">
+                    <div class="bookingPayment-setting">
+                        <h2>My Booking</h2>
+                        <hr>
+                                    <table class="bookingPayment-setting__table">
+                                        <thead class="bookingPayment-setting__thead">
+                                                <td>Booking no.</td>
+                                                <td>Sitting for</td>
+                                                <td>Sitter</td>
+                                                <td>Date/Time</td>
+                                                <td>Price</td>
+                                                <td>Cancelling</td>
+                                        </thead>
+                                        <tbody class="bookingPayment-setting__tbody">
+                                           
+                                            <tr class="bookingPayment-setting__tr"> 
+                                                <td><a href="#">0002</a></td>
+                                                <td>disabilty</td>
+                                                <td>lady gaga</td>
+                                                <td>12/08/2018</td>
+                                                <td>1900</td>
+                                                <td><a href="#" class="btn-cancel">cancel</a></td>
+                                            </tr>
+                                         
+                                            <tr class="bookingPayment-setting__tr"> 
+                                                <td><a href="#">0004</a></td>
+                                                <td>elder</td>
+                                                <td>mylie</td>
+                                                <td>12/08/2018</td>
+                                                <td>4500</td>
+                                                <td><a href="#" class="btn-cancel">cancel</a></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+        </section>
+        
 
 
 

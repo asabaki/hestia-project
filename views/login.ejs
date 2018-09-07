@@ -11,7 +11,7 @@
                 <li><a href="/#book" class="navbar-left">Our Services</a></li>
                 <li><a href="/#sitters" class="navbar-left">Sitters</a></li>
                 <li><a href="/#store" class="navbar-left">Store</a></li>
-                <li><a href="/#joinUs" class="navbar-left">Join us</a></li>
+                <li><a href="/apply" class="navbar-left">Join us</a></li>
                 <li><a href="#" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</a></li>
                 <li><a href="signUp" class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a></li>
             </ul>
@@ -34,7 +34,7 @@
                     <p>or</p>
 
                     <input class="signup-box-form--input" type="email" name="username"  placeholder="Email Address" required>
-                    <input class="signup-box-form--input" type="password" name="password"  placeholder="Password" required>
+                    <input class="signup-box-form--input" type="password" name="password" autocomplete="true"  placeholder="Password" required>
                     <% if (messages != null) { %>
                     <label class="login--error">*<%= messages[0] %></p>
                     <% } %>

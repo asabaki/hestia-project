@@ -1,0 +1,87 @@
+<% include ./partials/header %>
+    <title>Hestia | Be a sitter!</title>
+</head>
+
+<body>
+    <% include ./partials/navbarStick %>
+<section class="sitterApply">
+<h1 class="heading-of-page">Apply to be Sitter</h1>
+
+    <div class="">
+        <form action="/apply" method="POST">
+            <table>
+                <tbody >
+                    <tr>
+                        <td class="account-setting-td"><label for="firstname">Fitst name <span class="redStar">*</span></label></td>
+                        <td class="account-setting-td"><input type="text" name="firstname" class="account-setting-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="account-setting-td"><label for="lastname">Last name <span class="redStar">*</span></label></td>
+                        <td class="account-setting-td"><input type="text" name="lastname"  class="account-setting-input"></td>
+                    </tr>
+                        <tr>
+                            <td class="account-setting-td"><label for="phone">Phone Number <span class="redStar">*</span></label></td>
+                            <td class="account-setting-td"><input type="tel" name="phone"  class="account-setting-input"></td>
+                        </tr>
+                    <tr>
+                        <td class="account-setting-td"><label for="email">Email address <span class="redStar">*</span></label></td>
+                        <td class="account-setting-td"><input type="email" name="username"  class="account-setting-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="account-setting-td"><label for="password">Password <span class="redStar">*</span></label></td>
+                        <td class="account-setting-td"><input type="password" name="password"  class="account-setting-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="account-setting-td"><label for="confirm-password">Confirm-Password <span class="redStar">*</span></label></td>
+                        <td class="account-setting-td"><input type="password" name="confirm-password" class="account-setting-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="account-setting-td"><label for="license">License <span class="redStar">*</span></label></td>
+                        <td class="account-setting-td"><input type="radio" name="license" id="licensed" value="licened"> Licensed<br><input type="radio" name="license" id="unlicensed" value="unlicened"> Unlicensed</td>
+                    </tr>
+                    <tr id="uplodeLicense">
+
+                    </tr>
+                    
+                    
+                </tbody>
+            </table>
+    
+            <div class="u-center-text">
+                <input type="submit" name="save" class="account-setting-btn account-setting-btn-save" value="Submit">
+            </div>
+        </form>
+    </div>
+
+</section>
+<script>
+
+        $( "input#licensed" ).focus(function() {
+            $("tr#uplodeLicense").empty();
+            $("input#licensed").prop('checked', true);
+            var label1='<td class="account-setting-td">'+
+                        '<label for="yourDocument">Upload your license file (PDF):</label>'+
+                    '</td>'+
+                    '<td class="account-setting-td">'+
+                        '<input type="file" id="yourDocument" name="yourDocument">'+
+                    '</td>';
+        
+            $("tr#uplodeLicense").append(label1);
+        });
+        $( "input#unlicensed" ).focus(function() {
+            $("tr#uplodeLicense").empty();
+            $("input#unlicensed").prop('checked', true);
+            var label2='<td colspan="2">'+
+                        '<p class="sitterApply-unlicensedContent">you can get license '+
+                            '<a href="https://www.google.com/" class="sitterApply-link">here</a>'+
+                        ' to get more income</p>'+
+                        '</td>'
+                        ;
+        
+        
+            $("tr#uplodeLicense").append(label2);
+        });
+        
+            </script>
+
+   <% include ./partials/footer %>

@@ -16,7 +16,7 @@ const  seedDB 			= require("./seeds");
 const indexRoutes = require("./routes/index.js");
 
 // ===================== Database Connect ====================
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/ht_app_v2",{useNewUrlParser: true})
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/ht_app_v2",{useNewUrlParser: true}) || "mongodb+srv://nineo9:<1I1e129e*>@asabaki-pfw6b.mongodb.net/test?retryWrites=true"
 
 // ===================== App Setup ===========================
 app.set('view engine', 'ejs');
@@ -31,7 +31,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
-seedDB();
+// seedDB();
 
 // ===================== Route Setup ========================
 app.use(indexRoutes);

@@ -14,22 +14,24 @@ var sticky = navbar.offsetTop;
 
 function myFunction() 
 {
-    if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) //go down
+    if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) //small screen
     {
         navbar.classList.add("navbar-sticky");
         band.classList.add("navbar-band");
         navbar.classList.remove("navbar-header");
+     
 
         document.getElementById("toTopBtn").style.visibility = "visible";
 
     } 
-    else //go up
+    else //big screen
     {
         navbar.classList.remove("navbar-sticky");
         band.classList.remove("navbar-band");
         navbar.classList.add("navbar-header");
 
         document.getElementById("toTopBtn").style.visibility = "hidden";
+        
     }
  }
 

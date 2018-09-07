@@ -1,0 +1,53 @@
+<% include ./partials/header %>
+    <title>Hestia | My account</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-sticky page">
+        <div >
+            <ul>
+                <li><a href="/" class="navbar-band navbar-left">&nbsp</a></li>
+                <li><a href="/#about" class="navbar-left">About</a></li>
+                <li><a href="/#book" class="navbar-left">Our Services</a></li>
+                <li><a href="/#sitters" class="navbar-left">Sitters</a></li>
+                <li><a href="/#store" class="navbar-left">Store</a></li>
+                <li><a href="/apply" class="navbar-left">Join us</a></li>
+                <li><a href="#" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</a></li>
+                <li><a href="signUp" class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="login-page">
+            <div class="login">
+                <h4>
+                    Login
+                </h4>
+                <p>Log in with your social media account</p>   
+                <div class="social-accont">
+                    <a href="/auth/facebook" class="refer-icon refer-icon-facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="/auth/google" class="refer-icon refer-icon-gmail"><i class="fab fa-google"></i></a>
+                    <a href="/auth/twitter" class="refer-icon refer-icon-twitter"><i class="fab fa-twitter"></i></a>
+                </div> 
+                <br><hr>
+                <form action="/slogin" method="POST">
+                    <p>or</p>
+
+                    <input class="signup-box-form--input" type="email" name="username"  placeholder="Email Address" required>
+                    <input class="signup-box-form--input" type="password" name="password" autocomplete="true"  placeholder="Password" required>
+                    <% if (messages) { %>
+                    <label class="login--error">*<%= messages[0] %></p>
+                    <% } %>
+                    <button name="login"  value="Login" class="login_content-button">Login</button>
+                </form>
+                <div class="row">
+                    <div class="col-1-of-2">
+                        <a href="#" class="left-link">forgot password?</a>
+                    </div>
+                    <div class="col-1-of-2">
+                        <a href="signUp.html" class="right-link">Register Now</a>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <% include ./partials/footer %>

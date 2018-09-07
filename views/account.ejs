@@ -12,7 +12,7 @@
                 <li><a href="/#book" class="navbar-left">Our Services</a></li>
                 <li><a href="/#sitters" class="navbar-left">Sitters</a></li>
                 <li><a href="/#store" class="navbar-left">Store</a></li>
-                <li><a href="/#joinUs" class="navbar-left">Join us</a></li>
+                <li><a href="//apply" class="navbar-left">Join us</a></li>
                 <% if(user) { %>
                     <li><a href="/logout" class="navbar-right"><i class="fas fa-sign-out-alt"></i>&nbspLogout</a></li>
                     <li><a href="/account" class="navbar-right"><i class="fas fa-user"></i>&nbspMy Account</a></li>
@@ -118,29 +118,30 @@
     </div>
 </section>
 <script language="javascript">
-        
+        var country = document.getElementById("country");
+        var state = document.getElementById("state");
         populateCountries("country", "state"); // first parameter is id of country drop-down and second parameter is id of state drop-down
-        populateCountries("country2");
-        populateCountries("country2");
+        // populateStates("country","state")
+        Array.prototype.forEach.call(country, each => {
+            if(each.value === "<%= user.address.country %>") {
+                document.getElementById('country').selectedIndex=each.index;
+                console.log(each);
+            }
+        });
+        country.style.color="black";
+        country.style.fontSize="1.5rem";
+        country.style.fontWeight="400";
+        populateStates("country","state");
+        Array.prototype.forEach.call(state, each => {
+            if(each.value === "<%= user.address.state %>") {
+                document.getElementById('state').selectedIndex=each.index;
+                console.log(each);
+            }
+        });
+        state.style.color="black";
+        state.style.fontSize="1.5rem";
+        state.style.fontWeight="400";
     </script>
-<script>
-    var country = document.getElementById('country').options,
-        state = document.getElementById('state').options;
-    Array.prototype.forEach.call(country, each => {
-        if(each.value === "<%= user.address.country %>") {
-            document.getElementById('country').selectedIndex=each.index;
-            console.log(each);
-        }
-        
-});
-Array.prototype.forEach.call(state, each => {
-        if(each.value === "<%= user.address.state %>") {
-            document.getElementById('state').value=each.value;
-            console.log(each);
-        }
-    });
-        // document.getElementById('country').value = '<%= user.address.country %>';
-</script>
 
 
 

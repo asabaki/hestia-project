@@ -4,8 +4,7 @@
     // var validator = require('validator');
     Omise.setPublicKey('pkey_test_5cx2zz9knttxpy48vuj');
     
-    var checkoutForm = document.getElementById('checkout-form')
-    
+    var checkoutForm = document.getElementById('checkout-form');
     checkoutForm.addEventListener('submit', submitHandler, false);
     
     // Submit handler for checkout form.

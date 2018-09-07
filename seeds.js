@@ -5,6 +5,7 @@ const mongoose 	= require('mongoose'),
 			'omiseVersion': '2017-11-02'
 		}),
 	  User		= require('./models/User.js'),
+	  Sitter  	= require("./models/Sitter"),
 	  UserInfo	= require('./models/UserInfo.js');
 
 
@@ -17,6 +18,12 @@ function seeds() {
 		console.log("Users Removed");
 		
 	});
+	Sitter.remove({},function(err) {
+		if(err) {
+			console.log(err);
+		}
+		console.log("Sitters Removed");
+	})
 	UserInfo.remove({},function(err) {
 		if (err) {
 			console.log(err);

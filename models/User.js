@@ -1,7 +1,5 @@
   const passportLocalMongoose = require('passport-local-mongoose');
-const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-
+  const mongoose = require('mongoose');
 
 var UserSchema = new mongoose.Schema({
     name :  String,
@@ -34,8 +32,7 @@ var UserSchema = new mongoose.Schema({
       zipCode : String,
       city : String,
       state : String,
-      country : String,
-      
+      country : String,      
     },
     phoneNumber : String,
     password: String,
@@ -60,30 +57,6 @@ var UserSchema = new mongoose.Schema({
         }
       ]
     }
-}, { timestamps: true });
-// UserSchema.pre('save', function(next){
-//   var user = this;
-
-//   //check if password is modified, else no need to do anything
-//   if (!user.isModified('pass')) {
-//      return next()
-//   }
-
-//   user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(8), null);
-//   next()
-// })
-
+}, {timestamps: true });
 UserSchema.plugin(passportLocalMongoose);
-// UserSchema.pre('save', function(next){
-//   var user = this;
-
-//   //check if password is modified, else no need to do anything
-//   if (!user.isModified('password')) {
-//      return next()
-//   }
-
-//   user.pass = bcrypt.hashSync(user.password, bcrypt.genSaltSync(8), null);
-//   next()
-// })
-
 module.exports = mongoose.model('User', UserSchema);

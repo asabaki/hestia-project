@@ -1,59 +1,10 @@
-<% include ./partials/header  %>
+<% include ./partials/header %>
         <title>Hestia | find sitters around you</title>
     </head>
 
     <body>
-        <script type="text/javascript">
-            window.onbeforeunload = function () {
-              window.scrollTo(0, 0);
-            }
-            
-        </script>
         <a href="#headder" class="btn-totop" id="toTopBtn">&uarr;</a>
-        
-        <nav class="navbar navbar-header" id="navbar">
-            <div >
-                <ul>
-                    <li><a href="#headder" class="navbar-left" id="nav-band">&nbsp</a></li>
-                    <li><a href="#about" class="navbar-left">About</a></li>
-                    <li><a href="#book" class="navbar-left">Our Services</a></li>
-                    <li><a href="#sitter" class="navbar-left">Sitters</a></li>
-                    <li><a href="#store" class="navbar-left">Store</a></li>
-                    <li><a href="#tour" class="navbar-left">Join us</a></li>
-                    <% if(user) { %>
-                    <li><a href="/logout" class="navbar-right">Logout</a></li>
-                    <li><a href="/account" class="navbar-right"><i class="fas fa-user"></i>&nbspMy Account</a></li>
-                    <li><a href="#" class="navbar-right">Hi, <%= user.name %></a></li>
-
-                    <% } else { %>
-                    <li><a href="/#login" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</a></li>
-                    <li><a href="/signup" class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a></li>
-                    <% } %>
-                </ul>
-            </div>
-        </nav>
-    
-        <div class="navigation">
-            <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
-           
-            <label for="navi-toggle" class="navigation__button">
-                <span class="navigation__icon">  </span>
-            </label>
-
-            <div class="navigation__background">&nbsp;</div>
-
-            <nav class="navigation__nav">
-                <ul class="navigation__list">
-                    <li class="navigation__item" ></li><a href="#about" class="navigation__link">About</a></li>
-                    <li class="navigation__item" ><a href="index.html#book" class="navigation__link">Our Services</a></li>
-                    <li class="navigation__item" ><a href="#sitter" class="navigation__link">Sitters</a></li>
-                    <li class="navigation__item" ><a href="#store" class="navigation__link">Store</a></li>
-                    <li class="navigation__item" ><a href="#tour" class="navigation__link">Join us</a></li>
-                    <li class="navigation__item" ><a href="#tour" class="navigation__link">Sign up</a></li>
-                    <li class="navigation__item" ><a href="#tour" class="navigation__link">Log in</a></li>
-                </ul>
-            </nav>
-        </div>
+        <% include ./partials/navbar %>
     <header class="header" id="headder">
         <div class="header__logo-box">
             <img src="img/Hestia_logo2.png" alt="Logo" class="header__logo">
@@ -103,11 +54,221 @@
 
         </section>
 
-        <!--<section class="section-service" id="services">
-            <div class="u-center-text u-margin-bottom-big u-margin-top-small">
+        
+
+        <section class="section-book" id="book">
+            <div class="u-center-text u-margin-bottom-medium">
                 <h1 class="heading-secondary">
-                Our Services
+                    Book Service
                 </h1>
+            </div>
+            <div class="row u-margin-bottom-small">
+                <div class="col-1-of-3">
+                    <div class="card">
+                        <div class="card__side card__side--front">
+                            <div class="card__picture card__picture--1">
+                                &nbsp;
+                            </div>
+                            <h4 class="card__heading">
+                                <span class="card__heading-span card__heading-span--1">for your house</span>
+                            </h4>
+                            <div class="card__details">
+                                <ul>
+                                    <li>function 1</li>
+                                    <li>function 2</li>
+                                    <li>function 3</li>
+                                    <li>function 4</li>
+                                    <li>function 5</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card__side card__side--back card__side--back-1">
+                            <div class="card__cta">
+                                <div class="card__price-box">
+                                    <p class="card__price-only">start at</p>
+                                    <p class="card__price-value">Rs.300</p>
+                                </div>
+                                <a href="book-sitter.html" class="btn btn--white">Book now!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-1-of-3">
+                    <div class="card">
+                        <div class="card__side card__side--front">
+                            <div class="card__picture card__picture--2">
+                                &nbsp;
+                            </div>
+                            <h4 class="card__heading">
+                                <span class="card__heading-span card__heading-span--2">for your</br>family</span>
+                            </h4>
+                            <div class="card__details">
+                                <ul>
+                                    <li>function 1</li>
+                                    <li>function 2</li>
+                                    <li>function 3</li>
+                                    <li>function 4</li>
+                                    <li>function 5</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card__side card__side--back card__side--back-2">
+                            <div class="card__cta">
+                                <div class="card__price-box">
+                                    <p class="card__price-only">start at</p>
+                                    <p class="card__price-value">Rs.400</p>
+                                </div>
+                                <a href="book-sitter.html" class="btn btn--white">Book now!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-1-of-3">
+                    <div class="card">
+                        <div class="card__side card__side--front">
+                            <div class="card__picture card__picture--3">
+                                &nbsp;
+                            </div>
+                            <h4 class="card__heading">
+                                <span class="card__heading-span card__heading-span--3">for your</br>pets</span>
+                            </h4>
+                            <div class="card__details">
+                                <ul>
+                                    <li>function 1</li>
+                                    <li>function 2</li>
+                                    <li>function 3</li>
+                                    <li>function 4</li>
+                                    <li>function 5</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card__side card__side--back card__side--back-3">
+                            <div class="card__cta">
+                                <div class="card__price-box">
+                                    <p class="card__price-only">start at</p>
+                                    <p class="card__price-value">Rs.500</p>
+                                </div>
+                                <a href="book-sitter.html" class="btn btn--white">Book now!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="u-center-text">
+                 <a href="book-sitter.html" class="btn btn--lightblue">Request a Sitter</a>
+            </div>
+        </section>
+
+        <section class="section-sitter" id="sitter">
+
+            <!--background-video-->
+            <!--<div class="bg-video">
+                <video class="bg-video__content" autoplay muted loop>
+                    <source src="img/Vegas-baby.mp4" type="video/mp4">
+                    <source src="img/Vegas-baby.webm" type="video/webm">
+                        your browser not suported!
+                </video>
+            </div>-->
+
+
+            <div class="u-center-text u-margin-bottom-small">
+                <h1 class="heading-secondary">
+                Our Sitters
+                </h1>
+            </div>
+            <div class="row">
+                <div class="col-1-of-2">
+                    <div class="story">
+                        <figure class="story__shape">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5d43ec18ec2cf6ff854513b9e8395c1e&auto=format&fit=crop&w=1650&q=80" alt="person test" class="story__img">
+                            <figcaption class="story__caption">
+                                Wakanda forever
+                            </figcaption>
+                        </figure>
+                        <div class="story__text">
+                            <h3 class="heaeding-tertiary u-margin-bottom-small">Sawatdee ja People</h3>
+                            <ul>
+                                <li>Rate: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i></li>
+                                <li>Type: pets</li>
+                                <li>Language knows: english, kanada</li>
+                                <li>Working time: 24hrs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1-of-2">
+                        <div class="story">
+                            <figure class="story__shape">
+                                <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9305a37dfc018487bca76a6f59944ad4&auto=format&fit=crop&w=1650&q=80" alt="person test" class="story__img">
+                                <figcaption class="story__caption">
+                                    Wakanda forever
+                                </figcaption>
+                            </figure>
+                            <div class="story__text">
+                                <h3 class="heaeding-tertiary u-margin-bottom-small">Sawatdee ja People</h3>
+                                <ul>
+                                    <li>Rate: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i></li>
+                                    <li>Type: pets</li>
+                                    <li>Language knows: english, kanada</li>
+                                    <li>Working time: 24hrs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="row">
+                    <div class="col-1-of-2" id="sitter1">
+                        <div class="story">
+                            <figure class="story__shape">
+                                <img src="https://images.unsplash.com/photo-1476983109555-18ebaf412d7c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c508869d7645131d98c453dd9ce0ae6&auto=format&fit=crop&w=3020&q=80" alt="person test" class="story__img">
+                                <figcaption class="story__caption">
+                                    Wakanda forever
+                                </figcaption>
+                            </figure>
+                            <div class="story__text">
+                                <h3 class="heaeding-tertiary u-margin-bottom-small">Sawatdee ja People</h3>
+                                <ul>
+                                    <li>Rate: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i></li>
+                                    <li>Type: pets</li>
+                                    <li>Language knows: english, kanada</li>
+                                    <li>Working time: 24hrs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1-of-2" id="sitter1">
+                            <div class="story">
+                                <figure class="story__shape">
+                                    <img src="https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ad57f7ca5832f3f72ee2c1c243c72f5c&auto=format&fit=crop&w=1650&q=80" alt="person test" class="story__img">
+                                    <figcaption class="story__caption">
+                                        Wakanda forever
+                                    </figcaption>
+                                </figure>
+                                <div class="story__text">
+                                    <h3 class="heaeding-tertiary u-margin-bottom-small">Sawatdee ja People</h3>
+                                    <ul>
+                                        <li>Rate: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i></li>
+                                        <li>Type: pets</li>
+                                        <li>Language knows: english, kanada</li>
+                                        <li>Working time: 24hrs</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="u-center-text u-margin-bottom-big">
+                    <a href="sitter-bios.html" class="btn-text-yellow">see all &rarr;</a>
+                </div>
+        </section>
+    <section class="section-service" id="joinUs">
+            <div class="u-center-text u-margin-bottom-medium u-margin-top-small">
+                <h1 class="heading-secondary">
+                Join us 
+                </h1>
+                <h2 class="heading-secondary--yellow">The benefits of becoming a Sitter</h2>
             </div>
             <div class="row">
                 <div class="col-1-of-4 ">
@@ -147,213 +308,9 @@
                     </div>
                 </div>
             </div>
-        </section>-->
-
-        <section class="section-book" id="book">
-            <div class="u-center-text u-margin-bottom-big">
-                <h1 class="heading-secondary">
-                    Book Service
-                </h1>
-            </div>
-            <div class="row ">
-                <div class="col-1-of-3">
-                    <div class="card">
-                        <div class="card__side card__side--front">
-                            <div class="card__picture card__picture--1">
-                                &nbsp;
-                            </div>
-                            <h4 class="card__heading">
-                                <span class="card__heading-span card__heading-span--1">for your house</span>
-                            </h4>
-                            <div class="card__details">
-                                <ul>
-                                    <li>function 1</li>
-                                    <li>function 2</li>
-                                    <li>function 3</li>
-                                    <li>function 4</li>
-                                    <li>function 5</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card__side card__side--back card__side--back-1">
-                            <div class="card__cta">
-                                <div class="card__price-box">
-                                    <p class="card__price-only">start at</p>
-                                    <p class="card__price-value">Rs.300</p>
-                                </div>
-                                <a href="#" class="btn btn--white">Book now!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-1-of-3">
-                    <div class="card">
-                        <div class="card__side card__side--front">
-                            <div class="card__picture card__picture--2">
-                                &nbsp;
-                            </div>
-                            <h4 class="card__heading">
-                                <span class="card__heading-span card__heading-span--2">for your</br>family</span>
-                            </h4>
-                            <div class="card__details">
-                                <ul>
-                                    <li>function 1</li>
-                                    <li>function 2</li>
-                                    <li>function 3</li>
-                                    <li>function 4</li>
-                                    <li>function 5</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card__side card__side--back card__side--back-2">
-                            <div class="card__cta">
-                                <div class="card__price-box">
-                                    <p class="card__price-only">start at</p>
-                                    <p class="card__price-value">Rs.400</p>
-                                </div>
-                                <a href="#" class="btn btn--white">Book now!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-1-of-3">
-                    <div class="card">
-                        <div class="card__side card__side--front">
-                            <div class="card__picture card__picture--3">
-                                &nbsp;
-                            </div>
-                            <h4 class="card__heading">
-                                <span class="card__heading-span card__heading-span--3">for your</br>pets</span>
-                            </h4>
-                            <div class="card__details">
-                                <ul>
-                                    <li>function 1</li>
-                                    <li>function 2</li>
-                                    <li>function 3</li>
-                                    <li>function 4</li>
-                                    <li>function 5</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="card__side card__side--back card__side--back-3">
-                            <div class="card__cta">
-                                <div class="card__price-box">
-                                    <p class="card__price-only">start at</p>
-                                    <p class="card__price-value">Rs.500</p>
-                                </div>
-                                <a href="#" class="btn btn--white">Book now!</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="u-center-text">
-                 <a href="#" class="btn btn--lightblue">See more</a>
+                    <a href="/apply" class="btn btn--lightblue">Be a sitter</a>
             </div>
         </section>
 
-        <section class="section-sitter" id="sitter">
-
-            <!--background-video-->
-            <!--<div class="bg-video">
-                <video class="bg-video__content" autoplay muted loop>
-                    <source src="img/Vegas-baby.mp4" type="video/mp4">
-                    <source src="img/Vegas-baby.webm" type="video/webm">
-                        your browser not suported!
-                </video>
-            </div>-->
-
-
-            <div class="u-center-text u-margin-bottom-small">
-                <h1 class="heading-secondary">
-                Sitters
-                </h1>
-            </div>
-            <div class="row">
-                <div class="col-1-of-2">
-                    <div class="story">
-                        <figure class="story__shape">
-                            <img src="img/story-test.jpeg" alt="person test" class="story__img">
-                            <figcaption class="story__caption">
-                                Wakanda forever
-                            </figcaption>
-                        </figure>
-                        <div class="story__text">
-                            <h3 class="heaeding-tertiary u-margin-bottom-small">Sawatdee ja People</h3>
-                            <ul>
-                                <li>Rate: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i></li>
-                                <li>Type: pets</li>
-                                <li>Language knows: english, kanada</li>
-                                <li>Working time: 24hrs</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-1-of-2">
-                        <div class="story">
-                            <figure class="story__shape">
-                                <img src="img/story-test.jpeg" alt="person test" class="story__img">
-                                <figcaption class="story__caption">
-                                    Wakanda forever
-                                </figcaption>
-                            </figure>
-                            <div class="story__text">
-                                <h3 class="heaeding-tertiary u-margin-bottom-small">Sawatdee ja People</h3>
-                                <ul>
-                                    <li>Rate: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i></li>
-                                    <li>Type: pets</li>
-                                    <li>Language knows: english, kanada</li>
-                                    <li>Working time: 24hrs</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-            <div class="row">
-                    <div class="col-1-of-2" id="sitter1">
-                        <div class="story">
-                            <figure class="story__shape">
-                                <img src="img/story-test.jpeg" alt="person test" class="story__img">
-                                <figcaption class="story__caption">
-                                    Wakanda forever
-                                </figcaption>
-                            </figure>
-                            <div class="story__text">
-                                <h3 class="heaeding-tertiary u-margin-bottom-small">Sawatdee ja People</h3>
-                                <ul>
-                                    <li>Rate: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i></li>
-                                    <li>Type: pets</li>
-                                    <li>Language knows: english, kanada</li>
-                                    <li>Working time: 24hrs</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-1-of-2" id="sitter1">
-                            <div class="story">
-                                <figure class="story__shape">
-                                    <img src="img/story-test.jpeg" alt="person test" class="story__img">
-                                    <figcaption class="story__caption">
-                                        Wakanda forever
-                                    </figcaption>
-                                </figure>
-                                <div class="story__text">
-                                    <h3 class="heaeding-tertiary u-margin-bottom-small">Sawatdee ja People</h3>
-                                    <ul>
-                                        <li>Rate: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i></li>
-                                        <li>Type: pets</li>
-                                        <li>Language knows: english, kanada</li>
-                                        <li>Working time: 24hrs</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                <div class="u-center-text u-margin-bottom-big">
-                    <a href="#" class="btn-text-yellow">see all &rarr;</a>
-                </div>
-        </section>
-        <% include ./partials/footer %>
+<% include ./partials/footer %>

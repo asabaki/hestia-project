@@ -1,16 +1,28 @@
 @media screen and (max-width: 70rem) {
-  body {
-    margin: 0rem 0rem !important;
-    box-sizing: border-box;
-    background-color: white;
-    box-shadow: 0 0 0 0; }
-  .navigation {
-    visibility: visible !important; }
   .navbar-sticky {
-    visibility: hidden; }
+    visibility: hidden;
+    /*display: none;*/ }
   .navbar-header {
-    visibility: hidden; } }
+    visibility: hidden;
+    /*display: none;*/ } }
 
+/*
+0-600px phone
+600px-900px tablet portrait
+900px-1200px tablet landscapt
+1200px-1800px destop
+1800px+ big desktop
+
+$breakpoint: 
+phone
+tab-port
+tab-land
+big-desktop
+
+1em=16px
+
+ORDER: base+typography > general layout+grid > page layout > compunent
+*/
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -62,13 +74,34 @@
 
 html {
   font-size: 62.5%;
-  background-color: white; }
+  background-color: white;
+  /*
+    @include respond(phone) //width<600px ?
+    {
+        font-size: 30%; //1rem=4.8px , 4.8px/16px =30%
+    }
+    */ }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112em) {
+    html {
+      font-size: 75%; } }
 
 body {
   margin: 0rem 4rem 0rem 4rem;
   box-sizing: border-box;
   background-color: white;
   box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.4); }
+  @media (max-width: 56.25em) {
+    body {
+      margin: 0rem 0rem !important;
+      box-sizing: border-box;
+      background-color: white;
+      box-shadow: 0 0 0 0; } }
 
 body {
   font-family: "Lato", sans-serif;
@@ -94,6 +127,9 @@ body {
     /*animation-delay: 3s;*/
     /*animation-iteration-count: 3;*/
     animation-timing-function: ease-out; }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        letter-spacing: .5rem; } }
   .heading-primary--sub {
     display: block;
     font-size: 2rem;
@@ -117,6 +153,12 @@ body {
   letter-spacing: 2px;
   text-shadow: 0.5rem 0.5rem 6rem rgba(255, 255, 255, 0.8);
   animation: all .2s; }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2rem; } }
   .heading-secondary:hover {
     transform: scale(1.1);
     text-shadow: 0.5rem 1rem 2rem rgba(132, 207, 226, 0.7); }
@@ -461,6 +503,9 @@ body {
 
 .navigation {
   visibility: hidden; }
+  @media (max-width: 56.25em) {
+    .navigation {
+      visibility: visible !important; } }
   .navigation__checkbox {
     display: none; }
   .navigation__button {
@@ -475,6 +520,14 @@ body {
     box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5);
     text-align: center;
     cursor: pointer; }
+    @media (max-width: 56.25em) {
+      .navigation__button {
+        top: 4rem;
+        right: 4rem; } }
+    @media (max-width: 37.5em) {
+      .navigation__button {
+        top: 3rem;
+        right: 3rem; } }
   .navigation__background {
     height: 4rem;
     width: 4rem;
@@ -486,6 +539,14 @@ body {
     z-index: 1000;
     transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
     /*transform: scale(50);*/ }
+    @media (max-width: 56.25em) {
+      .navigation__background {
+        top: 4.5rem;
+        right: 4.5rem; } }
+    @media (max-width: 37.5em) {
+      .navigation__background {
+        top: 3.5rem;
+        right: 3.5rem; } }
   .navigation__nav {
     height: 100vh;
     width: 100%;
@@ -526,6 +587,10 @@ body {
   .navigation__checkbox:checked ~ .navigation__nav {
     opacity: 1;
     width: 110%; }
+  .navigation__checkbox:not(:checked) ~ .navigation__nav {
+    opacity: 1;
+    width: 110%;
+    z-index: -50000; }
   .navigation__icon {
     position: relative;
     margin-top: 2.5rem; }
@@ -594,6 +659,9 @@ body {
   position: static;
   font-size: 1.4rem;
   color: #f7f7f7; }
+  @media (max-width: 56.25em) {
+    .footer {
+      padding: 8rem 0; } }
   .footer__logo-box {
     text-align: center;
     margin-bottom: 8rem; }
@@ -603,9 +671,17 @@ body {
   .footer__navigation {
     border-top: 1px solid gray;
     padding-top: 2rem;
-    display: inline-block; }
+    display: block;
+    text-align: center;
+    margin: 2rem auto;
+    width: 100%; }
+    @media (max-width: 56.25em) {
+      .footer__navigation {
+        width: 100%;
+        text-align: center; } }
   .footer__list {
-    list-style: none; }
+    list-style: none;
+    margin: 0 8%; }
   .footer__item {
     display: inline-block; }
     .footer__item:not(:last-child) {
@@ -626,6 +702,10 @@ body {
     padding-top: 2rem;
     width: 80%;
     float: right; }
+    @media (max-width: 56.25em) {
+      .footer__copyright {
+        width: 100%;
+        float: none; } }
   .footer-icon {
     height: 3rem;
     width: 3rem;
@@ -635,12 +715,18 @@ body {
     transition: all .2s;
     text-align: center;
     -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%); }
+    clip-path: circle(50% at 50% 50%);
+    margin-left: auto; }
     .footer-icon:not(:last-child) {
       margin-right: 1.5rem; }
     .footer-icon__box {
+      display: block;
+      text-align: center;
       margin: 2rem auto;
-      margin-left: 33%; }
+      width: 100%; }
+      @media (max-width: 56.25em) {
+        .footer-icon__box {
+          margin-left: auto; } }
     .footer-icon:visited, .footer-icon:link {
       color: white; }
     .footer-icon:active {
@@ -676,10 +762,14 @@ body {
   .footer__contact {
     display: block;
     text-align: center;
-    margin-right: 9rem;
+    margin-right: auto;
+    width: 100%;
     color: #8f8f8f; }
     .footer__contact .footer-icon {
       color: #8f8f8f; }
+    @media (max-width: 56.25em) {
+      .footer__contact {
+        margin-right: auto; } }
 
 .feature-box {
   background-color: rgba(255, 255, 255, 0.2);
@@ -707,10 +797,11 @@ body {
   background-color: white;
   border-radius: .3rem;
   padding: 2rem;
-  padding-left: 9rem;
   font-size: 1.6rem;
   transform: skewX(-12deg);
   position: relative; }
+  .story:not(:last-child) {
+    padding-left: 9rem; }
   .story__shape {
     width: 15rem;
     height: 15rem;
@@ -923,7 +1014,14 @@ body {
   max-width: 114rem;
   margin: 0 auto; }
   .row:not(:last-child) {
-    margin-bottom: 3rem; }
+    margin-bottom: 8rem; }
+    @media (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 6rem; } }
+  @media (max-width: 56.25em) {
+    .row {
+      max-width: 50rem;
+      padding: 0 3rem; } }
   .row::after {
     content: "";
     clear: both;
@@ -932,6 +1030,13 @@ body {
     float: left; }
     .row [class^="col-"]:not(:last-child) {
       margin-right: 6rem; }
+      @media (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 6rem; } }
+    @media (max-width: 56.25em) {
+      .row [class^="col-"] {
+        width: 100% !important; } }
   .row .col-1-of-2 {
     width: calc((100% - 6rem) / 2); }
   .row .col-1-of-3 {
@@ -946,7 +1051,7 @@ body {
     width: calc(((3 * (100% - 3 * 6rem)) / 4) + 2 * 6rem); }
 
 .section-about {
-  height: 100vh;
+  /*height: 100vh;*/
   /*background-image: 
     linear-gradient(
         to right top, 
@@ -956,14 +1061,16 @@ body {
     background-size: cover;*/
   background-color: white;
   background-position: top;
-  padding-top: 10rem;
-  padding-bottom: 10rem;
+  padding: 8rem 0;
   color: black; }
+  @media (max-width: 56.25em) {
+    .section-about {
+      padding: 5rem 0; } }
 
 .section-service {
-  height: 100vh;
-  padding-top: 10rem;
-  padding-bottom: 10rem;
+  /*height: 100vh;*/
+  /*padding-top: 10rem;
+    padding-bottom: 10rem;*/
   /*background-image: 
     linear-gradient(
         to right bottom, 
@@ -972,13 +1079,19 @@ body {
         rgba($color-primary-yellow, 0.2));
     background-size: cover;*/
   background-color: white;
+  background: cover;
+  padding: -30rem 0;
+  /*margin-top: -10rem;*/
   /*& > * 
     {
         transform: skewY(-7deg);
     }*/ }
+  @media (max-width: 56.25em) {
+    .section-service {
+      padding: 20rem 0; } }
 
 .section-book {
-  height: 100vh;
+  /*  height: 100vh;*/
   padding-top: 6rem;
   padding-bottom: 10rem;
   /*background-image: 
@@ -991,7 +1104,7 @@ body {
   background-color: white; }
 
 .section-sitter {
-  height: 100%;
+  /*height: 100%;*/
   padding-top: 10rem;
   padding-bottom: 6rem;
   /*background-image: 
@@ -1332,7 +1445,7 @@ body {
     background-color: #fff;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
     padding: 2rem;
-    margin-left: -12rem;
+    margin: 1rem -20%;
     position: relative;
     width: 130%; }
     .account-setting h2 {
@@ -1416,7 +1529,7 @@ body {
     background-color: #fff;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
     padding: 2rem;
-    margin-left: -12rem;
+    margin: 1rem -20%;
     position: relative;
     width: 130%; }
     .myBooking-setting h2 {
@@ -1445,7 +1558,7 @@ body {
     background-color: #fff;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
     padding: 2rem;
-    margin-left: -12rem;
+    margin: 1rem -20%;
     position: relative;
     width: 130%; }
     .bookingHistory-setting h2 {
@@ -1474,7 +1587,7 @@ body {
     background-color: #fff;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
     padding: 2rem;
-    margin-left: -12rem;
+    margin: 1rem -20%;
     position: relative;
     width: 130%; }
     .bookingPayment-setting h2 {
@@ -1523,8 +1636,34 @@ body {
         color: #777;
         border: 1px solid rgba(119, 119, 119, 0.3); }
       .bookingPayment-setting .btn-pay-paid {
-        color: #f7c052;
-        text-align: center; }
+        color: #84cfe2;
+        text-align: center;
+        text-transform: capitalize; }
+    .bookingPayment-setting .btn-cancel {
+      color: #ce8787;
+      border: 1px solid rgba(206, 135, 135, 0.3);
+      background-color: white;
+      box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
+      border-radius: 10rem;
+      display: inline;
+      text-decoration: none;
+      text-align: center;
+      font-style: normal;
+      padding: .1rem 2rem;
+      transition: all .2s; }
+      .bookingPayment-setting .btn-cancel:hover {
+        transform: translateY(-0.3rem);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+      .bookingPayment-setting .btn-cancel:active {
+        transform: translateY(0rem);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+        color: #777;
+        border: 1px solid rgba(119, 119, 119, 0.3); }
+      .bookingPayment-setting .btn-cancel-cancelled {
+        color: #777;
+        text-transform: capitalize; }
+    .bookingPayment-setting .btn-done {
+      color: #388ca1; }
     .bookingPayment-setting table, .bookingPayment-setting tr, .bookingPayment-setting td {
       border-collapse: collapse; }
     .bookingPayment-setting tr, .bookingPayment-setting td {
@@ -1557,7 +1696,7 @@ body {
     background-color: #fff;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
     padding: 2rem;
-    margin-left: -12rem;
+    margin: 1rem -20%;
     position: relative;
     width: 130%; }
     .paymentHistory-setting h2 {
@@ -1586,7 +1725,7 @@ body {
     background-color: #fff;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
     padding: 2rem;
-    margin-left: -12rem;
+    margin: 1rem -20%;
     position: relative;
     width: 130%; }
     .paymentMethod-setting h2 {
@@ -1607,21 +1746,27 @@ body {
         padding-top: 5rem; }
     .paymentMethod-setting td {
       position: relative;
-      padding: 1rem 1rem .5rem 1rem;
       text-align: center;
-      border: 0; }
+      border: 0;
+      padding: 1rem 2rem .5rem 2rem; }
+    .paymentMethod-setting th {
+      padding: 1rem 2rem .5rem 2rem;
+      font-size: 1.3rem;
+      background-color: #84cfe2;
+      color: #fff; }
     .paymentMethod-setting_btn {
-      float: initial;
       margin: 1rem auto;
-      padding-left: 22.5%;
-      padding-right: 22.5%; }
+      padding-left: 21%;
+      padding-right: 21%; }
+    .paymentMethod-setting_form {
+      padding: 1rem 2.5rem; }
   .paymentMethod_selectedCard:hover {
     background-color: #d8f5fc; }
-    .paymentMethod_selectedCard:hover td {
-      border: none; }
   .paymentMethod_selectedCard-img {
     width: 4rem;
-    background-color: red; }
+    background-color: none; }
+  .paymentMethod_selectedCard-default {
+    background-color: #e6f4f8; }
 
 .help {
   height: 100%;
@@ -1632,7 +1777,7 @@ body {
     background-color: #fff;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
     padding: 2rem;
-    margin-left: -12rem;
+    margin: 1rem -20%;
     position: relative;
     width: 130%;
     width: 120%; }
@@ -1753,13 +1898,173 @@ body {
 .sitterBio {
   height: 100vh; }
 
-.sitterApply {
-  height: 100vh; }
-  .sitterApply-form {
-    margin: 3rem auto;
-    padding: 1rem auto; }
-  .sitterApply-tr:hover {
+.adminUser {
+  height: 100%;
+  margin-top: 5rem;
+  margin-bottom: 5rem; }
+  .adminUser-setting {
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    padding: 2rem;
+    margin: 1rem -20%;
+    position: relative;
+    width: 130%; }
+    .adminUser-setting h2 {
+      font-size: 2.5rem;
+      padding-bottom: 2rem;
+      text-align: left;
+      color: black;
+      text-transform: capitalize; }
+    .adminUser-setting h3 {
+      color: gray;
+      text-transform: capitalize; }
+    .adminUser-setting label {
+      font-size: 1.4rem; }
+    .adminUser-setting table {
+      display: block;
+      margin: 2rem; }
+      .adminUser-setting table tr {
+        padding-top: 5rem; }
+    .adminUser-setting a {
+      color: #388ca1;
+      text-decoration: none;
+      transition: all .2s;
+      display: inline-block; }
+      .adminUser-setting a:hover {
+        transform: scale(1.1);
+        text-decoration: underline; }
+      .adminUser-setting a:active {
+        transform: scale(0.9); }
+    .adminUser-setting td {
+      position: relative;
+      text-align: center;
+      border: 0;
+      padding: 1rem 2rem .5rem 2rem; }
+    .adminUser-setting th {
+      padding: 1rem 2rem .5rem 2rem;
+      font-size: 1.3rem;
+      background-color: #84cfe2;
+      color: #fff; }
+    .adminUser-setting-btn {
+      font-size: 1.4rem;
+      display: inline-block;
+      border-radius: 10rem;
+      transition: all .2s;
+      position: relative;
+      padding: 0.5rem 2rem;
+      text-decoration: none;
+      color: gray !important;
+      background-color: #f7f7f7;
+      border: 1px solid #c4c4c4;
+      margin-left: 1rem; }
+      .adminUser-setting-btn:hover {
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+        color: #388ca1 !important;
+        border: 1px solid #388ca1; }
+      .adminUser-setting-btn_content {
+        padding-left: 25%; }
+    .adminUser-setting_form {
+      padding: 1rem 2.5rem; }
+  .adminUser_selectedUser:hover {
     background-color: #d8f5fc; }
+  .adminUser_selectedUser-img {
+    width: 4rem;
+    background-color: none; }
+  .adminUser_selectedUser-default {
+    background-color: #e6f4f8; }
+
+.sitterApply {
+  margin: 2rem; }
+  .sitterApply table {
+    position: relative;
+    text-align: left;
+    margin: 3rem 30%; }
+    .sitterApply table td {
+      width: 20rem; }
+      .sitterApply table td:last-child {
+        width: 26rem; }
+  .sitterApply-input {
+    width: 50rem; }
+  .sitterApply-link {
+    display: inline-block;
+    transition: all .2s;
+    text-decoration: none;
+    font-weight: 700;
+    color: #84cfe2; }
+    .sitterApply-link:hover {
+      transform: scale(1.1); }
+  .sitterApply-unlicensedContent {
+    position: relative;
+    background-color: rgba(132, 207, 226, 0.3);
+    color: pink;
+    display: block;
+    text-align: center;
+    margin: auto;
+    width: 130%; }
+  .sitterApply-checkbox {
+    text-align: right; }
+
+.sitterAccount-table {
+  border-collapse: collapse;
+  border: 0; }
+  .sitterAccount-table tr {
+    vertical-align: inherit;
+    border: 0; }
+    .sitterAccount-table tr:hover {
+      background-color: rgba(132, 207, 226, 0.2);
+      border: 0; }
+  .sitterAccount-table td {
+    /*background-color: $color-primary-bluedark;*/ }
+
+.redStar {
+  color: red; }
+
+.sitterApply {
+  margin: 2rem; }
+  .sitterApply table {
+    position: relative;
+    text-align: left;
+    margin: 3rem 30%; }
+    .sitterApply table td {
+      width: 20rem; }
+      .sitterApply table td:last-child {
+        width: 26rem; }
+  .sitterApply-input {
+    width: 50rem; }
+  .sitterApply-link {
+    display: inline-block;
+    transition: all .2s;
+    text-decoration: none;
+    font-weight: 700;
+    color: #84cfe2; }
+    .sitterApply-link:hover {
+      transform: scale(1.1); }
+  .sitterApply-unlicensedContent {
+    position: relative;
+    background-color: rgba(132, 207, 226, 0.3);
+    color: pink;
+    display: block;
+    text-align: center;
+    margin: auto;
+    width: 130%; }
+  .sitterApply-checkbox {
+    text-align: right; }
+
+.sitterAccount-table {
+  border-collapse: collapse;
+  border: 0; }
+  .sitterAccount-table tr {
+    vertical-align: inherit;
+    border: 0; }
+    .sitterAccount-table tr:hover {
+      background-color: rgba(132, 207, 226, 0.2);
+      border: 0; }
+  .sitterAccount-table td {
+    /*background-color: $color-primary-bluedark;*/ }
+
+.redStar {
+  color: red; }
 
 /*
 npm run compile:sass //to transform to css file

@@ -242,15 +242,13 @@ var card =
 	    })(this);
 	  };
 
-	
 	  Card.prototype.validToggler = function(validatorName) {
 	    var isValid;
 	    if (validatorName === "cardExpiry") {
 	      isValid = function(val) {
 	        var objVal;
 	        objVal = Payment.fns.cardExpiryVal(val);
-					return Payment.fns.validateCardExpiry(objVal.month, objVal.year);
-					
+	        return Payment.fns.validateCardExpiry(objVal.month, objVal.year);
 	      };
 	    } else if (validatorName === "cardCVC") {
 	      isValid = (function(_this) {
@@ -1446,8 +1444,7 @@ var card =
 	        if ((year != null ? year.length : void 0) === 2 && /^\d+$/.test(year)) {
 	          prefix = (new Date).getFullYear();
 	          prefix = prefix.toString().slice(0, 2);
-						year = prefix + year;
-					
+	          year = prefix + year;
 	        }
 	        month = parseInt(month, 10);
 	        year = parseInt(year, 10);
@@ -1493,15 +1490,13 @@ var card =
 	        if (year.length === 2) {
 	          prefix = (new Date).getFullYear();
 	          prefix = prefix.toString().slice(0, 2);
-						year = prefix + year;
-					
+	          year = prefix + year;
 	        }
 	        expiry = new Date(year, month);
 	        currentTime = new Date;
 	        expiry.setMonth(expiry.getMonth() - 1);
 	        expiry.setMonth(expiry.getMonth() + 1, 1);
-					return expiry > currentTime;
-					
+	        return expiry > currentTime;
 	      },
 	      validateCardCVC: function(cvc, type) {
 	        var ref, ref1;
