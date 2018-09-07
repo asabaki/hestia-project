@@ -52,6 +52,7 @@
                 <div class="center-form">
                 <div class="row" >
                     <form action="/changePassword" method="POST">
+                        <% if(user.salt)  { %>
                         <table>
                             <tbody>
                                 <tr>
@@ -68,7 +69,16 @@
                                 </tr>
                             </tbody>
                         </table>
-                
+                        <% } else { %>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td class="account-setting-td"><label for="current-password">Set Password <span class="redStar">*</span></label></td>
+                                        <td class="account-setting-td"><input type="password" name="password" id="current-password" class="account-setting-input"></td>
+                                    </tr>
+                                </tbody>
+                            </table>    
+                        <% } %>
                         <div class="u-center-text">
                             <input type="submit" name="save" class="account-setting-btn account-setting-btn-save" value="Save Change">
                         </div>

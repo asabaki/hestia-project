@@ -270,10 +270,19 @@ router.post('/changePassword',isLoggedIn, async function (req, res, next) {
         if(req.user) {
             const user = await User.findById(req.user.id);
             if(user){
-                const response = await user.changePassword(passwordDetails.oldPassword,passwordDetails.newPassword);
-                console.log(response);
-                req.logout();
-                res.status(200).redirect('/login');
+                if(user.salt) {
+                    const response = await user.changePassword(passwordDetails.oldPassword,passwordDetails.newPassword);
+                    console.log(response);
+                    req.logout();
+                    res.status(200).redirect('/login');
+                } else {
+                    const response = await user.setPassword(passwordDetails.password);
+                    console.log(response);
+                    req.logout();
+                    res.status(200).redirect('/login');
+
+                }
+                
             }
         }
     } catch (e) {
