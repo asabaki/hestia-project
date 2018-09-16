@@ -136,7 +136,7 @@ router.get('/slogin',function(req,res) {
     res.render('slogin',{messages:messages});
 
 });
-router.get('/saccount',function(req,res) {
+router.get('/saccount',isLoggedIn,function(req,res) {
     console.log(req.user);
     res.render('saccount',{user:req.user});
 })
@@ -176,12 +176,12 @@ router.get('/semantic',function(req,res) {
 })
 // ================================= POST METHOD ===================================
 
-router.post('/login',passport.authenticate('local',{
+router.post('/login',passport.authenticate('user',{
     successRedirect: "/",
     failureRedirect: "/login",
     failureMessage : "Invalid username or password"
 }));
-router.post('/slogin',passport.authenticate('local',{
+router.post('/slogin',passport.authenticate('sitter',{
     successRedirect: "/saccount",
     failureRedirect: "/slogin",
     failureMessage: "Invalid username or password"
@@ -252,7 +252,7 @@ router.post("/apply",function(req,res) {
                 console.log(err);
             } else {
                 console.log(`${acc} created`);
-                passport.authenticate('local')(req,res,() => {
+                passport.authenticate('sitter')(req,res,() => {
                     console.log(`Authenticate successful`);
                     console.log(`user is ${req.user}`);
                     res.render('saccount',{user:req.user});
@@ -268,13 +268,8 @@ router.post('/changePassword',isLoggedIn, async function (req, res, next) {
         if(req.user) {
             const user = await User.findById(req.user.id);
             if(user){
-                if(user.salt) {
+                
                     const response = await user.changePassword(passwordDetails.oldPassword,passwordDetails.newPassword);
-                    console.log(response);
-                    req.logout();
-                    res.status(200).redirect('/login');
-                } else {
-                    const response = await user.setPassword(passwordDetails.password);
                     console.log(response);
                     req.logout();
                     res.status(200).redirect('/login');
@@ -282,7 +277,6 @@ router.post('/changePassword',isLoggedIn, async function (req, res, next) {
                 }
                 
             }
-        }
     } catch (e) {
         console.log(e);
         res.status(400).send({
@@ -399,6 +393,10 @@ router.post('/rcard',async function(req,res) {
 })
 // ===============================================================================
 router.get("/logout",(req,res) => {
+    req.logout();
+    res.redirect('/');
+});
+router.get("/slogout",(req,res) => {
     req.logout();
     res.redirect('/');
 });

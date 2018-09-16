@@ -1,3 +1,6 @@
+const User = require('../models/User'),
+      Sitter = require('../models/Sitter');
+
 module.exports = (Account, passport) =>  {
 
   passport.serializeUser(function(account, done) {
@@ -5,8 +8,17 @@ module.exports = (Account, passport) =>  {
   });
 
   passport.deserializeUser(function(id, done) {
-    Account.findById(id, function (err, account) {
-      done(err, account);
+    User.findById(id, function (err, user) {
+      if(user) {
+
+        done(err, user);
+      } else {
+        Sitter.findById(id,function(err,sitter) {
+
+          done(err,sitter);
+        })
+      }
+      
     });
   });
 };
