@@ -13,7 +13,9 @@ const  seedDB 			= require("./seeds");
 
 
 // ===================== Routing Setup =======================
-const indexRoutes = require("./routes/index.js");
+const indexRoutes = require("./routes/index.js"),
+	  notFoundRoutes = require('./routes/404'),
+      userRoutes = require('./routes/users');
 
 // ===================== Database Connect ====================
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/ht_app_v2",{useNewUrlParser: true}) || "mongodb+srv://nineo9:<1I1e129e*>@asabaki-pfw6b.mongodb.net/test?retryWrites=true"
@@ -35,6 +37,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // ===================== Route Setup ========================
 app.use(indexRoutes);
+app.use(userRoutes);
+app.use(notFoundRoutes);
 
 
 
@@ -43,3 +47,4 @@ const port = process.env.PORT || 3000;
 app.listen(port,() => {
 	console.log("Server has started");
 });
+module.exports = {app};

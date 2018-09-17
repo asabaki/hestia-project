@@ -4,8 +4,9 @@
   "description": "Hestia version 2",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "test": "mocha ./tests/**.test.js",
+    "start": "node app.js",
+    "test-watch": "nodemon --exec 'npm test'"
   },
   "author": "Asi and team",
   "license": "ISC",
@@ -15,6 +16,7 @@
     "child_process": "^1.0.2",
     "connect-flash": "^0.1.1",
     "ejs": "^2.6.1",
+    "expect": "^23.6.0",
     "express": "^4.16.3",
     "express-recaptcha": "^4.0.3",
     "express-session": "^1.15.6",
@@ -24,6 +26,7 @@
     "http": "0.0.0",
     "https": "^1.0.0",
     "https-proxy-agent": "^2.2.1",
+    "mocha": "^5.2.0",
     "mongodb": "^3.1.3",
     "mongoose": "^5.2.4",
     "omise": "^0.5.4",
@@ -36,6 +39,7 @@
     "path": "^0.12.7",
     "request": "^2.87.0",
     "semantic-ui": "^2.3.3",
+    "supertest": "^3.3.0",
     "system-health-monitor": "^1.1.0",
     "validator": "^10.4.0"
   }
