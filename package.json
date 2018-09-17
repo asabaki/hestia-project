@@ -21,6 +21,7 @@
     "express-recaptcha": "^4.0.3",
     "express-session": "^1.15.6",
     "faker": "^4.1.0",
+    "file-encryptor": "^0.1.1",
     "fs": "0.0.1-security",
     "googleapis": "^32.0.0",
     "http": "0.0.0",
@@ -38,7 +39,7 @@
     "passport-twitter": "^1.0.4",
     "path": "^0.12.7",
     "request": "^2.87.0",
-    "semantic-ui": "^2.3.3",
+    "semantic-ui": "^2.4.0",
     "supertest": "^3.3.0",
     "system-health-monitor": "^1.1.0",
     "validator": "^10.4.0"

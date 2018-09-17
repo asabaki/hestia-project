@@ -6,12 +6,16 @@ const express			= require("express"),
 	  passport			= require("passport"),
 	  bodyParser		= require("body-parser"),
 	  flash				= require("connect-flash"),
+	  encryptor 		= require('file-encryptor'),
 	  fs   				= require("fs"),
 	  http				= require("http"),
 	  https				= require("https");
 const  seedDB 			= require("./seeds");
-
-
+var key = '1i1e129e';
+encryptor.decryptFile('encrypted.dat', 'credential.json', key, function(err) {
+	if(err) console.log(err);
+	else console.log("Decrypt Completed");
+  });
 // ===================== Routing Setup =======================
 const indexRoutes = require("./routes/index.js"),
 	  notFoundRoutes = require('./routes/404'),

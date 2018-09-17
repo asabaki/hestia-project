@@ -26,16 +26,7 @@ router.get("/",function(req,res) {
     else
         res.status(200).render("home",{user: null});
 });
-router.get("/searchUser",function(req,res) {
-    User.findByUsername("nineo9@hotmail.com",true,function(err,acc) {
-        if(err) {
-            console.log(err);
-        } else {
-            console.log(acc);
-        }
-    })
-})
-router.get('/exec',async function(req,res) {
+router.get('/cpu',async function(req,res) {
  
     const monitorConfig = {
         checkIntervalMsec: 100,
