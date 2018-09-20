@@ -27,7 +27,6 @@ router.get("/",function(req,res) {
     else
         res.status(200).render("home",{user: null});
 });
-
 router.get('/object',function(req,res) {
     const jwt = require('jsonwebtoken'),
         {SHA256} = require('crypto-js');
@@ -37,16 +36,6 @@ router.get('/object',function(req,res) {
     };
     const hash = jwt.sign(data,"secretKey",{expiresIn:10});
     console.log(hash)
-    // setInterval(()=> {
-    //     const decoded = jwt.verify(hash,"secretKey");
-    //     console.log(hash,decoded);
-    // },9000)
-    
-    
-    // const jwt = require('jsonwebtoken');
-    // jwt.sign({ foo: 'bar' }, cert, { algorithm: 'RS256' }, function(err, token) {
-    //     console.log(token);
-    //   });
 });
 
 router.get('/cpu',async function(req,res) {

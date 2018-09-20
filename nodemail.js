@@ -1,9 +1,9 @@
 
 
-var sender = 'smtps://manabaka97%40gmail.com'   // The emailto use in sending the email
+var sender = 'smtps://hestia.noreply%40gmail.com'   // The emailto use in sending the email
 //(Change the @ symbol to %40 or do a url encoding )
-var password = '4e494e45'  // password of the email to use
-
+var password = '6AJfMG5bukc8ZxbD'  // password of the email to use
+// 6AJfMG5bukc8ZxbD
 var nodeMailer = require("nodemailer");
 var EmailTemplate = require('email-templates').EmailTemplate;
 

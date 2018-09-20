@@ -1,0 +1,47 @@
+<% include ../partials/header %>
+        <title>Hestia | Error</title>
+    </head>
+    <body>
+        
+            <% include ../partials/navbarStick %>
+            
+                <div class="navigation">
+                    <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+                   
+                    <label for="navi-toggle" class="navigation__button">
+                        <span class="navigation__icon">  </span>
+                    </label>
+        
+                    <div class="navigation__background">&nbsp;</div>
+        
+                    <nav class="navigation__nav">
+                        <ul class="navigation__list">
+                            <li class="navigation__item" ></li><a href="/#about" class="navigation__link">About</a></li>
+                            <li class="navigation__item" ><a href="/#book" class="navigation__link">Our Services</a></li>
+                            <li class="navigation__item" ><a href="/#sitter" class="navigation__link">Sitters</a></li>
+                            <li class="navigation__item" ><a href="/#store" class="navigation__link">Store</a></li>
+                            <li class="navigation__item" ><a href="/#joinUs" class="navigation__link">Join us</a></li>
+                            <li class="navigation__item" ><a href="signUp.html" class="navigation__link">Sign up</a></li>
+                            <li class="navigation__item" ><a href="/#login" class="navigation__link">Log in</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+    <div class="notfound">
+        <div class="notfound__box">
+        <div class="row">
+            <div class="col-1-of-2">
+                <img src="img/error.png" alt="404error" class="notfound__img">
+            </div>
+            <div class="col-1-of-2">
+                <div class="notfound__content">
+                    <h2 class="notfound__heading">Error!!</h2>
+                    <p>
+                      <%= e.message %>
+                    </p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+   <% include ../partials/footer %>

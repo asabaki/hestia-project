@@ -14,6 +14,7 @@ const googleAuth = new google.auth.OAuth2(
   CREDENTIALS.web.client_secret,
   CREDENTIALS.web.redirect_uris[0]
 );
+
 passport.use('sitter',new LocalStrategy(Sitter.authenticate()));
 passport.use('user',new LocalStrategy(User.authenticate()));
 

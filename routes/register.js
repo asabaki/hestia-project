@@ -153,7 +153,7 @@ router.post("/signup", async function (req, res) {
                 }
             }, { $new: true });
             console.log(`${customer.id} created successfully`);
-            res.status(200).redirect('/signupInfo');
+            res.status(200).render('/signupInfo');
         });
     } catch (e) {
         console.log(e);
@@ -161,13 +161,12 @@ router.post("/signup", async function (req, res) {
         res.status(400).redirect('/signup');
     }
 });
-router.post("/signupInfo/:id", isLoggedIn, async function (req, res) {
+router.put("/signup/:id", isLoggedIn, async function (req, res) {
     try {
         const id = req.params.id;
         if (!ObjectID.isValid(id)) {
             return res.status(404).send('ID not valid');
         }
-
         var information =
         {
             username: req.params.id,
@@ -214,21 +213,8 @@ router.post("/apply",isNotLoggedIn,async function (req, res) {
         }
     } catch (e) {
         console.log(e);
+        res.render('page-error',{e});
     }
-    // Sitter.register(newSitter, req.body.password, function (err, acc) {
-    //     if (err) {
-    //         console.log(err);
-    //     } else {
-    //         console.log(`${acc} created`);
-    // passport.authenticate('sitter')(req, res, () => {
-    //     console.log(`Authenticate successful`);
-    //     console.log(`user is ${req.user}`);
-    //     res.render('saccount', { user: req.user });
-    // })
-
-    //         // res.redirect('/sittersuccess');
-    //     }
-    // })
 })
 router.post("/reset",isNotLoggedIn, async function (req, res) {
     try {
@@ -236,16 +222,17 @@ router.post("/reset",isNotLoggedIn, async function (req, res) {
         const user = await User.findByUsername(username);
         if (user) {
             const hash = jwt.sign(user.toJSON(), credential.mailkey, { expiresIn: "10m" });
-            res.redirect(`/reset/${hash}`)
-            mail.sendPasswordReset(username,username,`${user.name}!`,`https://hestia-project.herokuapp.com/reset/${hash}`);
+            // res.redirect(`/reset/${hash}`)
+            mail.sendPasswordReset(username,username,`${user.name}!`,`http://localhost:3000/reset/${hash}`);
             res.redirect('/');
         } else {
             const sitter = await Sitter.findByUsername(username);
             if (sitter) {
                 //Send email
                 const hash = jwt.sign(sitter.toJSON(), credential.mailkey, { expiresIn: "10m" });
+                mail.sendPasswordReset(username,username,`${sitter.firstname}!`,`http://localhost:3000/reset/${hash}`);
                 // console.log(`Found Sitter Hash : ${hash}`);
-                res.redirect(`/reset/${hash}`)
+                // res.redirect(`/reset/${hash}`)
             } else {
                 throw new Error('Username is not exist');
             }
@@ -253,8 +240,8 @@ router.post("/reset",isNotLoggedIn, async function (req, res) {
 
 
     } catch (e) {
-        console.log(e.message);
-
+        res.render('sitter/page-error',{e,user:req.user});
+        console.log(e);
     }
 })
 router.post('/reset/:hash',isNotLoggedIn, async function (req, res) {
@@ -296,7 +283,7 @@ router.post('/reset/:hash',isNotLoggedIn, async function (req, res) {
         }
     } catch (e) {
         console.log(e);
-        res.send({ e });
+        res.render('sitter/page-error',{e,user:req.user});
     }
 })
 

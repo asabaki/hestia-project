@@ -1211,8 +1211,48 @@ body {
       padding: 5rem 0 2.5rem 0; } }
 
 .request-sitter {
-  background-color: white;
-  height: 100%; }
+  height: 100%;
+  margin: 5rem; }
+  .request-sitter_box {
+    width: 130%;
+    margin-left: -10rem;
+    border-left: 2px solid #84cfe2;
+    padding-left: 2rem; }
+    @media (max-width: 56.25em) {
+      .request-sitter_box {
+        width: 100%;
+        margin-left: -5rem;
+        border-left: none;
+        padding-left: 0; } }
+  .request-sitter_content {
+    position: relative;
+    margin: 0; }
+  .request-sitter #sitterList td {
+    padding: 1rem; }
+  .request-sitter_img {
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    width: 5rem !important; }
+  .request-sitter_star {
+    font-size: 1rem !important; }
+  .request-sitter_sitterList {
+    width: 100%;
+    text-align: center; }
+    @media (max-width: 56.25em) {
+      .request-sitter_sitterList {
+        width: 80%;
+        margin-left: -2.5rem; } }
+    @media (max-width: 37.5em) {
+      .request-sitter_sitterList {
+        width: 70%;
+        font-size: 1.3rem;
+        margin-left: -2.7rem; } }
+
+.timeSlot {
+  display: inline; }
+
+#sitterList_table {
+  visibility: hidden; }
 
 .section-signUp {
   height: 100%;
@@ -1357,6 +1397,12 @@ body {
       font-weight: 100; }
     .signup-box-form--input:hover {
       transform: scale(1.03); }
+    @media (max-width: 56.25em) {
+      .signup-box-form--input {
+        width: 20rem; } }
+    @media (max-width: 75em) {
+      .signup-box-form--input {
+        width: 25rem; } }
   .signup-box-form--term {
     display: inline;
     color: #707070; }
@@ -1553,6 +1599,11 @@ body {
         width: 100%;
         padding: 2rem;
         margin: 1rem auto; } }
+    @media (max-width: 87.5em) {
+      .account-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
     @media (max-width: 56.25em) {
       .account-setting {
         width: 100%;
@@ -1647,6 +1698,12 @@ body {
       .account-setting-btn:active, .account-setting-btn:visited {
         transform: translateY(0.5rem);
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.4); }
+    .account-setting_img {
+      height: 12rem;
+      width: 12rem;
+      border: 2px solid rgba(132, 207, 226, 0);
+      border-radius: 50%;
+      margin: 1rem 15rem -2rem; }
 
 .center-form {
   margin-left: 10rem;
@@ -1669,6 +1726,11 @@ body {
     position: relative;
     width: 130%; }
     @media (max-width: 75em) {
+      .myBooking-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
+    @media (max-width: 87.5em) {
       .myBooking-setting {
         width: 100%;
         padding: 2rem;
@@ -1712,6 +1774,11 @@ body {
         width: 100%;
         padding: 2rem;
         margin: 1rem auto; } }
+    @media (max-width: 87.5em) {
+      .bookingHistory-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
     @media (max-width: 56.25em) {
       .bookingHistory-setting {
         width: 100%;
@@ -1747,6 +1814,11 @@ body {
     position: relative;
     width: 130%; }
     @media (max-width: 75em) {
+      .bookingPayment-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
+    @media (max-width: 87.5em) {
       .bookingPayment-setting {
         width: 100%;
         padding: 2rem;
@@ -1879,6 +1951,11 @@ body {
         width: 100%;
         padding: 2rem;
         margin: 1rem auto; } }
+    @media (max-width: 87.5em) {
+      .paymentHistory-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
     @media (max-width: 56.25em) {
       .paymentHistory-setting {
         width: 100%;
@@ -1914,6 +1991,11 @@ body {
     position: relative;
     width: 130%; }
     @media (max-width: 75em) {
+      .paymentMethod-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
+    @media (max-width: 87.5em) {
       .paymentMethod-setting {
         width: 100%;
         padding: 2rem;
@@ -1998,6 +2080,11 @@ body {
     width: 130%;
     width: 120%; }
     @media (max-width: 75em) {
+      .help-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
+    @media (max-width: 87.5em) {
       .help-setting {
         width: 100%;
         padding: 2rem;
@@ -2122,7 +2209,7 @@ body {
     text-align: center; }
 
 .sitterBio {
-  margin: 0 5rem;
+  margin: 1rem 5rem 5rem 5rem;
   height: 100%; }
 
 .sitter_fillter {
@@ -2139,6 +2226,32 @@ body {
     margin-left: 1rem; }
     .sitter_fillter select:hover {
       transform: scale(1.01); }
+  .sitter_fillter-reset {
+    background-color: #fff;
+    border: 1px solid #84cfe2;
+    border-radius: 10px;
+    color: #84cfe2;
+    padding: .5rem 1rem;
+    margin-left: 1rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+    transition: all .1s; }
+    .sitter_fillter-reset:hover {
+      transform: scale(1.1); }
+    .sitter_fillter-reset:active {
+      transform: translateY(0.3rem) scale(0.9); }
+  .sitter_fillter-search {
+    background-color: #84cfe2;
+    border: 1px solid #84cfe2;
+    border-radius: 10px;
+    color: #fff;
+    padding: .5rem 1rem;
+    margin-left: 1rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+    transition: all .1s; }
+    .sitter_fillter-search:hover {
+      transform: scale(1.1); }
+    .sitter_fillter-search:active {
+      transform: translateY(0.3rem) scale(0.9); }
 
 .adminUser {
   height: 100%;
@@ -2153,6 +2266,11 @@ body {
     position: relative;
     width: 130%; }
     @media (max-width: 75em) {
+      .adminUser-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
+    @media (max-width: 87.5em) {
       .adminUser-setting {
         width: 100%;
         padding: 2rem;
