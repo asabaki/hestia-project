@@ -1,0 +1,116 @@
+<% include ../partials/header %>
+    <title>Hestia | Sitter - Dashboard</title>
+
+    </head>
+
+    <body>
+        <% include ../partials/navbarStick %>
+            <section class="account">
+                <h1 class="heading-of-page">Sitter Account</h1>
+                <div class="row">
+                    <div class="col-1-of-2">
+                        <div class="account-menu">
+                            <div class="account__details">
+                                <ul>
+                                    <li class="account__details-link-active">
+                                        <i class="fas fa-chart-line"></i>
+                                        <a href="/sitter/" class="account__details-link">Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-user-tie"></i>
+                                        <a href="/sitter/general" class="account__details-link">General Setting</a>
+                                    </li>
+                                    <li>
+                                        <i class="far fa-calendar-alt"></i>
+                                        <a href="/sitter/availability" class="account__details-link">availability</a>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-book"></i>
+                                        <a href="/sitter/tasks" class="account__details-link">Total Tasks</a>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-history"></i>
+                                        <a href="/sitter/mytask" class="account__details-link">Current Tasks</a>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-location-arrow"></i>
+                                        <a href="/sitter/requested" class="account__details-link">Request Tasks
+                                            <span class="task-notification">2</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-question-circle"></i>
+                                        <a href="#" class="account__details-link">Help</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-1-of-2">
+                        <div class="account-setting">
+                            <h3>Overview :</h3>
+                            <hr>
+
+                            <div class="dashboard">
+
+                                <h2 class="verify">Status:
+                                    <span class="verify_verified"> Verified</span>
+                                </h2>
+                                <div class="row">
+                                    <div class="col-1-of-4">
+                                        <div class="dashboard-box">
+                                            <i class="fas fa-check-circle dashboard-box_icon"></i>
+                                            <h4>Completed tasks</h4>
+                                            <p class="dashboard-box_detail">5</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-1-of-4">
+                                        <div class="dashboard-box">
+                                            <i class="fas fa-star dashboard-box_icon"></i>
+                                            <h4>Rating</h4>
+                                            <div class="starr starr-dashboard">
+                                                <p>3</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-1-of-4">
+                                        <div class="dashboard-box">
+                                            <i class="fas fa-hand-holding-usd dashboard-box_icon"></i>
+                                            <h4>Money earned</h4>
+                                            <p class="dashboard-box_detail">$32</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-1-of-4">
+                                        <div class="dashboard-box">
+                                            <i class="far fa-calendar-alt dashboard-box_icon"></i>
+                                            <h4>Working days</h4>
+                                            <p class="dashboard-box_detail">10 days</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+            </section>
+            <script>
+                var newSpan = '<span class="fa fa-star"></span>' +
+                    '<span class="fa fa-star"></span>' +
+                    '<span class="fa fa-star"></span>' +
+                    '<span class="fa fa-star"></span>' +
+                    '<span class="fa fa-star"></span>';
+
+                $(".starr").append(newSpan);
+
+                var n = $(".starr p").size();
+
+
+
+                for (let j = 0; j < n; j++) {
+                    var rate = $(".starr p:eq(" + j + ")").text();
+                    for (let i = 0; i < rate; i++) {
+                        $(".starr:eq(" + j + ") span.fa.fa-star:eq(" + i + ")").addClass("checked")
+                    }
+                }
+            </script>
+<% include ../partials/footer %>

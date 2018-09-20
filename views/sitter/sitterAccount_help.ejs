@@ -1,0 +1,70 @@
+<% include ../partials/header %>
+    <title>Hestia | Sitter - Total Tasks</title>
+
+</head>
+
+<body>
+    <% include ../partials/navbarStick %>
+<section class="account">
+    <h1 class="heading-of-page">Sitter Account</h1>
+    <div class="row">
+        <div class="col-1-of-2">
+            <div class="account-menu">
+                <div class="account__details">
+                    <ul>
+                        <li><i class="fas fa-chart-line"></i><a href="/sitter/" class="account__details-link">Dashboard</a></li>
+                        <li><i class="fas fa-user-tie"></i><a href="/sitter/general" class="account__details-link">General Setting</a></li>
+                        <li><i class="far fa-calendar-alt"></i><a href="/sitter/availability" class="account__details-link">availability</a></li>
+                        <li class="account__details-link-active"><i class="fas fa-book"></i><a href="/sitter/tasks" class="account__details-link">Total Tasks</a></li>
+                        <li><i class="fas fa-history"></i><a href="/sitter/mytask" class="account__details-link">Current Tasks</a></li>
+                        <li><i class="fas fa-location-arrow"></i><a href="/sitter/requested" class="account__details-link">Request Tasks <span class="task-notification">2</span></a></li>
+                        <li><i class="fas fa-question-circle"></i><a href="/sitter/help" class="account__details-link">Help</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    <div class="col-1-of-2">
+        <div class="account-setting">
+            <h3>Total tasks :</h3>
+            <hr>
+            <div class="help-setting">
+                    <h2>Help Center</h2>
+                    
+                    <div class="row help-setting-row">
+                        <div class="col-1-fo-3">
+                            <div class="help-topic">
+                                <div class="help-topic__number">?</div>
+                                <div class="help-topic__content">
+                                    <h3 class="help-topic__header">FAQs</h3>
+                                    Regular question & answer are presented have in the FAQs area.
+                                   </div>
+                            </div>
+                        </div>
+                        <div class="col-1-fo-3">
+                            <div class="help-topic">
+                                <div class="help-topic__number"><i class="fab fa-leanpub"></i></div>
+                                <div class="help-topic__content">
+                                    <h3 class="help-topic__header">Knowledge Base</h3>
+                                    The fastest way to get support is finding the answer though Knowledge Base system.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-1-fo-3">
+                            <div class="help-topic">
+                                <div class="help-topic__number"><i class="far fa-comment"></i></div>
+                                <div class="help-topic__content">
+                                    <h3 class="help-topic__header">Support Forum</h3>
+                                    You can easy to find out the answer over existing topics on the support forum.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <form action="#" class="help-setting__form">
+                        <input type="text" name="help" placeholder="How do we help?" class="help-setting__form help-setting__form-input">
+                        <input type="submit" name="request" value="Request Support" class="help-setting__form help-setting__form-submit">
+                    </form>
+                </div>
+            </div>
+    </div>
+</section>
+<% include ../partials/footer %>

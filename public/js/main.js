@@ -5,10 +5,6 @@ var navbar = document.getElementById("navbar");
 var band = document.getElementById("nav-band");
 var sticky = navbar.offsetTop;
 
-//var sitter1=document.getElementsById("sitter1");
-//var sitter2=document.getElementsById("sitter2");
-//var mq = window.matchMedia("@media screen and (max-width: 70rem)");
-
 
 
 

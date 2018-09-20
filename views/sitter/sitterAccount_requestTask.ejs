@@ -1,0 +1,103 @@
+<% include ../partials/header %>
+    <title>Hestia | Sitter - Request Tasks</title>
+
+</head>
+
+<body>
+    <% include ../partials/navbarStick %>
+<section class="account">
+    <h1 class="heading-of-page">Sitter Account</h1>
+    <div class="row">
+        <div class="col-1-of-2">
+            <div class="account-menu">
+                <div class="account__details">
+                    <ul>
+                        <li><i class="fas fa-chart-line"></i><a href="/sitter/" class="account__details-link">Dashboard</a></li>
+                        <li><i class="fas fa-user-tie"></i><a href="/sitter/general" class="account__details-link">General Setting</a></li>
+                        <li><i class="far fa-calendar-alt"></i><a href="/sitter/availability" class="account__details-link">availability</a></li>
+                        <li><i class="fas fa-book"></i><a href="/sitter/tasks" class="account__details-link">Total Tasks</a></li>
+                        <li><i class="fas fa-history"></i><a href="/sitter/mytask" class="account__details-link">Current Tasks</a></li>
+                        <li class="account__details-link-active"><i class="fas fa-location-arrow"></i><a href="/sitter/requested" class="account__details-link">Request Tasks <span class="task-notification">2</span></a></li>
+                        <li><i class="fas fa-question-circle"></i><a href="/sitter/help" class="account__details-link">Help</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    <div class="col-1-of-2">
+        <div class="account-setting">
+            <h3>Request tasks :</h3>
+            <hr>
+            <table class="bookingPayment-setting__table totalTask">
+                    <thead class="bookingPayment-setting__thead">
+                            <td>Booking no.</td>
+                            <td>Sitting for</td>
+                            <td>Gardian</td>
+                            <td>Date/Time</td>
+                            <td>Location</td>
+                            <td>Price</td>
+                            <td></td>
+                    </thead>
+                    <tbody class="bookingPayment-setting__tbody">
+                        
+                        <tr class="bookingPayment-setting__tr"> 
+                            <td><a href="#">0007</a></td>
+                            <td>elder</td>
+                            <td>mylie</td>
+                            <td>30/09/2018</td>
+                            <td>SG palya</td>
+                            <td>300</td>
+                            <td><a href="#" class="task-accept">Accept</a>
+                                <a href="#" class="task-decline">Decline</a>
+                            </td>
+                        </tr>
+                        <tr class="bookingPayment-setting__tr"> 
+                            <td><a href="#">0008</a></td>
+                            <td>pets</td>
+                            <td>kaka</td>
+                            <td>30/09/2018</td>
+                            <td>indiranagar</td>
+                            <td>500</td>
+                            <td><a href="#" class="task-accept">Accept</a>
+                                <a href="#" class="task-decline">Decline</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+    <script>
+     var newSpan='<span class="fa fa-star"></span>' + 
+                '<span class="fa fa-star"></span>'+ 
+                '<span class="fa fa-star"></span>'+ 
+                '<span class="fa fa-star"></span>'+ 
+                '<span class="fa fa-star"></span>';
+
+    $("td.starr").append(newSpan);
+  
+    var n=$("td.starr p").size();
+
+    $("td.starr p").css("display","inline");
+    $("td.starr p").css("visibility","hidden");
+
+    for(let j=0;j<n;j++)
+    {
+        var rate=$("td.starr:eq("+j+")").text();
+        for(let i=0;i<rate;i++)
+        {
+            $( "td.starr:eq("+j+") span.fa.fa-star:eq("+i+")" ).addClass("checked")
+        }
+    }
+   
+    
+
+  </script>
+  <% include ../partials/footer %>

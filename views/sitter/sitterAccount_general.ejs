@@ -1,0 +1,133 @@
+<% include ../partials/header %>
+    <title>Hestia | Sitter - availability</title>
+
+</head>
+
+<body>
+    <% include ../partials/navbarStick %>
+<section class="account">
+    <h1 class="heading-of-page">Sitter Account</h1>
+    <div class="row">
+        <div class="col-1-of-2">
+            <div class="account-menu">
+                <div class="account__details">
+                    <ul>
+                        <li><i class="fas fa-chart-line"></i><a href="/sitter/" class="account__details-link">Dashboard</a></li>
+                        <li class="account__details-link-active"><i class="fas fa-user-tie"></i><a href="/sitter/general" class="account__details-link">General Setting</a></li>
+                        <li><i class="far fa-calendar-alt"></i><a href="/sitter/availability" class="account__details-link">availability</a></li>
+                        <li><i class="fas fa-book"></i><a href="/sitter/tasks" class="account__details-link">Total Tasks</a></li>
+                        <li><i class="fas fa-history"></i><a href="/sitter/mytask" class="account__details-link">Current Tasks</a></li>
+                        <li><i class="fas fa-location-arrow"></i><a href="/sitter/requested" class="account__details-link">Request Tasks <span class="task-notification">2</span></a></li>
+                        <li><i class="fas fa-question-circle"></i><a href="/sitter/help" class="account__details-link">Help</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-1-of-2">
+            <div class="account-setting">
+                <h3>Payment account: </h3>
+                <hr>
+                <div class="center-form">
+                <div class="row" >
+                    <form action="#">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="account-setting-td"><label for="accno">Account number <span class="redStar">*</span></label></td>
+                                    <td class="account-setting-td"><input type="tel" name="accno" id="accno" class="account-setting-input"></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td"><label for="accname">Account name <span class="redStar">*</span></label></td>
+                                    <td class="account-setting-td"><input type="text" name="accname" id="accname" class="account-setting-input"></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td"><label for="ifsc">IFSC <span class="redStar">*</span></label></td>
+                                    <td class="account-setting-td"><input type="text" name="ifsc" id="ifsc" class="account-setting-input"></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td"><label for="bank">Bank <span class="redStar">*</span></label></td>
+                                    <td class="account-setting-td"><input type="text" name="bank" id="bank" class="account-setting-input"></td>
+                                </tr>
+                              
+                            </tbody>
+                        </table>
+                
+                        <div class="u-center-text">
+                            <input type="submit" name="save" class="account-setting-btn account-setting-btn-save" value="Save Change">
+                        </div>
+                    </form>
+                </div>
+                </div>
+                <h3>Password change</h3>
+                <hr>
+                <div class="center-form">
+                <div class="row" >
+                    <form action="#">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="account-setting-td"><label for="current-password">Current Password <span class="redStar">*</span></label></td>
+                                    <td class="account-setting-td"><input type="password" name="current-password" id="current-password" class="account-setting-input"></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td"><label for="new-password">New Password <span class="redStar">*</span></label></td>
+                                    <td class="account-setting-td"><input type="password" name="street" id="street" class="account-setting-input"></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td"><label for="confirm-password">Confirm Password <span class="redStar">*</span></label></td>
+                                    <td class="account-setting-td"><input type="password" name="confirm-password" id="confirm-password" class="account-setting-input"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                
+                        <div class="u-center-text">
+                            <input type="submit" name="save" class="account-setting-btn account-setting-btn-save" value="Save Change">
+                        </div>
+                    </form>
+                </div>
+                </div>
+                <h3>Basic Profile</h3>
+                <hr>
+                <div class="center-form">
+                    <form action="#">
+                    <table>
+                        <tbody>
+                            <tr class="account-setting-tr">
+                                <td class="account-setting-td"><label for="houseNo">House No.<span class="redStar">*</span></label></td>
+                                <td class="account-setting-td"><input type="text" name="houseNo" id="houseNo" class="account-setting-input"></td>
+                            </tr>
+                            <tr class="account-setting-tr">
+                                <td class="account-setting-td"><label for="street">Street <span class="redStar">*</span></label></td>
+                                <td class="account-setting-td"><input type="text" name="street" id="street" class="account-setting-input"></td>
+                            </tr>
+                            <tr class="account-setting-tr">
+                                <td class="account-setting-td"><label for="zipCode">Zip code <span class="redStar">*</span></label></td>
+                                <td class="account-setting-td"><input type="text" name="zipCode" id="zipCode" class="account-setting-input"></td>
+                            </tr>
+                            <tr class="account-setting-tr">
+                                <td class="account-setting-td"><label for="city">Country <span class="redStar">*</span></label></td>
+                                <td class="account-setting-td"><select  id="country" name="country" placeholder="Country" class="account-setting-input"></select></td>
+                            </tr>
+                            <tr class="account-setting-tr">
+                                <td class="account-setting-td"><label for="state">State <span class="redStar">*</span></label></td>
+                                <td class="account-setting-td"><select name="state" id="state"  placeholder="State" class="account-setting-input"></select></td>
+                            </tr>
+                            <tr class="account-setting-tr">
+                                <td class="account-setting-td"><label for="zipCode">City <span class="redStar">*</span></label></td>
+                                <td class="account-setting-td"><input type="text" name="city" id="city" class="account-setting-input"></td>
+                            </tr>
+                            <tr class="account-setting-tr">
+                                <td class="account-setting-td"><label for="phoneNumber">Phone number <span class="redStar">*</span></label></td>
+                                <td class="account-setting-td"><input type="text" name="phoneNumber" id="phoneNumber" class="account-setting-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="u-center-text">
+                        <input type="submit" name="save" class="account-setting-btn account-setting-btn-save" value="Save Change">
+                    </div>
+                </form> 
+        </div>
+    </div>
+</section>
+<% include ../partials/footer %>

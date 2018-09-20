@@ -7,6 +7,7 @@ const express         = require('express'),
       passport        = require('../auth/auth.js'),
       User            = require('../models/User.js'),
       credential      = require('../credential.json'),
+      crypto          = require('crypto-js'),
       omise           = require('omise')({
           'secretKey' : credential.omise.skey,
           'omiseVersion': '2017-11-02'
@@ -26,6 +27,28 @@ router.get("/",function(req,res) {
     else
         res.status(200).render("home",{user: null});
 });
+
+router.get('/object',function(req,res) {
+    const jwt = require('jsonwebtoken'),
+        {SHA256} = require('crypto-js');
+    var data = {
+        id: "4",
+        username: "asabaki"
+    };
+    const hash = jwt.sign(data,"secretKey",{expiresIn:10});
+    console.log(hash)
+    // setInterval(()=> {
+    //     const decoded = jwt.verify(hash,"secretKey");
+    //     console.log(hash,decoded);
+    // },9000)
+    
+    
+    // const jwt = require('jsonwebtoken');
+    // jwt.sign({ foo: 'bar' }, cert, { algorithm: 'RS256' }, function(err, token) {
+    //     console.log(token);
+    //   });
+});
+
 router.get('/cpu',async function(req,res) {
  
     const monitorConfig = {
@@ -74,15 +97,9 @@ router.get('/checkout',function(req,res) {
 router.get('/semantic',function(req,res) {
     res.render('semantic');
 })
-// ================================= POST METHOD ===================================
-
-router.get("/slogout",(req,res) => {
+router.get("/logout",(req,res) => {
     req.logout();
     res.redirect('/');
-});
-router.get('/checkinfo',(req,res) => {
-    if(!req.user.isSet)
-        res.redirect('/signupInfo');
 });
 
 

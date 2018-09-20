@@ -1,0 +1,177 @@
+<% include ../partials/header %>
+    <title>Hestia | Sitter - availability</title>
+
+</head>
+
+<body>
+        <% include ../partials/navbarStick %>
+<section class="account">
+    <h1 class="heading-of-page">Sitter Account</h1>
+    <div class="row">
+        <div class="col-1-of-2">
+            <div class="account-menu">
+                <div class="account__details">
+                    <ul>
+                        <li><i class="fas fa-chart-line"></i><a href="/sitter/" class="account__details-link">Dashboard</a></li>
+                        <li><i class="fas fa-user-tie"></i><a href="/sitter/general" class="account__details-link">General Setting</a></li>
+                        <li class="account__details-link-active"><i class="far fa-calendar-alt"></i><a href="/sitter/availability" class="account__details-link">availability</a></li>
+                        <li><i class="fas fa-book"></i><a href="/sitter/tasks" class="account__details-link">Total Tasks</a></li>
+                        <li><i class="fas fa-history"></i><a href="/sitter/mytask" class="account__details-link">Current Tasks</a></li>
+                        <li><i class="fas fa-location-arrow"></i><a href="/sitter/requested" class="account__details-link">Request Tasks <span class="task-notification">2</span></a></li>
+                        <li><i class="fas fa-question-circle"></i><a href="/sitter/help" class="account__details-link">Help</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-1-of-2">
+            <div class="account-setting">
+                <h3>Day of the week :</h3>
+                <hr>
+                    <form action="#">
+                     <table class="sitterAccount-table">
+                            <tbody>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="day" id="monday"></td>
+                                    <td class="account-setting-td"><label for="monday">Monday</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="day" id="tuesday"></td>
+                                    <td class="account-setting-td"><label for="tuesday">Tuesday</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="day" id="wednesday"></td>
+                                    <td class="account-setting-td"><label for="wednesday">Wednesday</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="day" id="thursday"></td>
+                                    <td class="account-setting-td"><label for="thursday">Thursday</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="day" id="friday"></td>
+                                    <td class="account-setting-td"><label for="friday">Friday</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="day" id="saturday"></td>
+                                    <td class="account-setting-td"><label for="saturday">Saturday</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="day" id="sunday"></td>
+                                    <td class="account-setting-td"><label for="sunday">Sunday</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="fullweek" id="fullweek"></td>
+                                    <td class="account-setting-td"><label for="fullweek">Every Day</label></td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                
+                        <div class="u-center-text">
+                            <input type="submit" name="save" class="account-setting-btn account-setting-btn-save" value="Save Change">
+                        </div>
+                    </form>
+                <h3>Shifts :</h3>
+                <hr>
+                    <form action="#">
+                     <table class="sitterAccount-table">
+                            <tbody>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" id="timeSlot1"></td>
+                                    <td class="account-setting-td"><label for="timeSlot1">12.00 am - 4.00 am</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" id="timeSlot2"></td>
+                                    <td class="account-setting-td"><label for="timeSlot2">4.00 am - 8.00 am</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" id="timeSlot3"></td>
+                                    <td class="account-setting-td"><label for="timeSlot3">8.00 am - 12.00 am</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" id="timeSlot4"></td>
+                                    <td class="account-setting-td"><label for="timeSlot4">12.00 am - 4.00 pm</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" id="timeSlot5"></td>
+                                    <td class="account-setting-td"><label for="timeSlot5">4.00 pm - 8.00 pm</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" id="timeSlot6"></td>
+                                    <td class="account-setting-td"><label for="timeSlot6">8.00 pm - 12.00 pm</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="fullday" id="fullday"></td>
+                                    <td class="account-setting-td"><label for="fullday">Full day</label></td>
+                                </tr>
+                               
+                                
+                            </tbody>
+                        </table>
+                
+                        <div class="u-center-text">
+                            <input type="submit" name="save" class="account-setting-btn account-setting-btn-save" value="Save Change">
+                        </div>
+                    </form>
+                <h3>Services :</h3>
+                <hr>
+                    <form action="#">
+                     <table class="sitterAccount-table">
+                            <tbody>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="houseService" id="houseService"></td>
+                                    <td class="account-setting-td"><label for="houseService">House Sitting</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="babyService" id="babyService"></td>
+                                    <td class="account-setting-td"><label for="babyService">Baby Sitting</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot3" id="timeSlot3"></td>
+                                    <td class="account-setting-td"><label for="timeSlot3">Pet Sitting</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot4" id="timeSlot4"></td>
+                                    <td class="account-setting-td"><label for="timeSlot4">Elderly People</label></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot5" id="timeSlot5"></td>
+                                    <td class="account-setting-td"><label for="timeSlot5">Physically/ Mentally Challenged</label></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                
+                        <div class="u-center-text">
+                            <input type="submit" name="save" class="account-setting-btn account-setting-btn-save" value="Save Change">
+                        </div>
+                    </form>
+        </div>
+    </div>
+</section>
+<script>
+        $(function(){
+             $("input[name=fullday]").click(function(){
+                 if($(this).prop("checked") == true){
+                     $("input[name=timeSlot]").prop("checked",true);
+                 }
+                 else if($(this).prop("checked") == false){
+                    $("input[name=timeSlot]").prop("checked",false);
+                 }
+             });
+         });
+        $(function(){
+             $("input[name=fullweek]").click(function(){
+                 if($(this).prop("checked") == true){
+                     $("input[name=day]").prop("checked",true);
+                 }
+                 else if($(this).prop("checked") == false){
+                    $("input[name=day]").prop("checked",false);
+                 }
+             });
+         });
+         </script>
+
+
+
+
+    <% include ../partials/footer %>

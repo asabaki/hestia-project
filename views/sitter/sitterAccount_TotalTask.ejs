@@ -1,0 +1,123 @@
+<% include ../partials/header %>
+    <title>Hestia | Sitter - Total Tasks</title>
+
+</head>
+
+<body>
+    <% include ../partials/navbarStick %>
+<section class="account">
+    <h1 class="heading-of-page">Sitter Account</h1>
+    <div class="row">
+        <div class="col-1-of-2">
+            <div class="account-menu">
+                <div class="account__details">
+                    <ul>
+                        <li><i class="fas fa-chart-line"></i><a href="/sitter/" class="account__details-link">Dashboard</a></li>
+                        <li><i class="fas fa-user-tie"></i><a href="/sitter/general" class="account__details-link">General Setting</a></li>
+                        <li><i class="far fa-calendar-alt"></i><a href="/sitter/availability" class="account__details-link">availability</a></li>
+                        <li class="account__details-link-active"><i class="fas fa-book"></i><a href="/sitter/tasks" class="account__details-link">Total Tasks</a></li>
+                        <li><i class="fas fa-history"></i><a href="/sitter/mytask" class="account__details-link">Current Tasks</a></li>
+                        <li><i class="fas fa-location-arrow"></i><a href="/sitter/requested" class="account__details-link">Request Tasks <span class="task-notification">2</span></a></li>
+                        <li><i class="fas fa-question-circle"></i><a href="/sitter/help" class="account__details-link">Help</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    <div class="col-1-of-2">
+        <div class="account-setting">
+            <h3>Total tasks :</h3>
+            <hr>
+            <table class="bookingPayment-setting__table totalTask">
+                    <thead class="bookingPayment-setting__thead">
+                            <td>Booking no.</td>
+                            <td>Sitting for</td>
+                            <td>Sitter</td>
+                            <td>Date/Time</td>
+                            <td>Price</td>
+                            <td>Rated</td>
+                            <td>Status</td>
+                    </thead>
+                    <tbody class="bookingPayment-setting__tbody">
+                        <tr class="bookingPayment-setting__tr"> 
+                            <td><a href="#">0001</a></td>
+                            <td>baby</td>
+                            <td>justin biber</td>
+                            <td>12/08/2018</td>
+                            <td>3500</td>
+                            <td class="starr starr-totalTask"><p>2</p></td>
+                            <td class="btn-cancel-cancelled">Completed</td>
+                        </tr>
+                        <tr class="bookingPayment-setting__tr"> 
+                            <td><a href="#">0002</a></td>
+                            <td>disabilty</td>
+                            <td>lady gaga</td>
+                            <td>12/08/2018</td>
+                            <td>1900</td>
+                            <td class="starr starr-totalTask"><p>4</p></td>
+                            <td class="btn-done">Completed</td>
+                        </tr>
+                        <tr class="bookingPayment-setting__tr"> 
+                            <td><a href="#">0003</a></td>
+                            <td>house</td>
+                            <td>Wiz Khalifa</td>
+                            <td>12/08/2018</td>
+                            <td>300</td>
+                            <td class="starr starr-totalTask"><p>3</p></td>
+                            <td class="btn-cancel-cancelled">Completed</td>
+                        <tr class="bookingPayment-setting__tr"> 
+                            <td><a href="#">0004</a></td>
+                            <td>elder</td>
+                            <td>mylie</td>
+                            <td>12/08/2018</td>
+                            <td>4500</td>
+                            <td class="starr starr-totalTask"><p>1</p></td>
+                            <td class="btn-done">Completed</a></td>
+                        </tr>
+                        <tr class="bookingPayment-setting__tr"> 
+                            <td><a href="#">0005</a></td>
+                            <td>elder</td>
+                            <td>mylie</td>
+                            <td>30/09/2018</td>
+                            <td>--</td>
+                            <td class="starr starr-totalTask"><p></p></td>
+                            <td class="btn-done">processing</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+<script>
+        var newSpan='<span class="fa fa-star"></span>' + 
+                   '<span class="fa fa-star"></span>'+ 
+                   '<span class="fa fa-star"></span>'+ 
+                   '<span class="fa fa-star"></span>'+ 
+                   '<span class="fa fa-star"></span>';
+   
+       $("td.starr").append(newSpan);
+     
+       var n=$("td.starr p").size();
+   
+       $("td.starr p").css("display","inline");
+       $("td.starr p").css("visibility","hidden");
+   
+       for(let j=0;j<n;j++)
+       {
+           var rate=$("td.starr:eq("+j+")").text();
+           for(let i=0;i<rate;i++)
+           {
+               $( "td.starr:eq("+j+") span.fa.fa-star:eq("+i+")" ).addClass("checked")
+           }
+       }
+      
+       
+   
+     </script>
+
+
+
+
+  <% include ../partials/footer %>

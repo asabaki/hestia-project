@@ -1,0 +1,91 @@
+<% include ../partials/header %>
+    <title>Hestia | My account - My booking</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-sticky page">
+        <div >
+            <ul>
+                <li><a href="/" class="navbar-band navbar-left">&nbsp</a></li>
+                <li><a href="/#about" class="navbar-left">About</a></li>
+                <li><a href="/#book" class="navbar-left">Our Services</a></li>
+                <li><a href="/#sitters" class="navbar-left">Sitters</a></li>
+                <li><a href="/#store" class="navbar-left">Store</a></li>
+                <li><a href="/apply" class="navbar-left">Join us</a></li>
+                <% if(user) { %>
+                    <li><a href="/logout" class="navbar-right"><i class="fas fa-sign-out-alt"></i>&nbspLogout</a></li>
+                    <li><a href="/account" class="navbar-right"><i class="fas fa-user"></i>&nbspMy Account</a></li>
+                    <li><a href="#" class="navbar-right">Hi, <%= user.name %></a></li>
+
+                    <% } else { %>
+                    <li><a href="/#login" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</a></li>
+                    <li><a href="/signup" class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a></li>
+                    <% } %>
+            </ul>
+        </div>
+    </nav>
+<section class="help">
+    <h1 class="heading-of-page">My Account</h1>
+    <div class="row">
+        <div class="col-1-of-2">
+            <div class="account-menu">
+                <div class="account__details">
+                    <ul>
+                        <li><i class="fas fa-user"></i><a href="/user/account" class="account__details-link">Account setting</a></li>
+                        <li><i class="fas fa-book"></i><a href="/user/booking" class="account__details-link">My Booking</a></li>
+                        <li><i class="fas fa-history"></i><a href="/user/history" class="account__details-link">Booking History</a></li>
+                        <li><i class="far fa-credit-card"></i><a href="/user/cards" class="account__details-link">Payment Method</a></li>
+                        <li><i class="fas fa-credit-card"></i><a href="/user/payment" class="account__details-link">Booking Payment</a></li>
+                        <li><i class="fas fa-file-invoice-dollar"></i><a href="/user/phistory" class="account__details-link">Payment History</a></li>
+                        <li class="account__details-link-active"><i class="fas fa-question-circle"></i><a href="/user/help" class="account__details-link">Help</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-1-of-2">
+            <div class="help-setting">
+                <h2>Help Center</h2>
+                
+                <div class="row help-setting-row">
+                    <div class="col-1-fo-3">
+                        <div class="help-topic">
+                            <div class="help-topic__number">?</div>
+                            <div class="help-topic__content">
+                                <h3 class="help-topic__header">FAQs</h3>
+                                Regular question & answer are presented have in the FAQs area.
+                               </div>
+                        </div>
+                    </div>
+                    <div class="col-1-fo-3">
+                        <div class="help-topic">
+                            <div class="help-topic__number"><i class="fab fa-leanpub"></i></div>
+                            <div class="help-topic__content">
+                                <h3 class="help-topic__header">Knowledge Base</h3>
+                                The fastest way to get support is finding the answer though Knowledge Base system.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1-fo-3">
+                        <div class="help-topic">
+                            <div class="help-topic__number"><i class="far fa-comment"></i></div>
+                            <div class="help-topic__content">
+                                <h3 class="help-topic__header">Support Forum</h3>
+                                You can easy to find out the answer over existing topics on the support forum.</div>
+                        </div>
+                    </div>
+                </div>
+                <form action="#" class="help-setting__form">
+                    <input type="text" name="help" placeholder="How do we help?" class="help-setting__form help-setting__form-input">
+                    <input type="submit" name="request" value="Request Support" class="help-setting__form help-setting__form-submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+  <% include ../partials/footer %>

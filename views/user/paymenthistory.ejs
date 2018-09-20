@@ -1,0 +1,81 @@
+<% include ../partials/header %>
+    <title>Hestia | My account - My booking</title>
+</head>
+
+<body>
+    <% include ../partials/navbarStick %>
+    <section class="myBooking">
+            <h1 class="heading-of-page">My Account</h1>
+            <div class="row">
+                <div class="col-1-of-2">
+                    <div class="account-menu">
+                        <div class="account__details">
+                            <ul>
+                                <li><i class="fas fa-user"></i><a href="/user/" class="account__details-link">Account setting</a></li>
+                                <li><i class="fas fa-book"></i><a href="/user/booking" class="account__details-link">My Booking</a></li>
+                                <li><i class="fas fa-history"></i><a href="#" class="account__details-link">Booking History</a></li>
+                                <li><i class="far fa-credit-card"></i><a href="/user/cards" class="account__details-link">Payment Method</a></li>
+                                <li><i class="fas fa-credit-card"></i><a href="/user/payment" class="account__details-link">Booking Payment</a></li>
+                                <li class="account__details-link-active"><i class="fas fa-file-invoice-dollar"></i><a href="/user/history" class="account__details-link">Payment History</a></li>
+                                <li><i class="fas fa-question-circle"></i><a href="/user/help" class="account__details-link">Help</a></li>
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="col-1-of-2">
+                        <div class="bookingPayment-setting">
+                            <h2>My Booking</h2>
+                            <hr>
+                                        <table class="bookingPayment-setting__table">
+                                            <thead class="bookingPayment-setting__thead">
+                                                    <td>Booking no.</td>
+                                                    <td>Sitting for</td>
+                                                    <td>Sitter</td>
+                                                    <td>Date/Time</td>
+                                                    <td>Price</td>
+                                                    <td>Status</td>
+                                            </thead>
+                                            <tbody class="bookingPayment-setting__tbody">
+                                                <tr class="bookingPayment-setting__tr"> 
+                                                    <td><a href="#">0001</a></td>
+                                                    <td>baby</td>
+                                                    <td>justin biber</td>
+                                                    <td>12/08/2018</td>
+                                                    <td>3500</td>
+                                                    <td class="btn-cancel-cancelled">cancelled</td>
+                                                </tr>
+                                                <tr class="bookingPayment-setting__tr"> 
+                                                    <td><a href="#">0002</a></td>
+                                                    <td>disabilty</td>
+                                                    <td>lady gaga</td>
+                                                    <td>12/08/2018</td>
+                                                    <td>1900</td>
+                                                    <td class="btn-done">Done</td>
+                                                </tr>
+                                                <tr class="bookingPayment-setting__tr"> 
+                                                    <td><a href="#">0003</a></td>
+                                                    <td>house</td>
+                                                    <td>Wiz Khalifa</td>
+                                                    <td>12/08/2018</td>
+                                                    <td>300</td>
+                                                    <td class="btn-cancel-cancelled">cancelled</td>
+                                                <tr class="bookingPayment-setting__tr"> 
+                                                    <td><a href="#">0004</a></td>
+                                                    <td>elder</td>
+                                                    <td>mylie</td>
+                                                    <td>12/08/2018</td>
+                                                    <td>4500</td>
+                                                    <td class="btn-done">Done</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+            
+            </div>
+        </section>
+
+
+
+<% include ../partials/footer %>

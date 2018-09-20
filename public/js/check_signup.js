@@ -1,36 +1,20 @@
-(function() {
+var password = document.getElementById("password")
+    , confirm_password = document.getElementById("confirm-password");
 
-    'use strict';
-    // var validator = require('validator');
-    
-    var signupForm = document.getElementById('signup-form');
-    const username = document.getElementsByName("username");
-    const User = require('../../models/User');
-    signupForm.addEventListener('submit',submitHandler,false);
-    
-    // Submit handler for checkout form.
-    function submitHandler(event) {
-      event.preventDefault();
-    
-      /*
-      NOTE: Using `data-name` to prevent sending credit card information fields to the backend server via HTTP Post
-      (according to the security best practice https://www.omise.co/security-best-practices#never-send-card-data-through-your-servers).
-      */
-      
-      User.findByUsername(username,true,function(err,acc) {
-          if(err) {
-              console.warn(err);
-
-              signupForm.submit();
-          } else {
-              console.log(acc);
-            // console.warn("User exist na");
-            
-          }
-      })
-      
-      
+function validatePassword() {
+    if (password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Don't Match");
+    } else {
+        confirm_password.setCustomValidity('');
     }
-    // Resource intepreted as a Document but transferred with MIME type application
-    
-    })();
+}
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+var form = document.getElementById('signup-form');
+                                // form.addEventListener("submit", function(event){
+                                //     if (grecaptcha.getResponse() === '') {                            
+                                //     event.preventDefault();
+                                //     alert('Please check the recaptcha');
+                                //     }
+                                // }
+                                // , false);

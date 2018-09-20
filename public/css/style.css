@@ -190,31 +190,37 @@ body {
   color: #84cfe2; }
 
 .u-center-text {
-  text-align: center; }
+  text-align: center !important; }
 
 .u-right-text {
-  text-align: right; }
+  text-align: right !important; }
 
 .u-left-text {
-  text-align: left; }
+  text-align: left !important; }
 
 .u-margin-bottom-big {
-  margin-bottom: 8rem; }
+  margin-bottom: 8rem !important; }
 
 .u-margin-bottom-medium {
-  margin-bottom: 4rem; }
+  margin-bottom: 4rem !important; }
+  @media (max-width: 56.25em) {
+    .u-margin-bottom-medium {
+      margin-bottom: 3rem !important; } }
 
 .u-margin-bottom-small {
-  margin-bottom: 1.5rem; }
+  margin-bottom: 1.5rem !important; }
 
 .u-margin-top-big {
-  margin-top: 8rem; }
+  margin-top: 8rem !important; }
+  @media (max-width: 56.25em) {
+    .u-margin-top-big {
+      margin-bottom: 5rem !important; } }
 
 .u-margin-top-small {
-  margin-top: 1.5rem; }
+  margin-top: 1.5rem !important; }
 
 .u-margin-top-very-small {
-  margin-top: -1rem; }
+  margin-top: -1rem !important; }
 
 .bg-video {
   position: absolute;
@@ -268,7 +274,8 @@ body {
       background-color: #fff; }
   .btn--lightblue {
     background-color: #84cfe2;
-    color: #fff; }
+    color: #fff;
+    margin: -6rem auto; }
     .btn--lightblue::after {
       background-color: #388ca1; }
   .btn--animated {
@@ -339,29 +346,33 @@ body {
   transform: translateY(-0.1rem);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
-.btn-text-yellow:link, .btn-text-yellow:visited {
-  color: #000000;
-  display: inline-block;
-  position: absolute;
-  text-decoration: none;
-  border-bottom: 2px solid #000000;
-  padding: 3px;
-  font-size: 1.6rem;
-  transition: all .2s; }
-
-.btn-text-yellow:hover {
-  background-image: linear-gradient(to right bottom, rgba(248, 225, 163, 0.5), rgba(248, 225, 163, 0.5));
-  color: #5a4200;
-  border-bottom: 2px solid #5a4200;
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px); }
-
-.btn-text-yellow:active {
-  transform: translateY(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+.btn-text-yellow {
+  margin: -6rem auto; }
+  .btn-text-yellow:link, .btn-text-yellow:visited {
+    color: #000000;
+    display: inline-block;
+    position: absolute;
+    text-decoration: none;
+    border-bottom: 2px solid #000000;
+    padding: 3px;
+    font-size: 1.6rem;
+    transition: all .2s; }
+    @media (max-width: 37.5em) {
+      .btn-text-yellow:link, .btn-text-yellow:visited {
+        margin-left: -2.5rem; } }
+  .btn-text-yellow:hover {
+    background-image: linear-gradient(to right bottom, rgba(248, 225, 163, 0.5), rgba(248, 225, 163, 0.5));
+    color: #5a4200;
+    border-bottom: 2px solid #5a4200;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px); }
+  .btn-text-yellow:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
 
 .card {
   margin-top: -3rem;
+  margin-bottom: 2rem;
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
@@ -452,6 +463,35 @@ body {
   .card__price-value {
     font-size: 6rem;
     font-weight: 100; }
+  @media (max-width: 56.25em) {
+    .card {
+      height: auto;
+      border-radius: 3px;
+      background-color: #fff;
+      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+      .card__side {
+        height: auto;
+        position: relative;
+        box-shadow: none; }
+        .card__side--back {
+          transform: rotateY(0);
+          clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%); }
+      .card:hover .card__side--front {
+        transform: rotateY(0); }
+      .card__details {
+        padding: 1rem 3rem; }
+      .card__cta {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: translate(0);
+        width: 100%;
+        text-align: center;
+        padding: 7rem 4rem 4rem 4rem; }
+      .card__price-box {
+        margin-bottom: 3rem; }
+      .card__price-value {
+        font-size: 6rem; } }
 
 .navbar {
   position: absolute;
@@ -636,15 +676,35 @@ body {
     transition: all .2s;
     outline-offset: 2rem;
     z-index: 0; }
+    @media (max-width: 56.25em) {
+      .composition__photo {
+        float: left;
+        position: relative;
+        width: 33.33333333%;
+        box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2); } }
     .composition__photo--p1 {
       left: 0;
       top: -2rem; }
+      @media (max-width: 56.25em) {
+        .composition__photo--p1 {
+          top: 0;
+          transform: scale(1.2); } }
     .composition__photo--p2 {
       right: 0;
       top: 2rem; }
+      @media (max-width: 56.25em) {
+        .composition__photo--p2 {
+          top: -1rem;
+          transform: scale(1.3);
+          z-index: 100; } }
     .composition__photo--p3 {
       left: 20%;
       top: 15rem; }
+      @media (max-width: 56.25em) {
+        .composition__photo--p3 {
+          top: 1rem;
+          left: 0;
+          transform: scale(1.4); } }
     .composition__photo:hover {
       /*outline: 1.5rem solid $color-primary-blue;*/
       transform: scale(1.05) translateY(-0.5rem);
@@ -779,6 +839,9 @@ body {
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   transition: transform .5s; }
+  @media (max-width: 56.25em) {
+    .feature-box {
+      padding: 2rem; } }
   .feature-box:hover {
     transform: translateY(-1.5rem) scale(1.03);
     box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.35); }
@@ -789,6 +852,9 @@ body {
     background-image: linear-gradient(to left bottom, #84cfe2, #f8e1a3);
     -webkit-background-clip: text;
     color: transparent; }
+    @media (max-width: 56.25em) {
+      .feature-box__icon {
+        margin-bottom: 0; } }
 
 .story {
   width: 80%;
@@ -802,6 +868,14 @@ body {
   position: relative; }
   .story:not(:last-child) {
     padding-left: 9rem; }
+  @media (max-width: 56.25em) {
+    .story {
+      width: 100%;
+      padding: 4rem;
+      padding-left: 7rem; } }
+  @media (max-width: 37.5em) {
+    .story {
+      transform: skewX(0); } }
   .story__shape {
     width: 15rem;
     height: 15rem;
@@ -812,6 +886,9 @@ body {
     clip-path: circle(50% at 50% 50%);
     transform: translateX(-3rem) skewX(12deg);
     position: relative; }
+    @media (max-width: 37.5em) {
+      .story__shape {
+        transform: translateX(-3rem) skewX(0); } }
   .story__img {
     height: 100%;
     transform: translateX(-16%) scale(1.4);
@@ -821,6 +898,18 @@ body {
     transform: skewX(12deg); }
     .story__text ul {
       list-style: none; }
+    @media (max-width: 37.5em) {
+      .story__text {
+        transform: skewX(0); } }
+  .story__link {
+    text-decoration: none;
+    color: #84cfe2;
+    font-weight: 700;
+    transition: all .1s;
+    position: relative; }
+    .story__link:hover {
+      display: block;
+      color: #388ca1; }
   .story__caption {
     position: absolute;
     top: 50%;
@@ -1065,10 +1154,10 @@ body {
   color: black; }
   @media (max-width: 56.25em) {
     .section-about {
-      padding: 5rem 0; } }
+      padding: 5rem 0 5rem 0; } }
 
 .section-service {
-  /*height: 100vh;*/
+  height: 100%;
   /*padding-top: 10rem;
     padding-bottom: 10rem;*/
   /*background-image: 
@@ -1081,6 +1170,7 @@ body {
   background-color: white;
   background: cover;
   padding: -30rem 0;
+  margin-bottom: 4rem;
   /*margin-top: -10rem;*/
   /*& > * 
     {
@@ -1088,12 +1178,12 @@ body {
     }*/ }
   @media (max-width: 56.25em) {
     .section-service {
-      padding: 20rem 0; } }
+      padding: 2.5rem 0; } }
 
 .section-book {
-  /*  height: 100vh;*/
-  padding-top: 6rem;
-  padding-bottom: 10rem;
+  /*height: 100vh;*/
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   /*background-image: 
     linear-gradient(
         to left bottom, 
@@ -1102,11 +1192,12 @@ body {
         rgba($color-primary-blue, 0.2));
     background-size: cover;*/
   background-color: white; }
+  @media (max-width: 56.25em) {
+    .section-book {
+      padding: 5rem 0 5rem 0; } }
 
 .section-sitter {
   /*height: 100%;*/
-  padding-top: 10rem;
-  padding-bottom: 6rem;
   /*background-image: 
     linear-gradient(
         to left top, 
@@ -1115,6 +1206,9 @@ body {
         rgba($color-primary-blue, 0.2));
     background-size: cover;*/
   background-color: white; }
+  @media (max-width: 56.25em) {
+    .section-sitter {
+      padding: 5rem 0 2.5rem 0; } }
 
 .request-sitter {
   background-color: white;
@@ -1400,6 +1494,9 @@ body {
     padding: 1rem;
     width: 80%;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+    @media (max-width: 75em) {
+      .account__details {
+        width: 100%; } }
     .account__details ul {
       list-style: none;
       width: 70%;
@@ -1418,6 +1515,9 @@ body {
           padding-right: .5rem; }
         .account__details ul li:link, .account__details ul li:visited {
           font-size: 1.5; }
+      @media (max-width: 37.5em) {
+        .account__details ul {
+          width: 100%; } }
     .account__details-link:link, .account__details-link:visited {
       font-size: 1.5;
       text-decoration: none;
@@ -1448,6 +1548,16 @@ body {
     margin: 1rem -20%;
     position: relative;
     width: 130%; }
+    @media (max-width: 75em) {
+      .account-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
+    @media (max-width: 56.25em) {
+      .account-setting {
+        width: 100%;
+        margin: 1rem auto;
+        padding: 1rem; } }
     .account-setting h2 {
       font-size: 2.5rem;
       padding-bottom: 2rem;
@@ -1464,14 +1574,26 @@ body {
       margin: 2rem; }
       .account-setting table tr {
         padding-top: 5rem; }
+    .account-setting td:first-child {
+      width: 15rem; }
+    .account-setting select {
+      background-color: white; }
     .account-setting-td {
-      padding: .5rem 1rem .5rem 1rem; }
+      width: 25rem;
+      padding: .5rem;
+      background-color: #fff; }
     .account-setting-input {
       font-size: 1.4rem;
       border-radius: .5rem;
       border: none;
       box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-      width: 150%;
+      width: 100%;
+      height: 3rem; }
+    .account-setting-file {
+      font-size: 1.4rem;
+      border-radius: .5rem;
+      border: none;
+      width: 100%;
       height: 3rem; }
     .account-setting__password-box {
       display: inline-block;
@@ -1504,6 +1626,16 @@ body {
           box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
           color: #388ca1;
           border: 1px solid #388ca1; }
+        @media (max-width: 56.25em) {
+          .account-setting-btn-save {
+            margin: 0 1rem;
+            position: relative;
+            display: inline-block; } }
+        @media (max-width: 37.5em) {
+          .account-setting-btn-save {
+            margin: 0 0.3rem;
+            padding: .5rem 1rem;
+            font-size: 1.3rem; } }
       .account-setting-btn-clear {
         color: gray;
         background-color: #f7f7f7;
@@ -1519,6 +1651,10 @@ body {
 .center-form {
   margin-left: 10rem;
   margin-right: 10rem; }
+  @media (max-width: 56.25em) {
+    .center-form {
+      margin-left: auto;
+      margin-right: auto; } }
 
 .myBooking {
   height: 100%;
@@ -1532,6 +1668,16 @@ body {
     margin: 1rem -20%;
     position: relative;
     width: 130%; }
+    @media (max-width: 75em) {
+      .myBooking-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
+    @media (max-width: 56.25em) {
+      .myBooking-setting {
+        width: 100%;
+        margin: 1rem auto;
+        padding: 1rem; } }
     .myBooking-setting h2 {
       font-size: 2.5rem;
       padding-bottom: 2rem;
@@ -1561,6 +1707,16 @@ body {
     margin: 1rem -20%;
     position: relative;
     width: 130%; }
+    @media (max-width: 75em) {
+      .bookingHistory-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
+    @media (max-width: 56.25em) {
+      .bookingHistory-setting {
+        width: 100%;
+        margin: 1rem auto;
+        padding: 1rem; } }
     .bookingHistory-setting h2 {
       font-size: 2.5rem;
       padding-bottom: 2rem;
@@ -1590,6 +1746,16 @@ body {
     margin: 1rem -20%;
     position: relative;
     width: 130%; }
+    @media (max-width: 75em) {
+      .bookingPayment-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
+    @media (max-width: 56.25em) {
+      .bookingPayment-setting {
+        width: 100%;
+        margin: 1rem auto;
+        padding: 1rem; } }
     .bookingPayment-setting h2 {
       font-size: 2.5rem;
       padding-bottom: 2rem;
@@ -1651,6 +1817,9 @@ body {
       font-style: normal;
       padding: .1rem 2rem;
       transition: all .2s; }
+      @media (max-width: 56.25em) {
+        .bookingPayment-setting .btn-cancel {
+          padding: .1rem .5rem; } }
       .bookingPayment-setting .btn-cancel:hover {
         transform: translateY(-0.3rem);
         box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
@@ -1679,6 +1848,9 @@ body {
         width: 12rem;
         text-align: center;
         text-transform: capitalize; }
+        @media (max-width: 56.25em) {
+          .bookingPayment-setting__thead td {
+            font-size: .3rem; } }
     .bookingPayment-setting__tr {
       padding-top: 3rem; }
       .bookingPayment-setting__tr td {
@@ -1686,6 +1858,9 @@ body {
         text-align: center; }
         .bookingPayment-setting__tr td:not(:last-child) {
           text-transform: capitalize; }
+        @media (max-width: 56.25em) {
+          .bookingPayment-setting__tr td {
+            font-size: .2rem; } }
 
 .paymentHistory {
   height: 100%;
@@ -1699,6 +1874,16 @@ body {
     margin: 1rem -20%;
     position: relative;
     width: 130%; }
+    @media (max-width: 75em) {
+      .paymentHistory-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
+    @media (max-width: 56.25em) {
+      .paymentHistory-setting {
+        width: 100%;
+        margin: 1rem auto;
+        padding: 1rem; } }
     .paymentHistory-setting h2 {
       font-size: 2.5rem;
       padding-bottom: 2rem;
@@ -1728,6 +1913,16 @@ body {
     margin: 1rem -20%;
     position: relative;
     width: 130%; }
+    @media (max-width: 75em) {
+      .paymentMethod-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
+    @media (max-width: 56.25em) {
+      .paymentMethod-setting {
+        width: 100%;
+        margin: 1rem auto;
+        padding: 1rem; } }
     .paymentMethod-setting h2 {
       font-size: 2.5rem;
       padding-bottom: 2rem;
@@ -1749,17 +1944,38 @@ body {
       text-align: center;
       border: 0;
       padding: 1rem 2rem .5rem 2rem; }
+      @media (max-width: 56.25em) {
+        .paymentMethod-setting td {
+          padding: .5rem 1rem .25rem 1rem;
+          font-size: .3rem; } }
     .paymentMethod-setting th {
       padding: 1rem 2rem .5rem 2rem;
       font-size: 1.3rem;
       background-color: #84cfe2;
       color: #fff; }
+      @media (max-width: 56.25em) {
+        .paymentMethod-setting th {
+          padding: .5rem 1rem .25rem 1rem;
+          font-size: .5rem; } }
     .paymentMethod-setting_btn {
       margin: 1rem auto;
       padding-left: 21%;
       padding-right: 21%; }
+      @media (max-width: 56.25em) {
+        .paymentMethod-setting_btn {
+          padding: 3rem;
+          display: inline;
+          position: relative; } }
+      @media (max-width: 37.5em) {
+        .paymentMethod-setting_btn {
+          padding: 1rem;
+          display: block;
+          position: relative; } }
     .paymentMethod-setting_form {
       padding: 1rem 2.5rem; }
+      @media (max-width: 56.25em) {
+        .paymentMethod-setting_form {
+          padding: .5rem 1.5rem; } }
   .paymentMethod_selectedCard:hover {
     background-color: #d8f5fc; }
   .paymentMethod_selectedCard-img {
@@ -1781,6 +1997,16 @@ body {
     position: relative;
     width: 130%;
     width: 120%; }
+    @media (max-width: 75em) {
+      .help-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
+    @media (max-width: 56.25em) {
+      .help-setting {
+        width: 100%;
+        margin: 1rem auto;
+        padding: 1rem; } }
     .help-setting h2 {
       font-size: 2.5rem;
       padding-bottom: 2rem;
@@ -1896,7 +2122,23 @@ body {
     text-align: center; }
 
 .sitterBio {
-  height: 100vh; }
+  margin: 0 5rem;
+  height: 100%; }
+
+.sitter_fillter {
+  background-color: #f7f7f7;
+  padding: 1rem 10rem;
+  margin: 0 0 2rem 0; }
+  .sitter_fillter select {
+    background-color: #fff;
+    border: 0.5px solid #84cfe2;
+    height: 3rem;
+    font-size: 1.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+    transition: all .1s;
+    margin-left: 1rem; }
+    .sitter_fillter select:hover {
+      transform: scale(1.01); }
 
 .adminUser {
   height: 100%;
@@ -1910,6 +2152,16 @@ body {
     margin: 1rem -20%;
     position: relative;
     width: 130%; }
+    @media (max-width: 75em) {
+      .adminUser-setting {
+        width: 100%;
+        padding: 2rem;
+        margin: 1rem auto; } }
+    @media (max-width: 56.25em) {
+      .adminUser-setting {
+        width: 100%;
+        margin: 1rem auto;
+        padding: 1rem; } }
     .adminUser-setting h2 {
       font-size: 2.5rem;
       padding-bottom: 2rem;
@@ -1975,6 +2227,7 @@ body {
     background-color: #e6f4f8; }
 
 .sitterApply {
+  height: 100%;
   margin: 2rem; }
   .sitterApply table {
     position: relative;
@@ -1983,7 +2236,15 @@ body {
     .sitterApply table td {
       width: 20rem; }
       .sitterApply table td:last-child {
-        width: 26rem; }
+        width: 30rem; }
+    @media (max-width: 56.25em) {
+      .sitterApply table {
+        margin: 3rem; }
+        .sitterApply table td {
+          width: 20rem; }
+          .sitterApply table td:last-child {
+            position: relative;
+            width: 100%; } }
   .sitterApply-input {
     width: 50rem; }
   .sitterApply-link {
@@ -1995,61 +2256,18 @@ body {
     .sitterApply-link:hover {
       transform: scale(1.1); }
   .sitterApply-unlicensedContent {
-    position: relative;
-    background-color: rgba(132, 207, 226, 0.3);
+    position: absolute;
+    /*background-color: rgba($color-primary-blue, 0.3);*/
     color: pink;
     display: block;
-    text-align: center;
-    margin: auto;
-    width: 130%; }
-  .sitterApply-checkbox {
-    text-align: right; }
-
-.sitterAccount-table {
-  border-collapse: collapse;
-  border: 0; }
-  .sitterAccount-table tr {
-    vertical-align: inherit;
-    border: 0; }
-    .sitterAccount-table tr:hover {
-      background-color: rgba(132, 207, 226, 0.2);
-      border: 0; }
-  .sitterAccount-table td {
-    /*background-color: $color-primary-bluedark;*/ }
-
-.redStar {
-  color: red; }
-
-.sitterApply {
-  margin: 2rem; }
-  .sitterApply table {
-    position: relative;
     text-align: left;
-    margin: 3rem 30%; }
-    .sitterApply table td {
-      width: 20rem; }
-      .sitterApply table td:last-child {
-        width: 26rem; }
-  .sitterApply-input {
-    width: 50rem; }
-  .sitterApply-link {
-    display: inline-block;
-    transition: all .2s;
-    text-decoration: none;
-    font-weight: 700;
-    color: #84cfe2; }
-    .sitterApply-link:hover {
-      transform: scale(1.1); }
-  .sitterApply-unlicensedContent {
-    position: relative;
-    background-color: rgba(132, 207, 226, 0.3);
-    color: pink;
-    display: block;
-    text-align: center;
     margin: auto;
     width: 130%; }
   .sitterApply-checkbox {
     text-align: right; }
+
+.relative {
+  display: table-cell; }
 
 .sitterAccount-table {
   border-collapse: collapse;
@@ -2060,11 +2278,155 @@ body {
     .sitterAccount-table tr:hover {
       background-color: rgba(132, 207, 226, 0.2);
       border: 0; }
-  .sitterAccount-table td {
-    /*background-color: $color-primary-bluedark;*/ }
 
 .redStar {
   color: red; }
+
+.task-notification {
+  border-radius: 50%;
+  background-color: #84cfe2;
+  color: #fff;
+  font-weight: 700;
+  padding: 1rem 1.5rem;
+  font-size: 1.5rem;
+  margin: auto .5rem;
+  box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.3); }
+
+.dashboard-box {
+  position: relative;
+  background-color: #fff;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  transition: .2s all;
+  width: 100%;
+  height: 20rem;
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 3rem;
+  font-size: 3rem;
+  font-weight: 700; }
+  .dashboard-box:hover {
+    box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.2);
+    transform: scale(1.1); }
+  .dashboard-box h4 {
+    font-size: 1.3rem;
+    color: #84cfe2; }
+  .dashboard-box_icon {
+    font-size: 6rem;
+    color: #fdcbcb; }
+
+.dashboard h2 {
+  font-size: 1.6rem;
+  text-align: right;
+  position: flex; }
+
+.checked {
+  color: orange; }
+
+.starr-dashboard {
+  text-align: center;
+  font-size: 2rem; }
+
+.starr-totalTask {
+  text-align: center;
+  font-size: 1rem; }
+
+.totalTask tr {
+  vertical-align: inherit;
+  border: 0; }
+  .totalTask tr:nth-child(even) {
+    background-color: rgba(132, 207, 226, 0.2); }
+
+.task-accept {
+  text-decoration: none;
+  color: #78c793;
+  border-radius: 10rem;
+  padding: .3rem;
+  border: 1px solid #78c793;
+  background-color: #fff;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  transition: .2s all;
+  font-size: 1rem; }
+  .task-accept:hover {
+    transform: scalex(1.1); }
+  .task-accept:active {
+    transform: scale(0.9); }
+
+.task-decline {
+  text-decoration: none;
+  color: #ce8787;
+  border-radius: 10rem;
+  padding: .3rem;
+  border: 1px solid #ce8787;
+  background-color: #fff;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  transition: .2s all;
+  font-size: 1rem; }
+  .task-decline:hover {
+    transform: scalex(1.1); }
+  .task-decline:active {
+    transform: scale(0.9); }
+
+.verify {
+  color: pink;
+  font-size: 2rem; }
+  .verify_verified {
+    color: green; }
+  .verify_unverified {
+    color: red; }
+  .verify_inprogress {
+    color: blue; }
+
+.passwordReset {
+  margin: 5rem;
+  padding-top: 10rem;
+  height: 100%; }
+  .passwordReset p {
+    text-align: justify; }
+  .passwordReset-h1 {
+    font-size: 2rem;
+    color: #2c6c7c; }
+  .passwordReset-h2 {
+    font-size: 1.8rem;
+    color: #388ca1; }
+  .passwordReset-h3 {
+    font-size: 1.6rem;
+    color: #84cfe2; }
+  .passwordReset-content {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.2);
+    padding: 1rem; }
+  .passwordReset-btn {
+    color: #fff;
+    background-color: #84cfe2;
+    border-radius: 5px;
+    padding: 1rem 3rem;
+    border: 1px solid #84cfe2;
+    font-size: 1.6rem;
+    text-align: center;
+    margin: 1rem 13rem; }
+  .passwordReset-heading {
+    font-size: 3rem;
+    color: #2c6c7c;
+    text-align: center; }
+  .passwordReset-left {
+    padding: 6rem 2rem; }
+  .passwordReset-input {
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: 1.6rem;
+    padding: .5rem 2rem;
+    display: block;
+    margin: 1rem; }
+  .passwordReset-p {
+    color: #388ca1;
+    text-align: center;
+    padding: 0 3rem; }
+  .passwordReset-set {
+    padding: 0 40rem; }
 
 /*
 npm run compile:sass //to transform to css file

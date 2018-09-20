@@ -1,0 +1,148 @@
+<% include ../partials/header  %>
+<script type= "text/javascript" src = "js/countries.js"></script>
+    <title>Hestia | My account - Setting</title>
+</head>
+
+<body class="request-sitter">
+    <nav class="navbar navbar-sticky page">
+        <div >
+            <ul>
+                <li><a href="/" class="navbar-band navbar-left">&nbsp</a></li>
+                <li><a href="/#about" class="navbar-left">About</a></li>
+                <li><a href="/#book" class="navbar-left">Our Services</a></li>
+                <li><a href="/#sitters" class="navbar-left">Sitters</a></li>
+                <li><a href="/#store" class="navbar-left">Store</a></li>
+                <li><a href="/apply" class="navbar-left">Join us</a></li>
+                <% if(user) { %>
+                    <li><a href="/logout" class="navbar-right"><i class="fas fa-sign-out-alt"></i>&nbspLogout</a></li>
+                    <li><a href="/account" class="navbar-right"><i class="fas fa-user"></i>&nbspMy Account</a></li>
+                    <li><a href="#" class="navbar-right">Hi, <%= user.name %></a></li>
+
+                    <% } else { %>
+                    <li><a href="/#login" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</a></li>
+                    <li><a href="/signup" class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a></li>
+                    <% } %>
+            </ul>
+        </div>
+    </nav>
+<section class="account">
+    <h1 class="heading-of-page">My Account</h1>
+    <div class="row">
+        <div class="col-1-of-2">
+            <div class="account-menu">
+                <div class="account__details">
+                        <ul>
+                                <li class="account__details-link-active"><i class="fas fa-user"></i><a href="/account" class="account__details-link">Account setting</a></li>
+                                <li><i class="fas fa-book"></i><a href="/user/booking" class="account__details-link">My Booking</a></li>
+                                <li><i class="fas fa-history"></i><a href="/user/history" class="account__details-link">Booking History</a></li>
+                                <li><i class="far fa-credit-card"></i><a href="/user/cards" class="account__details-link">Payment Method</a></li>
+                                <li><i class="fas fa-credit-card"></i><a href="/user/payment" class="account__details-link">Booking Payment</a></li>
+                                <li><i class="fas fa-file-invoice-dollar"></i><a href="/user/phistory" class="account__details-link">Payment History</a></li>
+                                <li><i class="fas fa-question-circle"></i><a href="/user/help" class="account__details-link">Help</a></li>
+                        </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-1-of-2">
+            <div class="account-setting ">
+                <h2>General Account Setting</h2>
+                <h3>Password change</h3>
+                <hr>
+                <div class="center-form">
+                <div class="row" >
+                    <form action="/changePassword" method="POST">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="account-setting-td"><label for="current-password">Current Password <span class="redStar">*</span></label></td>
+                                    <td class="account-setting-td"><input type="password" name="oldPassword" id="current-password" class="account-setting-input"></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td"><label for="new-password">New Password <span class="redStar">*</span></label></td>
+                                    <td class="account-setting-td"><input type="password" name="newPassword"  class="account-setting-input"></td>
+                                </tr>
+                                <tr>
+                                    <td class="account-setting-td"><label for="confirm-password">Confirm Password <span class="redStar">*</span></label></td>
+                                    <td class="account-setting-td"><input type="password" name="confirmPassword" id="confirm-password" class="account-setting-input"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="u-center-text">
+                            <input type="submit" name="save" class="account-setting-btn account-setting-btn-save" value="Save Change">
+                        </div>
+                    </form>
+                </div>
+                </div>
+                <h3>Basic Profile</h3>
+                <hr>
+                <div class="center-form">
+                    <form action="/changeAddress" method="POST">
+                    <table>
+                        <tbody>
+                            <tr class="account-setting-tr">
+                                <td class="account-setting-td"><label for="houseNo">House No.<span class="redStar">*</span></label></td>
+                                <td class="account-setting-td"><input type="text" name="houseNumber" id="houseNo" class="account-setting-input" value="<%= user.address.houseNumber %>"></td>
+                            </tr>
+                            <tr class="account-setting-tr">
+                                <td class="account-setting-td"><label for="street">Street <span class="redStar">*</span></label></td>
+                                <td class="account-setting-td"><input type="text" name="street" id="street" class="account-setting-input" value="<%= user.address.street %>"></td>
+                            </tr>
+                            <tr class="account-setting-tr">
+                                <td class="account-setting-td"><label for="zipCode">Zip code <span class="redStar">*</span></label></td>
+                                <td class="account-setting-td"><input type="text" name="zipCode" id="zipCode" class="account-setting-input" value="<%= user.address.zipCode %>"></td>
+                            </tr>
+                            <tr class="account-setting-tr">
+                                <td class="account-setting-td"><label for="state">Country <span class="redStar">*</span></label></td>
+                                <td class="account-setting-td"><select class="signup-box-form--input" id="country" name="country" ></select></td>
+                                
+                            </tr>
+                            <tr class="account-setting-tr">
+                                <td class="account-setting-td"><label for="state">City <span class="redStar">*</span></label></td>
+                                <td class="account-setting-td"><select class="signup-box-form--input" name="state" id="state"></select></td>
+                            </tr>
+                            <tr class="account-setting-tr">
+                                <td class="account-setting-td"><label for="phoneNumber">Phone number <span class="redStar">*</span></label></td>
+                                <td class="account-setting-td"><input type="text" name="phoneNumber" id="phoneNumber" class="account-setting-input" value="<%= user.phoneNumber %>"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="u-center-text">
+                        <input type="submit" name="save" class="account-setting-btn account-setting-btn-save" value="Save Change">
+                    </div>
+                </form>     
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script language="javascript">
+        var country = document.getElementById("country");
+        var state = document.getElementById("state");
+        populateCountries("country", "state"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+        // populateStates("country","state")
+        Array.prototype.forEach.call(country, each => {
+            if(each.value === "<%= user.address.country %>") {
+                document.getElementById('country').selectedIndex=each.index;
+                console.log(each);
+            }
+        });
+        country.style.color="black";
+        country.style.fontSize="1.5rem";
+        country.style.fontWeight="400";
+        populateStates("country","state");
+        Array.prototype.forEach.call(state, each => {
+            if(each.value === "<%= user.address.state %>") {
+                document.getElementById('state').selectedIndex=each.index;
+                console.log(each);
+            }
+        });
+        state.style.color="black";
+        state.style.fontSize="1.5rem";
+        state.style.fontWeight="400";
+    </script>
+
+
+
+
+ <% include ../partials/footer  %>

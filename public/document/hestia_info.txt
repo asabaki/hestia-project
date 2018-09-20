@@ -1,0 +1,26 @@
+sitters for kids, elderly people, houses and pets
+ search based on your location, ratings, language etc
+part 1 - sitters for whom 
+Kids - age, time, in house/organization, other details
+elderly people - age, time, in house/organization, other details
+pets - which animal, breed, in house/organization, other details
+house - location, time, other details
+
+
+part 2 - join as a sitter: license will be required 
+
+part 3 - online store 
+
+part 4 - sitters' profiles, contact number, history
+
+pay will be decided based on duration and for whom it is required.
+ 
+part 5- FAQ and suggestions 
+
+part 6 - sign up/login - contact number, email, house address+
+
+part 7 - payments - advance/full - online **
+Part 8 - Live chat!
+
+
+existing systems - care.com, nomador, sittercity, sitters.co.uk
