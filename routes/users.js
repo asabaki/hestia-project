@@ -1,7 +1,7 @@
 const express = require('express'),
     validator = require('validator'),
     exec = require('child_process').exec,
-    SystemHealthMonitor = require('system-health-monitor'),
+    Booking = require('../models/Booking'),
     router = express.Router({ mergeParams: true }),
     passport = require('../auth/auth.js'),
     User = require('../models/User.js'),
@@ -146,7 +146,8 @@ router.post('/request',isLoggedIn,async function(req,res) {
             res.render('user/book-sitter_list',{sitters,user:req.user});
         break;
         case 'baby':
-            sitters = await Sitter.find({'servicesOffered.kid':true});
+            sitters = await Sitter.find({'servicesOffered.kids':true});
+            console.log(sitters);
             res.render('user/book-sitter_list',{sitters,user:req.user});
         break;
         case 'elder':
@@ -170,7 +171,28 @@ router.post('/request',isLoggedIn,async function(req,res) {
 router.post('/book',isLoggedIn,async function(req,res) {
     try {
         console.log(req.body.sitter);
-        res.redirect('/');
+        const sitter = await Sitter.findById(req.body.sitter);
+        var service;
+        if(sitter.servicesOffered.houses) service='House';
+        if(sitter.servicesOffered.kids) service='Kid';
+        if(sitter.servicesOffered.aged) service='Elder';
+        if(sitter.servicesOffered.pets) service='Pet';
+        if(sitter.servicesOffered.challenged) service='Challenged';
+
+        const id = makeid();
+        const checkId = await Booking.findOne({no:id});
+        if(!checkId) {
+            const booking = await Booking.create({
+                no:id,
+                sitter: req.body.sitter,
+                user: req.user._id,
+                date: Date.now(),
+                service: service,
+                guardianTo: req.user.name
+            });
+            res.redirect('/');
+        }
+       
     } catch (e) {
 
     }
@@ -280,5 +302,13 @@ function isNotProvideInfo(req, res, next) {
     res.redirect('/signupInfo');
 
 }
-
+function makeid() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  
+    for (var i = 0; i < 5; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+  
+    return text;
+  }
 module.exports = router;

@@ -378,7 +378,8 @@
 
                     </div><!-- /row -->
                     
-                    				
+                                    
+                    <% const now = new Date() %>;
 					<div class="row">
 						<!-- TWITTER PANEL -->
 						<div class="col-md-4 mb">
@@ -400,13 +401,13 @@
 										];
 										var myDoughnut = new Chart(document.getElementById("serverstatus02").getContext("2d")).Doughnut(doughnutData);
 								</script>
-								<p>April 17, 2014</p>
+								<p><%=now.toLocaleDateString()%></p>
 								<footer>
 									<div class="pull-left">
 										<h5><i class="fa fa-hdd-o"></i> 17 GB</h5>
 									</div>
 									<div class="pull-right">
-										<h5>60% Used</h5>
+										<h5><%=memUsed%>% Used</h5>
 									</div>
 								</footer>
                       		</div><! -- /darkblue panel -->

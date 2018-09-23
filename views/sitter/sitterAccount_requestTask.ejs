@@ -17,7 +17,7 @@
                         <li><i class="far fa-calendar-alt"></i><a href="/sitter/availability" class="account__details-link">availability</a></li>
                         <li><i class="fas fa-book"></i><a href="/sitter/tasks" class="account__details-link">Total Tasks</a></li>
                         <li><i class="fas fa-history"></i><a href="/sitter/mytask" class="account__details-link">Current Tasks</a></li>
-                        <li class="account__details-link-active"><i class="fas fa-location-arrow"></i><a href="/sitter/requested" class="account__details-link">Request Tasks <span class="task-notification">2</span></a></li>
+                        <li class="account__details-link-active"><i class="fas fa-location-arrow"></i><a href="/sitter/requested" class="account__details-link">Request Tasks <span class="task-notification"><%=tasks.length%></span></a></li>
                         <li><i class="fas fa-question-circle"></i><a href="/sitter/help" class="account__details-link">Help</a></li>
                     </ul>
                 </div>
@@ -34,29 +34,28 @@
                             <td>Sitting for</td>
                             <td>Gardian</td>
                             <td>Date/Time</td>
-                            <td>Location</td>
                             <td>Price</td>
                             <td></td>
                     </thead>
                     <tbody class="bookingPayment-setting__tbody">
-                        
+                        <% var i=0 %>
+                        <% tasks.forEach((task) => { %>
                         <tr class="bookingPayment-setting__tr"> 
-                            <td><a href="#">0007</a></td>
-                            <td>elder</td>
-                            <td>mylie</td>
-                            <td>30/09/2018</td>
-                            <td>SG palya</td>
+                            <td><a href="#"><%=task.no%></a></td>
+                            <td><%=task.service%></td>
+                            <td><%=task.guardianTo%></td>
+                            <td><%=task.date.toLocaleDateString()%></td>
                             <td>300</td>
                             <td><a href="#" class="task-accept">Accept</a>
                                 <a href="#" class="task-decline">Decline</a>
                             </td>
                         </tr>
+                        <% }) %>
                         <tr class="bookingPayment-setting__tr"> 
                             <td><a href="#">0008</a></td>
                             <td>pets</td>
                             <td>kaka</td>
                             <td>30/09/2018</td>
-                            <td>indiranagar</td>
                             <td>500</td>
                             <td><a href="#" class="task-accept">Accept</a>
                                 <a href="#" class="task-decline">Decline</a>

@@ -5,6 +5,7 @@ const express = require('express'),
     router = express.Router({ mergeParams: true }),
     passport = require('../auth/auth.js'),
     User = require('../models/User.js'),
+    Booking = require('../models/Booking'),
     credential = require('../credential.json'),
     omise = require('omise')({
         'secretKey': credential.omise.skey,
@@ -16,28 +17,122 @@ const express = require('express'),
 // ================================================================================================
 // ====================================/* GET user */==============================================
 
-router.get('/',isLoggedIn, function (req, res) {
-    res.render('sitter/sitterAccount_dashboard', { user: req.user });
+router.get('/',isLoggedIn, async function (req, res) {
+    try {
+        const tasks = await Booking.find({
+            sitter: req.user._id
+        });
+        res.render('sitter/sitterAccount_dashboard', { 
+            user: req.user,
+            tasks
+         });
+    } catch(e) {
+        console.log(e);
+        res.render('sitter/page-error',{
+            emessage:e,
+            user:req.user
+        });
+    }
+    
 })
-router.get('/general', isLoggedIn, function (req, res) {
-    res.render('sitter/sitterAccount_general', { user: req.user });
+router.get('/general', isLoggedIn, async function (req, res) {
+    try {
+        const tasks = await Booking.find({
+            sitter: req.user._id
+        });
+        res.render('sitter/sitterAccount_general', { user: req.user ,tasks});
+    } catch(e) {
+        console.log(e);
+        res.render('sitter/page-error',{
+            emessage:e,
+            user:req.user
+        });
+    }
+    
 });
 router.get('/availability',isLoggedIn,async function (req, res) {
-    res.render('sitter/sitterAccount_availability', { user: req.user });
+    try {
+        const tasks = await Booking.find({
+            sitter: req.user._id
+        });
+        res.render('sitter/sitterAccount_availability', { user: req.user,tasks });
+    } catch(e) {
+        console.log(e);
+        res.render('sitter/page-error',{
+            emessage:e,
+            user:req.user
+        });
+    }
     
 });
 
-router.get('/tasks', isLoggedIn, function (req, res) {
-    res.render('sitter/sitterAccount_TotalTask', { user: req.user });
+router.get('/tasks', isLoggedIn,async function (req, res) {
+    try {
+        const tasks = await Booking.find({
+            sitter: req.user._id
+        });
+        res.render('sitter/sitterAccount_TotalTask', { user: req.user,tasks });
+
+    } catch(e) {
+        console.log(e);
+        res.render('sitter/page-error',{
+            emessage:e,
+            user:req.user
+        });
+    }
+    
 })
-router.get('/mytask', isLoggedIn, function (req, res) {
-    res.render('sitter/sitterAccount_currentTask', { user: req.user })
+router.get('/mytask', isLoggedIn, async  function (req, res) {
+    try {
+        const tasks = await Booking.find({
+            sitter: req.user._id
+        });
+        res.render('sitter/sitterAccount_currentTask', { user: req.user,tasks })
+    } catch(e) {
+        console.log(e);
+        res.render('sitter/page-error',{
+            emessage:e,
+            user:req.user
+        });
+    }
+    
 });
-router.get('/requested', isLoggedIn, function (req, res) {
-    res.render('sitter/sitterAccount_requestTask', { user: req.user });
+router.get('/requested', isLoggedIn, async function (req, res) {
+    try {
+        var _for=[];
+        const tasks = await Booking.find({
+            sitter: req.user._id
+        });
+
+        console.log(`${req.user.username} has ${tasks.length} tasks`);
+        res.render('sitter/sitterAccount_requestTask', { 
+            user: req.user,
+            tasks,
+        });
+
+    } catch (e) {
+        console.log(e);
+        res.render('sitter/page-error',{
+            emessage:e,
+            user:req.user
+        });
+    }
+    
 });
-router.get('/help',isLoggedIn,function(req,res) {
-    res.render('sitter/sitterAccount_help',{user:req.user});
+router.get('/help',isLoggedIn, async function(req,res) {
+    try {
+        const tasks = await Booking.find({
+            sitter: req.user._id
+        });
+        res.render('sitter/sitterAccount_help',{user:req.user,tasks});
+    } catch (e) {
+        console.log(e);
+        res.render('sitter/page-error',{
+            emessage:e,
+            user:req.user
+        });
+    }
+    
 })
 
 // ====================================/* POST User */==============================================

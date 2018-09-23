@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 
-var UserInfoSchema = new mongoose.Schema({
+var BookingSchema = new mongoose.Schema({
+	no: String,
 	sitter : {
 		type : mongoose.Schema.Types.ObjectId,
 		ref: 'Sitter'
@@ -9,15 +10,17 @@ var UserInfoSchema = new mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
 		ref: 'User'
 	},
+	guardianTo : String,
 	transaction : {
         type : mongoose.Schema.Types.ObjectId,
 		ref: 'Transaction'
 	},
 	language: String,
-    service : String,
+	service : String,
+	hours:Number,
     date: Date,
     additional: String
 });
 
 
-module.exports = mongoose.model("UserInfo", UserInfoSchema);
+module.exports = mongoose.model("Booking", BookingSchema);

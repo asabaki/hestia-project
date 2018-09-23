@@ -24,7 +24,7 @@ router.get("/",csrfProtection,function(req,res) {
         // if(!req.user.isSet) 
         //     res.status(200).redirect('signupInfo');
         // else
-        console.log(req.csrfToken());
+        // console.log(req.csrfToken());
             res.status(200).render("home",{user: req.user});
     }
     else
