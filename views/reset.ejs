@@ -30,7 +30,7 @@
     <h1 class="passwordReset-heading">New Password setting</h1>
     <p class="passwordReset-p">Your password has been reset.</p>
     <p class="passwordReset-p"> Please set new password</p>
-    <form action="/reset/<%=hash%>" method="POST">
+    <form action="/reset/<%=hash%>?_method=PUT" method="POST">
         <table>
             <tbody>
                 <tr>

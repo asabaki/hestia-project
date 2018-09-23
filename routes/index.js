@@ -5,6 +5,7 @@ const express         = require('express'),
       SystemHealthMonitor = require('system-health-monitor'),
       router          = express.Router({mergeParams: true}),
       passport        = require('../auth/auth.js'),
+      csrf  		  = require('csurf'),
       User            = require('../models/User.js'),
       credential      = require('../credential.json'),
       crypto          = require('crypto-js'),
@@ -13,18 +14,22 @@ const express         = require('express'),
           'omiseVersion': '2017-11-02'
       }),
       Sitter          = require('../models/Sitter'),
-      {ObjectID}        = require('mongodb');
+      {ObjectID}        = require('mongodb')
+      csrfProtection = csrf({ cookie: true });;
 /*------------------------------------------------------*/
 // ================== Home Page Route ====================
-router.get("/",function(req,res) {
+router.get("/",csrfProtection,function(req,res) {
     if (req.user!=null) 
     {
-        if(!req.user.isSet) 
-            res.status(200).redirect('signupInfo');
-        else
+        // if(!req.user.isSet) 
+        //     res.status(200).redirect('signupInfo');
+        // else
+        console.log(req.csrfToken());
             res.status(200).render("home",{user: req.user});
     }
     else
+        // console.log(req.csrfToken());
+        // console.log(csrf({value:'req.headers[\'csrf-token\']'}));
         res.status(200).render("home",{user: null});
 });
 router.get('/object',function(req,res) {
@@ -38,40 +43,6 @@ router.get('/object',function(req,res) {
     console.log(hash)
 });
 
-router.get('/cpu',async function(req,res) {
- 
-    const monitorConfig = {
-        checkIntervalMsec: 100,
-        mem: {
-            thresholdType: 'none'
-        },
-        cpu: {
-            calculationAlgo: 'last_value',
-            thresholdType: 'none'
-        }
-    };
-    const monitor = new SystemHealthMonitor(monitorConfig);
-    const startMonitor = await monitor.start();
-    try {
-        startMonitor;
-        const cpu = await monitor.getCpuUsage(),
-              cpuCount = await monitor.getCpuCount(),
-              memFree =  monitor.getMemFree(),
-              memTotal =  monitor.getMemTotal();
-        res.send({
-            "CPU": cpu,
-            "CPUcount": cpuCount,
-            "Mem Free": memTotal
-        })
-        monitor.stop();
-    } catch (e) {
-        res.send({
-            Error: e
-        })
-    }
-
-        
-})
 router.get('/checkList',function(req,res) {
     omise.customers.list(function(err, list) {
         res.send({
@@ -91,6 +62,15 @@ router.get("/logout",(req,res) => {
     res.redirect('/');
 });
 
+function isLoggedIn(req, res, next) {
 
+    // if user is authenticated in the session, carry on
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    // if they aren't redirect them to the home page
+    else
+        res.redirect('/login');
+}
 
 module.exports = router;

@@ -1,10 +1,8 @@
-@media screen and (max-width: 70rem) {
+@media screen and (max-width: 56rem) {
   .navbar-sticky {
-    visibility: hidden;
-    /*display: none;*/ }
+    visibility: hidden; }
   .navbar-header {
-    visibility: hidden;
-    /*display: none;*/ } }
+    visibility: hidden; } }
 
 /*
 0-600px phone
@@ -316,6 +314,13 @@ body {
   transition: all .2s;
   position: relative;
   padding: 1.5rem 4rem; }
+  @media (max-width: 56.25em) {
+    .btn-signup {
+      display: block;
+      margin-left: 13rem; } }
+  @media (max-width: 37.5em) {
+    .btn-signup {
+      margin-left: 10rem; } }
   .btn-signup-center {
     margin: 1rem 62.5rem;
     position: absolute; }
@@ -1211,24 +1216,76 @@ body {
       padding: 5rem 0 2.5rem 0; } }
 
 .request-sitter {
-  height: 100%;
-  margin: 5rem; }
+  margin: 5rem;
+  position: relative; }
   .request-sitter_box {
-    width: 130%;
-    margin-left: -10rem;
-    border-left: 2px solid #84cfe2;
-    padding-left: 2rem; }
-    @media (max-width: 56.25em) {
+    width: 120%;
+    left: 50%;
+    right: 50%;
+    margin-left: -45rem;
+    position: relative; }
+    @media (max-width: 75em) {
       .request-sitter_box {
         width: 100%;
-        margin-left: -5rem;
+        margin-left: -26rem;
         border-left: none;
         padding-left: 0; } }
+    @media (max-width: 56.25em) {
+      .request-sitter_box {
+        width: 120%;
+        margin-left: -37rem;
+        border-left: none;
+        padding-left: 0; } }
+    @media (max-width: 37.5em) {
+      .request-sitter_box {
+        width: 120%;
+        margin-left: -22rem;
+        border-left: none;
+        padding-left: 0; } }
+  .request-sitter .account-setting-td {
+    width: 29rem; }
+    .request-sitter .account-setting-td:last-child {
+      width: 25rem; }
+    @media (max-width: 75em) {
+      .request-sitter .account-setting-td {
+        width: 20rem; }
+        .request-sitter .account-setting-td:last-child {
+          width: 12rem; } }
+    @media (max-width: 56.25em) {
+      .request-sitter .account-setting-td {
+        width: 30rem; }
+        .request-sitter .account-setting-td:last-child {
+          width: 25rem; } }
+    @media (max-width: 37.5em) {
+      .request-sitter .account-setting-td {
+        width: 30rem; }
+        .request-sitter .account-setting-td:last-child {
+          width: 20rem; } }
   .request-sitter_content {
+    width: 100%;
     position: relative;
-    margin: 0; }
-  .request-sitter #sitterList td {
-    padding: 1rem; }
+    left: 10%; }
+    .request-sitter_content:first-child {
+      padding-left: 3rem; }
+      @media (max-width: 37.5em) {
+        .request-sitter_content:first-child {
+          padding-left: 0rem; } }
+    .request-sitter_content-1 {
+      border-left: 2px solid #84cfe2; }
+      @media (max-width: 75em) {
+        .request-sitter_content-1 {
+          width: 120%;
+          padding-right: 2rem; } }
+      @media (max-width: 56.25em) {
+        .request-sitter_content-1 {
+          border-right: 2px solid #84cfe2;
+          width: 120%; } }
+      @media (max-width: 37.5em) {
+        .request-sitter_content-1 {
+          border-right: none;
+          margin-left: -1rem;
+          border: none;
+          width: 100%; } }
   .request-sitter_img {
     -webkit-clip-path: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
@@ -1237,22 +1294,262 @@ body {
     font-size: 1rem !important; }
   .request-sitter_sitterList {
     width: 100%;
-    text-align: center; }
+    text-align: center;
+    left: 50%;
+    right: 50%; }
+    .request-sitter_sitterList td {
+      padding-left: .5rem; }
     @media (max-width: 56.25em) {
       .request-sitter_sitterList {
-        width: 80%;
-        margin-left: -2.5rem; } }
+        width: 115%;
+        margin-left: -2.5rem;
+        font-size: 1.2rem; } }
+    @media (max-width: 75em) {
+      .request-sitter_sitterList {
+        width: 100%;
+        margin-left: -2.5rem;
+        font-size: 1.2rem; } }
     @media (max-width: 37.5em) {
       .request-sitter_sitterList {
-        width: 70%;
+        width: 130%;
         font-size: 1.3rem;
-        margin-left: -2.7rem; } }
+        margin-left: -2.7rem; }
+        .request-sitter_sitterList td {
+          padding-left: 0rem; } }
+  .request-sitter_btn {
+    text-align: center;
+    left: 50%;
+    right: 50%; }
 
 .timeSlot {
   display: inline; }
 
 #sitterList_table {
   visibility: hidden; }
+
+.bookingDetail {
+  text-align: center;
+  padding: 0 30%;
+  width: 100%;
+  margin: 1rem; }
+  .bookingDetail table {
+    text-align: left; }
+  .bookingDetail_textarea {
+    resize: vertical;
+    width: 20rem;
+    height: auto;
+    font-size: 1.4rem;
+    border-radius: .5rem;
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15); }
+
+#type_detail {
+  position: relative; }
+
+.border-bott {
+  border-top: 1px solid #84cfe2; }
+
+.booking-status {
+  height: 100%;
+  width: 100%;
+  margin: 5rem 0;
+  position: relative;
+  color: #000;
+  position: relative; }
+  @media (max-width: 56.25em) {
+    .booking-status {
+      width: 70%;
+      left: 15%;
+      position: relative; } }
+  @media (max-width: 37.5em) {
+    .booking-status {
+      font-size: 1.3rem !important;
+      left: 15%;
+      padding: 0;
+      position: relative; } }
+  @media (max-width: 37.5em) {
+    .booking-status td {
+      width: 20rem;
+      padding: .5rem; } }
+  .booking-status_container {
+    width: 80rem;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 5px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    left: 50%;
+    transform: translateX(-50%);
+    position: relative;
+    padding: 2rem; }
+    @media (max-width: 56.25em) {
+      .booking-status_container {
+        width: 60rem;
+        left: 50%; } }
+    @media (max-width: 37.5em) {
+      .booking-status_container {
+        width: 50rem; } }
+    .booking-status_container h3 {
+      text-align: right; }
+    .booking-status_container h1 {
+      text-align: center;
+      font-size: 3rem; }
+    .booking-status_container h2 {
+      font-size: 2rem; }
+    .booking-status_container h4 {
+      text-align: right;
+      font-size: 1.9rem; }
+    .booking-status_container .pending {
+      color: #84cfe2; }
+    .booking-status_container .canceled {
+      color: #ce8787; }
+    .booking-status_container .progressing {
+      color: #fce190; }
+    .booking-status_container .confirmed {
+      color: #78c793; }
+    .booking-status_container .confirmed {
+      color: #78c793; }
+    .booking-status_container .done {
+      color: #388ca1; }
+  .booking-status #print {
+    text-align: center;
+    position: relative;
+    padding: 1rem;
+    margin: 1rem 33rem;
+    border-radius: 5px; }
+    @media (max-width: 56.25em) {
+      .booking-status #print {
+        margin: 1rem 23rem; } }
+    @media (max-width: 37.5em) {
+      .booking-status #print {
+        margin: 1rem 18rem; } }
+
+/*==============star==========*/
+.rating {
+  position: absolute;
+  display: flex;
+  transform: translate(-50%, -50%) rotateY(180deg);
+  margin-left: 7rem; }
+  .rating input {
+    display: none; }
+  .rating label {
+    display: block;
+    cursor: pointer;
+    width: 3rem; }
+    .rating label:before {
+      font-family: FontAwesome;
+      content: "\f005";
+      position: relative;
+      display: block;
+      font-size: 3rem;
+      color: #8f8f8f; }
+    .rating label:after {
+      font-family: FontAwesome;
+      content: "\f005";
+      position: absolute;
+      top: 0;
+      display: block;
+      font-size: 3rem;
+      color: #ffbd09;
+      opacity: 0;
+      transition: .5s;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); }
+  .rating label:hover:after,
+  .rating label:hover ~ label:after,
+  .rating input:checked ~ label:after {
+    opacity: 1; }
+  .rating .checked {
+    display: block;
+    width: 3rem; }
+    .rating .checked:before {
+      font-family: FontAwesome;
+      content: "\f005";
+      position: relative;
+      display: block;
+      font-size: 3rem;
+      color: #ffbd09; }
+  .rating .starr {
+    display: block;
+    width: 3rem; }
+    .rating .starr:before {
+      font-family: FontAwesome;
+      content: "\f005";
+      position: relative;
+      display: block;
+      font-size: 3rem;
+      color: #8f8f8f; }
+
+#rating_star {
+  margin-left: -8rem;
+  font-size: 2.5rem; }
+  @media (max-width: 37.5em) {
+    #rating_star {
+      margin-left: 0;
+      padding-left: 2rem; } }
+  @media (max-width: 56.25em) {
+    #rating_star {
+      font-size: 1.5rem;
+      margin-left: 0;
+      padding-left: 2rem; } }
+
+#confirmed {
+  margin-left: 1rem;
+  font-size: 2.5rem;
+  color: transparent;
+  background-color: transparent;
+  border: none;
+  padding: 1rem;
+  transition: all .2s; }
+  #confirmed::before {
+    font-family: FontAwesome;
+    content: "\f058"; }
+  #confirmed:hover {
+    transform: scale(1.1); }
+  #confirmed:active, #confirmed:visited {
+    transform: translateY(0.5rem); }
+  @media (max-width: 56.25em) {
+    #confirmed {
+      font-size: 2rem; } }
+
+.reciept {
+  margin: 0 auto;
+  margin-top: 1rem;
+  padding-bottom: 2rem;
+  position: relative;
+  width: 50rem;
+  border: 1px solid #c4c4c4; }
+  @media (max-width: 37.5em) {
+    .reciept {
+      width: 30rem; } }
+  .reciept_h2 {
+    margin-top: 1rem;
+    text-align: center;
+    color: black; }
+  .reciept_h3 {
+    color: #c4c4c4;
+    text-transform: uppercase;
+    text-align: center !important;
+    font-size: 1.3rem; }
+  .reciept_hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(196, 196, 196, 0), rgba(196, 196, 196, 0.75), rgba(0, 0, 0, 0));
+    margin: 1rem 0; }
+  .reciept_p {
+    text-align: center; }
+  .reciept_table {
+    margin: 0 auto; }
+    .reciept_table td {
+      padding: 0 1rem; }
+      .reciept_table td:first-child {
+        text-transform: capitalize;
+        color: #8f8f8f;
+        text-align: right;
+        font-weight: bold; }
+  .reciept_img {
+    left: 50%;
+    top: -50%;
+    transform: translate(-50%, 10%);
+    position: relative;
+    width: 7rem; }
 
 .section-signUp {
   height: 100%;
@@ -1332,6 +1629,11 @@ body {
   margin-left: 20%;
   margin-top: 10%;
   position: relative; }
+  @media (max-width: 56.25em) {
+    .signup-box {
+      width: 100%;
+      margin-left: 3%;
+      margin-top: 0%; } }
   .signup-box h4 {
     color: black;
     font-size: 3rem; }
@@ -1343,6 +1645,18 @@ body {
     padding-bottom: 1rem;
     margin-left: 25%;
     width: 50%; }
+    @media (max-width: 37.5em) {
+      .signup-box--detail {
+        width: 100%;
+        margin-left: 10%; } }
+    @media (max-width: 56.25em) {
+      .signup-box--detail {
+        width: 80%;
+        margin-left: 10%; } }
+    @media (max-width: 75em) {
+      .signup-box--detail {
+        width: 70%;
+        margin-left: 15%; } }
     .signup-box--detail h3 {
       color: #388ca1;
       font-size: 4rem;
@@ -1354,6 +1668,9 @@ body {
       color: #f7c052;
       margin: 2rem 45% 2rem 45%;
       margin-top: 2rem; }
+      @media (max-width: 37.5em) {
+        .signup-box--detail .icon_form {
+          margin: 2rem 40%; } }
     .signup-box--detail-btn {
       width: 30rem;
       height: 4rem;
@@ -1399,10 +1716,13 @@ body {
       transform: scale(1.03); }
     @media (max-width: 56.25em) {
       .signup-box-form--input {
-        width: 20rem; } }
+        width: 30rem; } }
     @media (max-width: 75em) {
       .signup-box-form--input {
-        width: 25rem; } }
+        width: 35rem; } }
+    @media (max-width: 37.5em) {
+      .signup-box-form--input {
+        width: 27rem; } }
   .signup-box-form--term {
     display: inline;
     color: #707070; }
@@ -1420,6 +1740,10 @@ body {
 .signup-benefit {
   margin-top: 30%;
   margin-left: 30%; }
+  @media (max-width: 56.25em) {
+    .signup-benefit {
+      margin-top: 0%;
+      margin-left: 10%; } }
 
 .login {
   text-align: center;
@@ -1597,13 +1921,7 @@ body {
     @media (max-width: 75em) {
       .account-setting {
         width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
-    @media (max-width: 87.5em) {
-      .account-setting {
-        width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
+        margin-left: -1rem; } }
     @media (max-width: 56.25em) {
       .account-setting {
         width: 100%;
@@ -1706,12 +2024,8 @@ body {
       margin: 1rem 15rem -2rem; }
 
 .center-form {
-  margin-left: 10rem;
-  margin-right: 10rem; }
-  @media (max-width: 56.25em) {
-    .center-form {
-      margin-left: auto;
-      margin-right: auto; } }
+  left: 50%;
+  right: 50%; }
 
 .myBooking {
   height: 100%;
@@ -1728,13 +2042,7 @@ body {
     @media (max-width: 75em) {
       .myBooking-setting {
         width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
-    @media (max-width: 87.5em) {
-      .myBooking-setting {
-        width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
+        margin-left: -1rem; } }
     @media (max-width: 56.25em) {
       .myBooking-setting {
         width: 100%;
@@ -1772,13 +2080,7 @@ body {
     @media (max-width: 75em) {
       .bookingHistory-setting {
         width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
-    @media (max-width: 87.5em) {
-      .bookingHistory-setting {
-        width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
+        margin-left: -1rem; } }
     @media (max-width: 56.25em) {
       .bookingHistory-setting {
         width: 100%;
@@ -1816,13 +2118,7 @@ body {
     @media (max-width: 75em) {
       .bookingPayment-setting {
         width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
-    @media (max-width: 87.5em) {
-      .bookingPayment-setting {
-        width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
+        margin-left: -1rem; } }
     @media (max-width: 56.25em) {
       .bookingPayment-setting {
         width: 100%;
@@ -1949,13 +2245,7 @@ body {
     @media (max-width: 75em) {
       .paymentHistory-setting {
         width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
-    @media (max-width: 87.5em) {
-      .paymentHistory-setting {
-        width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
+        margin-left: -1rem; } }
     @media (max-width: 56.25em) {
       .paymentHistory-setting {
         width: 100%;
@@ -1993,13 +2283,7 @@ body {
     @media (max-width: 75em) {
       .paymentMethod-setting {
         width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
-    @media (max-width: 87.5em) {
-      .paymentMethod-setting {
-        width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
+        margin-left: -1rem; } }
     @media (max-width: 56.25em) {
       .paymentMethod-setting {
         width: 100%;
@@ -2082,13 +2366,7 @@ body {
     @media (max-width: 75em) {
       .help-setting {
         width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
-    @media (max-width: 87.5em) {
-      .help-setting {
-        width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
+        margin-left: -1rem; } }
     @media (max-width: 56.25em) {
       .help-setting {
         width: 100%;
@@ -2216,6 +2494,9 @@ body {
   background-color: #f7f7f7;
   padding: 1rem 10rem;
   margin: 0 0 2rem 0; }
+  @media (max-width: 56.25em) {
+    .sitter_fillter {
+      padding: 1rem 1rem; } }
   .sitter_fillter select {
     background-color: #fff;
     border: 0.5px solid #84cfe2;
@@ -2226,6 +2507,11 @@ body {
     margin-left: 1rem; }
     .sitter_fillter select:hover {
       transform: scale(1.01); }
+    @media (max-width: 37.5em) {
+      .sitter_fillter select {
+        height: 2rem;
+        font-size: 1.2rem !important;
+        margin-left: .2rem; } }
   .sitter_fillter-reset {
     background-color: #fff;
     border: 1px solid #84cfe2;
@@ -2239,6 +2525,10 @@ body {
       transform: scale(1.1); }
     .sitter_fillter-reset:active {
       transform: translateY(0.3rem) scale(0.9); }
+    @media (max-width: 37.5em) {
+      .sitter_fillter-reset {
+        padding: .2rem .5rem;
+        margin-top: 1rem; } }
   .sitter_fillter-search {
     background-color: #84cfe2;
     border: 1px solid #84cfe2;
@@ -2252,6 +2542,10 @@ body {
       transform: scale(1.1); }
     .sitter_fillter-search:active {
       transform: translateY(0.3rem) scale(0.9); }
+    @media (max-width: 37.5em) {
+      .sitter_fillter-search {
+        padding: .2rem .5rem;
+        margin-top: 1rem; } }
 
 .adminUser {
   height: 100%;
@@ -2268,13 +2562,7 @@ body {
     @media (max-width: 75em) {
       .adminUser-setting {
         width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
-    @media (max-width: 87.5em) {
-      .adminUser-setting {
-        width: 100%;
-        padding: 2rem;
-        margin: 1rem auto; } }
+        margin-left: -1rem; } }
     @media (max-width: 56.25em) {
       .adminUser-setting {
         width: 100%;
@@ -2410,6 +2698,18 @@ body {
   margin: auto .5rem;
   box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.3); }
 
+.dashboard .col-1-of-4 {
+  float: left; }
+  .dashboard .col-1-of-4:not(:last-child) {
+    margin-right: 6rem; }
+    @media (max-width: 75em) {
+      .dashboard .col-1-of-4:not(:last-child) {
+        margin-right: 0;
+        margin-bottom: 6rem; } }
+  @media (max-width: 75em) {
+    .dashboard .col-1-of-4 {
+      width: 100% !important; } }
+
 .dashboard-box {
   position: relative;
   background-color: #fff;
@@ -2423,6 +2723,16 @@ body {
   padding-top: 3rem;
   font-size: 3rem;
   font-weight: 700; }
+  @media (max-width: 75em) {
+    .dashboard-box {
+      width: 70%;
+      left: 20%;
+      right: 25%; } }
+  @media (max-width: 56.25em) {
+    .dashboard-box {
+      width: 100%;
+      left: 0;
+      right: 0; } }
   .dashboard-box:hover {
     box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.2);
     transform: scale(1.1); }

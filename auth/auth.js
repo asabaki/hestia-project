@@ -1,5 +1,6 @@
 const	User					= require('../models/User.js'),
 		Sitter					= require('../models/Sitter'),
+		Admin					= require('../models/Admin'),
 		UserInfo				= require('../models/UserInfo.js'),
 		passport				= require('passport'),
 		LocalStrategy			= require('passport-local'),
@@ -17,6 +18,7 @@ const googleAuth = new google.auth.OAuth2(
 
 passport.use('sitter',new LocalStrategy(Sitter.authenticate()));
 passport.use('user',new LocalStrategy(User.authenticate()));
+passport.use('admin',new LocalStrategy(Admin.authenticate()));
 
 passport.use(new GoogleStrategy({
 	clientID: CREDENTIALS.google.clientID,
@@ -114,6 +116,7 @@ passport.use(new TwitterStrategy({
 passport.use(User.createStrategy());
 require('./init.js')(User, passport);
 passport.use(Sitter.createStrategy());
+passport.use(Admin.createStrategy());
 // require('./init.js')(Sitter, passport);
 
 

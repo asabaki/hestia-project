@@ -1,4 +1,5 @@
 <% include ../partials/header %>
+<script type= "text/javascript" src = "/js/countries.js"></script>
     <title>Hestia | Sitter - availability</title>
 
 </head>
@@ -63,16 +64,16 @@
                 <hr>
                 <div class="center-form">
                 <div class="row" >
-                    <form action="#">
+                    <form action="/sitter/changePassword" method="POST">
                         <table>
                             <tbody>
                                 <tr>
                                     <td class="account-setting-td"><label for="current-password">Current Password <span class="redStar">*</span></label></td>
-                                    <td class="account-setting-td"><input type="password" name="current-password" id="current-password" class="account-setting-input"></td>
+                                    <td class="account-setting-td"><input type="password" name="currentpassword" id="current-password" class="account-setting-input"></td>
                                 </tr>
                                 <tr>
                                     <td class="account-setting-td"><label for="new-password">New Password <span class="redStar">*</span></label></td>
-                                    <td class="account-setting-td"><input type="password" name="street" id="street" class="account-setting-input"></td>
+                                    <td class="account-setting-td"><input type="password" name="newpassword" id="street" class="account-setting-input"></td>
                                 </tr>
                                 <tr>
                                     <td class="account-setting-td"><label for="confirm-password">Confirm Password <span class="redStar">*</span></label></td>
@@ -95,15 +96,15 @@
                         <tbody>
                             <tr class="account-setting-tr">
                                 <td class="account-setting-td"><label for="houseNo">House No.<span class="redStar">*</span></label></td>
-                                <td class="account-setting-td"><input type="text" name="houseNo" id="houseNo" class="account-setting-input"></td>
+                                <td class="account-setting-td"><input type="text" name="houseNo" id="houseNo" value="<%= user.address.houseNumber %>" class="account-setting-input"></td>
                             </tr>
                             <tr class="account-setting-tr">
                                 <td class="account-setting-td"><label for="street">Street <span class="redStar">*</span></label></td>
-                                <td class="account-setting-td"><input type="text" name="street" id="street" class="account-setting-input"></td>
+                                <td class="account-setting-td"><input type="text" name="street" id="street" value="<%= user.address.street %>" class="account-setting-input"></td>
                             </tr>
                             <tr class="account-setting-tr">
                                 <td class="account-setting-td"><label for="zipCode">Zip code <span class="redStar">*</span></label></td>
-                                <td class="account-setting-td"><input type="text" name="zipCode" id="zipCode" class="account-setting-input"></td>
+                                <td class="account-setting-td"><input type="text" name="zipCode" id="zipCode" value="<%= user.address.zipCode %>" class="account-setting-input"></td>
                             </tr>
                             <tr class="account-setting-tr">
                                 <td class="account-setting-td"><label for="city">Country <span class="redStar">*</span></label></td>
@@ -115,11 +116,11 @@
                             </tr>
                             <tr class="account-setting-tr">
                                 <td class="account-setting-td"><label for="zipCode">City <span class="redStar">*</span></label></td>
-                                <td class="account-setting-td"><input type="text" name="city" id="city" class="account-setting-input"></td>
+                                <td class="account-setting-td"><input type="text" name="city" id="city" value="<%= user.address.city %>" class="account-setting-input"></td>
                             </tr>
                             <tr class="account-setting-tr">
                                 <td class="account-setting-td"><label for="phoneNumber">Phone number <span class="redStar">*</span></label></td>
-                                <td class="account-setting-td"><input type="text" name="phoneNumber" id="phoneNumber" class="account-setting-input"></td>
+                                <td class="account-setting-td"><input type="text" name="phoneNumber" id="phoneNumber" value="<%= user.phoneNumber %>" class="account-setting-input"></td>
                             </tr>
                         </tbody>
                     </table>
@@ -130,4 +131,31 @@
         </div>
     </div>
 </section>
+
+<script language="javascript">
+        var country = document.getElementById("country");
+        var state = document.getElementById("state");
+        populateCountries("country", "state"); // first parameter is id of country drop-down and second parameter is id of state drop-down
+        // populateStates("country","state")
+        Array.prototype.forEach.call(country, each => {
+            if(each.value === "<%= user.address.country %>") {
+                document.getElementById('country').selectedIndex=each.index;
+                console.log(each);
+            }
+        });
+        country.style.color="black";
+        country.style.fontSize="1.5rem";
+        country.style.fontWeight="400";
+        populateStates("country","state");
+        Array.prototype.forEach.call(state, each => {
+            if(each.value === "<%= user.address.state %>") {
+                document.getElementById('state').selectedIndex=each.index;
+                console.log(each);
+            }
+        });
+        state.style.color="black";
+        state.style.fontSize="1.5rem";
+        state.style.fontWeight="400";
+    </script>
+
 <% include ../partials/footer %>

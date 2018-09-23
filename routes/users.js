@@ -5,6 +5,7 @@ const express = require('express'),
     router = express.Router({ mergeParams: true }),
     passport = require('../auth/auth.js'),
     User = require('../models/User.js'),
+    Admin = require('../models/Admin'),
     credential = require('../credential.json'),
     omise = require('omise')({
         'secretKey': credential.omise.skey,
@@ -16,8 +17,29 @@ const express = require('express'),
 // ================================================================================================
 // ====================================/* GET user */==============================================
 
-router.get('/', function (req, res) {
+router.get('/', isLoggedIn,function (req, res) {
+    if(req.user) {
+        if(Admin.prototype.isPrototypeOf(req.user)) {
+            console.log(req.url);
+            res.redirect('/admin/');
+        } else {
+            res.render('user/account', { user: req.user });
+        }
+    } else
     res.render('user/account', { user: req.user });
+
+});
+router.get('/request',async function(req,res) {
+    try {
+        const sitters = await Sitter.find({});
+        res.render('user/book-sitter',{
+            user: req.user,
+            sitters,
+
+        });
+    } catch(e) {
+
+    }
 })
 router.get('/checkout', function (req, res) {
     res.render('user/paymentTest');
@@ -106,24 +128,68 @@ router.post('/checkout', function (req, res) {
         message: req.body
     })
 });
-router.post('/charge', function (req, res) {
-    omise.charges.create({
-        'amount': '100000',
-        'currency': 'thb',
-        'customer': 'cust_test_5cx3dprh5kszzi4ew66'
-    }, function (error, charge) {
-        if (charge.paid) {
-            res.send({
-                message: "Payment Successful"
-            });
-        } else {
-            res.send({
-                message: error
-            })
-        }
-        /* Response. */
-    });
+router.post('/request',async function(req,res) {
+    // console.log(req.body);
+    var sitters;
+    switch(req.body.service) {
+        
+        case 'house': 
+            sitters = await Sitter.find({'servicesOffered.houses':true});
+            res.render('user/book-sitter_list',{sitters,user:req.user});
+            // console.log(sitters);
+        break;
+        case 'pet':
+            sitters = await Sitter.find({'servicesOffered.pets':true});
+            res.render('user/book-sitter_list',{sitters,user:req.user});
+        break;
+        case 'baby':
+            sitters = await Sitter.find({'servicesOffered.kid':true});
+            res.render('user/book-sitter_list',{sitters,user:req.user});
+        break;
+        case 'elder':
+            sitters = await Sitter.find({'servicesOffered.aged':true});
+            res.render('user/book-sitter_list',{sitters,user:req.user});
+        break;
+        case 'disability':
+            sitters = await Sitter.find({'servicesOffered.challenged':true});
+            res.render('user/book-sitter_list',{sitters,user:req.user});
+        break;
+        default:
+            res.redirect('/user/request');
+            // console.log(req.body.service);
+        // res.render('user/book-sitter_list',{sitters,user:req.user});
+
+    }
+    // res.render('user/book-sitter_list',{sitters,user:req.user});
+   
+    // res.redirect('/user/request');
 });
+router.post('/book',async function(req,res) {
+    try {
+        console.log(req.body.sitter);
+        res.redirect('/');
+    } catch (e) {
+
+    }
+})
+// router.post('/charge', function (req, res) {
+//     omise.charges.create({
+//         'amount': '100000',
+//         'currency': 'thb',
+//         'customer': 'cust_test_5cx3dprh5kszzi4ew66'
+//     }, function (error, charge) {
+//         if (charge.paid) {
+//             res.send({
+//                 message: "Payment Successful"
+//             });
+//         } else {
+//             res.send({
+//                 message: error
+//             })
+//         }
+//         /* Response. */
+//     });
+// });
 router.post('/listCard', function (req, res) {
     omise.customers.listCards('cust_test_5cx6z5wbpyojlaxm6td', function (error, list) {
         if (!error) {

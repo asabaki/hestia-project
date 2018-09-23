@@ -9,6 +9,7 @@
                 <li><a href="/apply" class="navbar-left">Join us</a></li>
                 <% if(user) { %>
                     <% if(user.name) { %>
+
                         <li>
                             <a href="/logout" class="navbar-right">
                                 <i class="fas fa-sign-out-alt"></i>Logout</a>
@@ -19,10 +20,10 @@
                         </li>
                         <li>
                             <a href="#" class="navbar-right">Hi,
-                                <%= user.name|user.firstname %>
+                                <%= user.name %>
                             </a>
                         </li>
-                        <% } else { %>
+                        <% } else  { %>
                             <li>
                                 <a href="/logout" class="navbar-right">
                                     <i class="fas fa-sign-out-alt"></i>Logout</a>
@@ -39,7 +40,7 @@
                             <% } %>
                             <% } else { %>
                                 <li>
-                                    <a href="/#login" class="navbar-right">
+                                    <a href="#login" class="navbar-right">
                                         <i class="fas fa-user"></i>&nbspLogin</a>
                                 </li>
                                 <li>

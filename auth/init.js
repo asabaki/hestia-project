@@ -1,4 +1,5 @@
 const User = require('../models/User'),
+      Admin = require('../models/Admin'),
       Sitter = require('../models/Sitter');
 
 module.exports = (Account, passport) =>  {
@@ -14,8 +15,14 @@ module.exports = (Account, passport) =>  {
         done(err, user);
       } else {
         Sitter.findById(id,function(err,sitter) {
+          if(sitter) {
+              done(err,sitter);
+          } else {
+            Admin.findById(id,function(err,admin) {
+              done(err,admin);
+            })
+          }
 
-          done(err,sitter);
         })
       }
       

@@ -2,7 +2,7 @@
 
     'use strict';
     // var validator = require('validator');
-    Omise.setPublicKey('pkey_test_5cx2zz9knttxpy48vuj');
+    Omise.setPublicKey('pkey_test_5dbzqyciea85rl04az6');
     
     var checkoutForm = document.getElementById('checkout-form');
     checkoutForm.addEventListener('submit', submitHandler, false);

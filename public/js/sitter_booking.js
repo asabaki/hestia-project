@@ -11,10 +11,12 @@ var starDate,startMonth,startYear,startDay,maxDate;
 var nowDate,nowTime;
 var n,i;
 
+var _service,_language,_license,_date,_from,_to;
+
 var timeSlot='<tr class="timeSelector">'+
                 '<td class="account-setting-td timeOfDay" >Time : </td>'+
                 '<td class="account-setting-td">'+
-                        '<select name="service" id="fromTime" class="timeSlot">'+
+                        '<select name="from" id="fromTime" class="timeSlot">'+
                             '<option value="" selected="selected" disabled>From</option>'+
                             '<option value="0">12.00 am</option>'+
                             '<option value="1">1.00 am</option>'+
@@ -41,7 +43,7 @@ var timeSlot='<tr class="timeSelector">'+
                             '<option value="22">10.00 pm</option>'+
                             '<option value="23">11.00 pm</option>'+
                         '</select> to '+
-                        '<select name="service" id="toTime" class="timeSlot">'+
+                        '<select name="to" id="toTime" class="timeSlot">'+
                             '<option value="" selected="selected" disabled>To</option>'+
                             '<option value="0">12.00 am</option>'+
                             '<option value="1">1.00 am</option>'+
@@ -70,7 +72,7 @@ var timeSlot='<tr class="timeSelector">'+
                         '</select>'+
                 '</tr>';
 
-var sitter='<tr class="paymentMethod_selectedCard " id="sitter1">'+
+var sitter=['<tr class="paymentMethod_selectedCard " id="sitter1">'+
                 '<td>'+
                     '<input type="radio" name=""  >'+
                 '</td>'+
@@ -87,7 +89,7 @@ var sitter='<tr class="paymentMethod_selectedCard " id="sitter1">'+
                 '<td>'+
                     '<img src="https://images.unsplash.com/photo-1537326890127-d87a3c8336d5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e36e60ea8dc951f2838acdef5fa4cc50&auto=format&fit=crop&w=1650&q=80" alt="" class="paymentMethod_selectedCard-img request-sitter_img">'+
                 '</td>'+  
-            '</tr>';
+            '</tr>'];
 var house_detail_input='<tr id="house_detail_input1">'+
                             '<td class="account-setting-td" style="background-color: #f1fcff;"><label>House Address </label></td>'+
                             '<td class="account-setting-td" style="background-color: #f1fcff;">'+
@@ -263,7 +265,8 @@ var disability_detail='<tr id="disability_detail">'+
                     
 /*======= service =========*/                 
 $('select#service').on('change',function(){
-    
+    _service = $('select#service').val();
+
     $("[id*='_detail_input']").remove();
     
     var s=$('select#service').val();
@@ -339,7 +342,7 @@ $('input#startDate').on('change', function(){
 
 /*=============เลืิิกเวลา============*/
     $('tr.timeSelector').remove();
-    $('tbody#booking').append(timeSlot);
+    $('form.request-sitter_content.request-sitter_content-1 tbody#booking').append(timeSlot);
     
 /*=============เวลาที่เลือกได้============*/
     if(start == today)
@@ -358,6 +361,8 @@ $('input#startDate').on('change', function(){
     }
     var fromTime,temp;
     $('#fromTime').on('change',function(){
+        _from=$(this).val();
+        isSet();
     fromTime=$('#fromTime').val();
     console.log("fromTime: "+fromTime);
     
@@ -372,15 +377,15 @@ $('input#startDate').on('change', function(){
         /*====== sitter list =======*/ 
         $('#sitter1').empty();
         $('#sitter1').remove();
-        
+        _to = $(this).val();
+        isSet();
         if($('#sitterList_table').css("visibility", "visible"))
         {
-            console.log("if");
             $('#sitterList_table').css("visibility", "hidden");
             $('#sitter1').empty();
             if( $('#sitterList_table').css("visibility", "hidden"))
             {
-                console.log("if2");
+
                 $('#sitterList_table').css("visibility", "visible");
                 $('table#sitterList_table').append(sitter);
             }
@@ -435,4 +440,38 @@ $('input#startDate').on('change', function(){
             
     });
 });
+/*
+_service = $('select#service').val();
+      _language = $('select#language').val(),
+      _license = $('select#sitterLicense').val(),
+      _date = $('input#startDate').val(),
+      _from = $('select#fromTime').val(),
+      _to = $('select#toTime').val();
+
+*/
+$('select#language').on('change',function()
+{
+    _language=$(this).val();
+    isSet();
+});
+
+$('select#sitterLicense').on('change',function()
+{
+    _license=$(this).val();
+    isSet();
+});
+$('input#startDate').on('change',function()
+{
+    _date=$(this).val();
+    isSet();
+});
+
+
+function isSet() {
+    if(_service&&_language&&_license&&_date&&_from&&_to){
+        //$('select#service, select#language,select#sitterLicense,input#startDate,select#fromTime,select#toTime').on('change',function(){
+        // const sitters = <%'sitters'%>
+       // });
+    }    
+}
 

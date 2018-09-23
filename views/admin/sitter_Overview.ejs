@@ -276,110 +276,73 @@
                           </tr>
                           </thead>
                           <tbody>
-                          <!--<tr>
-                              <td><a href="basic_table.html#">kanpizza1150@gmail.com</a></td>
-                              <td>kanpichcha nokdam</td>
-                              <td>Baby</td>
-                              <td>13/08/2018</td>
-                              <td><span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                </td>
-                                <td>70</td>
-                                <td>30000</td>
-                              
-                              <td>
-                                  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                  <button class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></button>
-                                  <button class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button>
-                              </td>
-                          </tr>-->
-                          <!--<tr>
-                              <td><a href="basic_table.html#">kanpizza1150@gmail.com</a></td>
-                              <td>kanpichcha nokdam</td>
-                              <td>Baby</td>
-                              <td>13/08/2018</td>
-                              <td><span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
-                                </td>
-                                <td>70</td>
-                                <td>30000</td>
-                              
-                              <td>
-                                  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                  <button class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></button>
-                                  <button class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button>
-                              </td>
-                          </tr>-->
+                              <% sitters.forEach((sitter) => { %>
                           <tr>
-                              <td><a href="#">kanpizza1150@gmail.com</a></td>
-                              <td>kanpichcha nokdam</td>
-                              <td>Baby</td>
-                              <td>13/08/2018</td>
-                              <td class="starr"><p>3</p></td>
+                              <td><a href="#"><%=sitter.username%></a></td>
+                              <td><%=sitter.firstname+" "+sitter.lastname%></td>
+                                <% if(sitter.servicesOffered.houses) { %>
+                                    <td>House</td>
+                                <% } else if(sitter.servicesOffered.kids) {%>
+                                <td>Child</td>
+                                <% } else if(sitter.servicesOffered.pets) {%>
+                                    <td>Pet</td>
+                                <% } else if(sitter.servicesOffered.aged) {%>
+                                    <td>Elder</td>
+                                <% } else if(sitter.servicesOffered.challenged) {%>
+                                    <td>Challenged</td>
+                                <% } else {%>
+                                    <td>Not Set</td>
+                                <% } %>
+                              <td><%=sitter.createdAt.toLocaleDateString()%>
+                              <td class="starr"><p><%=sitter.rating%></p></td>
                                 <td>70</td>
                                 <td>30000</td>
                               
                               <td>
-                                  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                  <button class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></button>
-                                  <button class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button>
+                                  <form method="POST">
+                                      <% if(!sitter.approval) { %>
+                                        <button class="btn btn-success btn-xs" formaction="/admin/sitter/<%=sitter._id%>?_method=PATCH"><i class="fa fa-check"></i></button>
+                                        <% } %>
+                                        <button class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></button>
+                                        <button class="btn btn-danger btn-xs" formaction="/admin/sitter/<%=sitter._id%>?_method=DELETE"><i class="fas fa-trash-alt"></i></button>
+                                  </form>
+                                  
                               </td>
-                          </tr>
-                          <tr>
-                              <td><a href="#">kanpizza1150@gmail.com</a></td>
-                              <td>kanpichcha nokdam</td>
-                              <td>Baby</td>
-                              <td>13/08/2018</td>
-                              <td class="starr"><p>4</p></td>
-                                <td>70</td>
-                                <td>30000</td>
-                              
-                              <td>
-                                  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                  <button class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></button>
-                                  <button class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td><a href="#">kanpizza1150@gmail.com</a></td>
-                              <td>kanpichcha nokdam</td>
-                              <td>Baby</td>
-                              <td>13/08/2018</td>
-                              <td class="starr"><p>5</p></td>
-                                <td>70</td>
-                                <td>30000</td>
-                              
-                              <td>
-                                  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                  <button class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></button>
-                                  <button class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button>
-                              </td>
-                          </tr>
-                          <tr>
-                              <td><a href="#">kanpizza1150@gmail.com</a></td>
-                              <td>kanpichcha nokdam</td>
-                              <td>Baby</td>
-                              <td>13/08/2018</td>
-                              <td class="starr"><p>1</p></td>
-                                <td>70</td>
-                                <td>30000</td>
-                              
-                              <td>
-                                  <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                  <button class="btn btn-primary btn-xs"><i class="fas fa-pencil-alt"></i></button>
-                                  <button class="btn btn-danger btn-xs"><i class="fas fa-trash-alt"></i></button>
-                              </td>
-                          </tr>
-                           
+                           </tr>
+                          <% }) %> 
                           </tbody>
                       </table>
                   </div><!-- /content-panel -->
+                  <br>
+                  <div class="centered">
+                        <div class="btn-group">
+                            <% if (_thisPage >= 2) { %>
+                            <a href="/admin/sitter/0" class="btn btn-default">&lt;&lt;</a>
+                            <% } %>
+                            <% if (_thisPage!=1) { %>
+                            <a class="btn btn-default" href="/admin/sitter/<%=(_thisPage-2)%>">&lt;</a>
+                            <% } %>
+                            <% if (_thisPage > 2) { %>
+                            <a type="button" class="btn btn-default">...</a>
+                            <% } %>
+                            <% if (_thisPage!=1) { %>
+                            <a type="button" class="btn btn-default" href="/admin/sitter/<%=(_thisPage-2)%>"><%=(_thisPage-1)%></a>
+                            <% } %>
+                            <a href="#" type="button" class="btn btn-default active"><%=_thisPage%></a>
+                            <% if(_thisPage!=page&&page!=0) { %>
+                            <a type="button" href="/admin/sitter/<%=_thisPage%>" class="btn btn-default"><%=(1+_thisPage)%></a>
+                            <% } %>
+                            <% if(_thisPage<page-1) { %>
+                            <a type="button" class="btn btn-default">...</a>
+                            <% } %>
+                            <% if (_thisPage!=page&&page!=0) { %>
+                            <a type="button" href="/admin/sitter/<%=_thisPage%>" class="btn btn-default">&gt;</a>
+                            <% } %>
+                            <% if (_thisPage<page-1) { %>
+                            <a type="button" href="/admin/sitter/<%=(page-1)%>" class="btn btn-default">&gt;&gt;</a>
+                            <%}%>
+
+                        </div>  
               </div><!-- /col-md-12 -->
           </div><!-- /row -->
             </div>

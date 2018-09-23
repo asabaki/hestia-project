@@ -9,24 +9,6 @@
     	required : true,
     	unique : true
     },
-    google: {
-      id: String,
-      token: String,
-      name: String,
-      email: String
-    },
-    facebook: {
-      id: String,
-      token: String,
-      name: String,
-      email: String
-    },
-    twitter: {
-      id: String,
-      token: String,
-      name: String,
-      email: String
-    },
     address : {
       required : false,
       houseNumber : String,
@@ -64,13 +46,13 @@
         challenged: Boolean
     },
     daysAvailable: {
-        sun:Boolean,
         mon:Boolean,
         tue:Boolean,
         wed:Boolean,
         thu:Boolean,
         fri:Boolean,
-        sat:Boolean
+        sat:Boolean,
+        sun:Boolean
     },
     shiftsAvailable: {
         first: Boolean,
@@ -84,14 +66,17 @@
         type: Number,
         default: 0
     },
-    isSet : {
+    approval : {
         type : Boolean,
         default : false
     },
-    isAdmin: {
-      type: Boolean,
-      default: false
+    avatar : {
+        type:String
     },
+    jobs : {
+		type : mongoose.Schema.Types.ObjectId,
+		ref: 'Booking'
+	},
 }, { timestamps: true });
 SitterSchema.plugin(passportLocalMongoose);
 module.exports = mongoose.model('sitter', SitterSchema);

@@ -1,28 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-        
-    <!--<link rel="stylesheet" href="css/icon-font.css">-->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/font-icon-1.css">
-
-                
-    <script src="jQuery/jquery-2.1.4.min.js"></script>  
-    <link rel="shortcut icon" type="image/png" href="img/favicon.png"">
-    <link rel="stylesheet" href="css/all.min.css">
-    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">-->
-    <script type= "text/javascript" src = "js/countries.js"></script>
-    <script type= "text/javascript" src = "js/main.js"></script>
+<% include ../partials/header %>
     <title>Hestia | Book a sitter</title>
    
 </head>
@@ -72,7 +48,7 @@
         </div>
         <div class="col-1-of-2">
         <div class="request-sitter_box">
-        <form action="#" class="request-sitter_content request-sitter_content-1" >
+        <form action="/user/request" method="POST" class="request-sitter_content request-sitter_content-1" >
                 <table>
                     <tbody id="booking">
                         <tr id="service_type_selector">
@@ -138,44 +114,14 @@
         </div>
     </div>
                     
-    <script src="js/sitter_booking.js"></script>      
-
+    <script src="/js/sitter_booking.js"></script>
+    <script>
+        $('select#language').on('change',function()
+        {
+            _language=$(this).val();
+            isSet();
+        });
+        console.log(_from);
+    </script>
 </section>
-    <footer class="footer">
-
-        <div class="row">
-            <div class="col-1-of-2">
-                <div class="footer__navigation">
-                    <ul class="footer__list">
-                        <li class="footer__item"><a href="#" class="footer__link">company</a></li>
-                        <li class="footer__item"><a href="#" class="footer__link">contact us</a></li>
-                        <li class="footer__item"><a href="#" class="footer__link">carrers</a></li>
-                        <li class="footer__item"><a href="#" class="footer__link">privacy policy</a></li>
-                        <li class="footer__item"><a href="#" class="footer__link">terms</a></li>
-                    </ul>
-                    <div class="footer-icon__box">
-                        <a href="#" class="footer-icon footer-icon__facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="footer-icon footer-icon__google"><i class="fab fa-google"></i></a>
-                        <a href="#" class="footer-icon footer-icon__instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="footer-icon footer-icon__twitter"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                
-               
-                <div class="footer__contact"><a href="#" class="footer-icon"><i class="fab fa-whatsapp"></i></a>+91 55555555</div>
-                <div class="footer__contact"><a href="#" class="footer-icon"><i class="fas fa-phone"></i></a>+91 55555555-2</div>
-                <div class="footer__contact"><a href="#" class="footer-icon"><i class="far fa-envelope"></i></a>customer-service@hestia.in</div>
-                <div class="footer__contact"><a href="#" class="footer-icon"><i class="fas fa-map-marker-alt"></i></a>Horsur main road, Bangalore 560029</div>
-                
-            </div>
-            <div class="col-1-of-2">
-                <p class="footer__copyright">
-                    Build by <a href="#" class="footer__link">Hestia Team</a> Student of 3rd year BCA at <a href="https://christuniversity.in/" target="_blank" class="footer__link">Christ (Deemed to be university)</a>.<br> Copyright2018 &copy;. This website is project of web technology project subject 5th semester
-                </p>
-            </div>
-        </div>
-    </footer>
-   
-</body>
-</html>
-
+    <% include ../partials/footer %>

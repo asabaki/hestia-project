@@ -5,6 +5,7 @@ const express = require('express'),
     router = express.Router({ mergeParams: true }),
     passport = require('../auth/auth.js'),
     User = require('../models/User.js'),
+    Admin = require('../models/Admin'),
     credential = require('../credential.json'),
     jwt = require('jsonwebtoken'),
     { SHA256 } = require('crypto-js'),
@@ -52,14 +53,16 @@ router.get('/login', isNotLoggedIn, (req, res) => {
 router.get('/apply', isNotLoggedIn, async function (req, res) {
     res.render("sitterapply", { user: req.user });
 })
-router.get("/signup", isNotLoggedIn, async function (req, res) {
-
+router.get("/signup", csrfProtection,isNotLoggedIn, async function (req, res) {
+    // res.locals._csrf = req.csrfToken();
+    // console.log(req.csrfToken());
     const message = req.flash('error');
-    res.render("signUp", { message });
+    res.render("signUp", { message ,_csrf:req.csrfToken()});
 })
 router.get("/signupInfo", isLoggedIn, function (req, res) {
     res.render("signupInfo", {
-        user: req.user, userid: req.user._id
+        user: req.user,
+        userid: req.user._id
     });
 });
 router.get('/forget', isNotLoggedIn, function (req, res) {
@@ -87,6 +90,106 @@ router.get('/reset/:hash', isNotLoggedIn, async function (req, res) {
         res.send({ e });
     }
 
+});
+router.get('/addadmin',async (req,res,next) => {
+    try {
+        const admin = new Admin({
+            username: "nineo9@hotmail.com",
+            name: "Asi Bkaa"
+        });
+        const register = await Admin.register(admin,"1i1e129e");
+        if(register) {
+            console.log("Register Completed");
+            passport.authenticate('admin',function(err,admin,info) {
+                if(err) return next(err);
+                if(!admin) {
+                    req.flash('error',"invalid Username or Password");
+                    return res.status(401).redirect('/login')
+                }
+                req.logIn(admin,function(err) {
+                    if(err) return next(err);
+                    return res.status(200).redirect('/');
+                })
+            })(req,res,next);
+        } else {
+            throw new Error('Incomplete Registering');
+        }
+    } catch (e) {
+        res.send({e});
+    }
+})
+router.get('/adduser',async (req,res,next) => {
+    try {
+        const mockdata = require('../MockData');
+        let i = 0;
+        // console.log(mockdata[i]);
+        // mockdata.forEach((i) => {
+        //
+        // })
+        // console.log(mockdata[0]);
+        for(let i = 0;i<9;i++) {
+            // console.log(mockdata[i].name);
+            let newuser = new User({
+                name: mockdata[i].name,
+                username: mockdata[i].username,
+                address: {
+                    houseNumber: mockdata[i].houseNumber,
+                    street: mockdata[i].street,
+                    zipCode: mockdata[i].zipCode,
+                    city: mockdata[i].city,
+                    state: mockdata[i].state,
+                    country: mockdata[i].country,
+                },
+                phoneNumber: mockdata[i].phoneNumber
+            });
+            const find = await User.findByUsername(mockdata[i].username);
+            if(!find) {
+                const register = await User.register(newuser,mockdata[i].password);
+                if(register) {
+                    console.log(`User created ${i++}: ${register._id}`);
+                } else {
+                    throw new Error(register);
+                }
+            }
+
+
+
+        }
+        // mockdata.forEach(async (user) => {
+        //     // console.log(user.name);
+        //     let newuser = new User({
+        //         name: user.name,
+        //         username: user.username,
+        //         address: {
+        //             houseNumber: user.houseNumber,
+        //             street: user.street,
+        //             zipCode: user.zipCode,
+        //             city: user.city,
+        //             state: user.state,
+        //             country: user.country,
+        //         },
+        //         phoneNumber: user.phoneNumber
+        //
+        //     });
+        //     try {
+        //         const register = await User.register(newuser,user.password);
+        //         if(register) {
+        //             console.log(`User created ${i++}: ${register._id}`);
+        //             if(i==8) throw new Error('Create Complete');
+        //         } else {
+        //             throw new Error('Error create user');
+        //         }
+        //
+        //     } catch (e) {
+        //         res.send({e})
+        //     }
+        //
+        // })
+
+        // const register = await User.register(user,password);
+    } catch (e) {
+        res.send({e});
+    }
 })
 
 // =============================/* POST Login/Register */===========================================
@@ -122,8 +225,25 @@ router.post('/login', async function (req, res, next) {
                     })
                 })(req, res, next)
             } else {
-                req.flash('error', 'Invalid Username or Password!');
-                res.status(401).redirect('/login');
+                const admin = await Admin.findByUsername(req.body.username);
+                if(admin) {
+                    // console.log(`found ${admin.username}`);
+                    passport.authenticate('admin',function(err,admin,info) {
+                        if(err) return next(err);
+                        if(!admin) {
+                            req.flash('error', 'Invalid Username or Password!');
+                            return res.status(401).redirect('/login');
+                        }
+                        req.logIn(admin,(err) => {
+                            if(err) return next(err);
+                            return res.status(200).redirect('/admin/');
+                        })
+                    })(req,res,next);
+                } else {
+                    req.flash('error', 'Invalid Username or Password!');
+                    res.status(401).redirect('/login');
+                }
+
             }
         }
     } catch (e) {
@@ -153,7 +273,7 @@ router.post("/signup", async function (req, res) {
                 }
             }, { $new: true });
             console.log(`${customer.id} created successfully`);
-            res.status(200).render('/signupInfo');
+            res.status(200).redirect('/signupInfo');
         });
     } catch (e) {
         console.log(e);
@@ -223,14 +343,14 @@ router.post("/reset",isNotLoggedIn, async function (req, res) {
         if (user) {
             const hash = jwt.sign(user.toJSON(), credential.mailkey, { expiresIn: "10m" });
             // res.redirect(`/reset/${hash}`)
-            mail.sendPasswordReset(username,username,`${user.name}!`,`http://localhost:3000/reset/${hash}`);
+            mail.sendPasswordReset(username,username,`${user.name}!`,`https://hestia-project.herokuapp.com/reset/${hash}`);
             res.redirect('/');
         } else {
             const sitter = await Sitter.findByUsername(username);
             if (sitter) {
                 //Send email
                 const hash = jwt.sign(sitter.toJSON(), credential.mailkey, { expiresIn: "10m" });
-                mail.sendPasswordReset(username,username,`${sitter.firstname}!`,`http://localhost:3000/reset/${hash}`);
+                mail.sendPasswordReset(username,username,`${sitter.firstname}!`,`https://hestia-project.herokuapp.com/reset/${hash}`);
                 // console.log(`Found Sitter Hash : ${hash}`);
                 // res.redirect(`/reset/${hash}`)
             } else {
@@ -244,7 +364,7 @@ router.post("/reset",isNotLoggedIn, async function (req, res) {
         console.log(e);
     }
 })
-router.post('/reset/:hash',isNotLoggedIn, async function (req, res) {
+router.put('/reset/:hash',isNotLoggedIn, async function (req, res) {
     try {
         const hash = req.params.hash;
         const decoded = jwt.verify(hash, credential.mailkey);

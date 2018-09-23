@@ -16,14 +16,15 @@ const express = require('express'),
 // ================================================================================================
 // ====================================/* GET user */==============================================
 
-router.get('/', function (req, res) {
+router.get('/',isLoggedIn, function (req, res) {
     res.render('sitter/sitterAccount_dashboard', { user: req.user });
 })
 router.get('/general', isLoggedIn, function (req, res) {
     res.render('sitter/sitterAccount_general', { user: req.user });
 });
-router.get('/availability', isLoggedIn, function (req, res) {
+router.get('/availability',isLoggedIn,async function (req, res) {
     res.render('sitter/sitterAccount_availability', { user: req.user });
+    
 });
 
 router.get('/tasks', isLoggedIn, function (req, res) {
@@ -44,10 +45,10 @@ router.post('/changePassword', isLoggedIn, async function (req, res, next) {
     try {
         const passwordDetails = req.body;
         if (req.user) {
-            const user = await User.findById(req.user.id);
+            const user = await Sitter.findById(req.user.id);
             if (user) {
 
-                const response = await user.changePassword(passwordDetails.oldPassword, passwordDetails.newPassword);
+                const response = await user.changePassword(passwordDetails.currentpassword, passwordDetails.newpassword);
                 console.log(response);
                 req.logout();
                 res.status(200).redirect('/login');
@@ -90,88 +91,99 @@ router.post('/changeAddress', isLoggedIn, async function (req, res) {
     }
 
 });
-router.post('/checkout', function (req, res) {
-    res.send({
-
-        message: req.body
-    })
-});
-router.post('/charge', function (req, res) {
-    omise.charges.create({
-        'amount': '100000',
-        'currency': 'thb',
-        'customer': 'cust_test_5cx3dprh5kszzi4ew66'
-    }, function (error, charge) {
-        if (charge.paid) {
-            res.send({
-                message: "Payment Successful"
-            });
-        } else {
-            res.send({
-                message: error
-            })
-        }
-        /* Response. */
-    });
-});
-router.post('/listCard', function (req, res) {
-    omise.customers.listCards('cust_test_5cx6z5wbpyojlaxm6td', function (error, list) {
-        if (!error) {
-            res.send({
-                message: list
-            })
-        } else {
-            res.send({
-                message: error
-            })
-        }
-    });
-})
-router.post('/cards', async function (req, res) {
+// ====================================/* PUT METHOD */=============================================
+router.put('/day',async function(req,res) {
     try {
-        const customer = await omise.customers.update(
-            req.user.payment.cust_id,
-            { 'card': req.body.omiseToken });
-        if (!customer) {
-            throw new Error('User not exist!');
+        const user = await Sitter.findByUsername(req.user.username);
+        if(user) {
+            const days = req.body.day;
+            const update = await Sitter.findByIdAndUpdate(req.user._id,{
+                $set: {
+                    daysAvailable: {
+                        mon:days.includes('1'),
+                        tue:days.includes('2'),
+                        wed:days.includes('3'),
+                        thu:days.includes('4'),
+                        fri:days.includes('5'),
+                        sat:days.includes('6'),
+                        sun:days.includes('7')
+                    }
+                }
+            },{$new:true});
+            if(update) {
+               res.redirect('/sitter/availability');
+            } else {
+                throw new Error('Updated not success');
+            }            
         }
-        const item = customer.cards.data[customer.cards.data.length - 1];
-        const card = {
-            id: item.id,
-            name: item.name,
-            digits: item.last_digits,
-            brand: item.brand,
-            expMonth: item.expiration_month,
-            expYear: item.expiration_year
-        };
-        const user = await User.findById(req.user.id);
-        user.payment.cards.push(card);
-        user.save();
-        res.redirect('/user/cards');
-    } catch (e) {
-        res.status(400).send(e.message);
+    }catch (e) {
+        console.log(e)
+        res.render('sitter/page-error',{message:e});
     }
 
-})
-router.post('/rcard', async function (req, res) {
+});
+router.put('/shift',async function(req,res) {
     try {
-        const user = await User.findOne({ 'payment.cards.id': req.body.card });
-        const card = user.payment.cards.filter((cardId) => {
-            return cardId.id === req.body.card;
-        }).pop();
-        const index = user.payment.cards.indexOf(card);
-        console.log(`${index} , ${user.payment.cust_id}`)
-        const deleted = await omise.customers.destroyCard(
-            user.payment.cust_id,
-            user.payment.cards[index].id);
-        user.payment.cards.splice(index, 1);
-        user.save();
-        res.redirect('/user/cards');
-    } catch (e) {
-        res.status(400).send(e.message);
+        const shift = req.body.timeSlot;
+        const user = await Sitter.findByUsername(req.user.username);
+        if(user) {
+            const update = await Sitter.findByIdAndUpdate(req.user._id,{
+                $set: {
+                    shiftsAvailable: {
+                        first:shift.includes('1'),
+                        second:shift.includes('2'),
+                        third:shift.includes('3'),
+                        fourth:shift.includes('4'),
+                        fifth:shift.includes('5'),
+                        sixth:shift.includes('6'),
+                    }
+                }
+            },{$new:true});
+            if(update) {
+                console.log(`Update Complete\n${update}`);
+                res.redirect('/sitter/availability');
+            } else {
+                console.log(`Update Incompleted`);
+                res.redirect('/sitter/availability');
+            }
+        }
+    } catch(e) {
+        console.log(e);
+        res.render('sitter/page-error',{user:req.user});
+    }
+});
+router.put('/service',async function(req,res) {
+    try {
+        const service = req.body.service;
+        const user = await Sitter.findByUsername(req.user.username);
+        if(user) {
+            // console.log(service);
+            const update = await Sitter.findByIdAndUpdate(req.user._id,{
+                $set: {
+                    servicesOffered: {
+                        houses: service==1,
+                        kids: service==2,
+                        pets: service==3,
+                        aged: service==4,
+                        challenged: service==5
+                    }
+                }
+            },{$new:true});
+            if(update) {
+                console.log(`Update Success \n${update}`);
+                res.redirect('/sitter/availability');
+            } else {
+                throw new Error('Update Failed');
+            }
+            
+        } else {
+            throw new Error('User Authentication Failed')
+        }
+    } catch(e) {
+        console.log(e);
+        res.render('sitter/page-error',{user:req.user});
     }
 })
-// ===============================================================================
 
 // ====================================/* Middleware */==============================================
 function isLoggedIn(req, res, next) {
@@ -179,7 +191,7 @@ function isLoggedIn(req, res, next) {
     // if user is authenticated in the session, carry on
 
     if (req.isAuthenticated()) {
-        console.log(req.url);
+        // console.log(req.url);
         return next();
     }
     // if they aren't redirect them to the home page
@@ -197,21 +209,6 @@ function isNotProvideInfo(req, res, next) {
         return next();
     res.redirect('/signupInfo');
 
-}
-async function requireAdmin(req, res, next) {
-    try {
-        const user = await User.findOne({ username: req.user.username });
-        if (!user) {
-            res.redirect('/login');
-        }
-        if (!user.isAdmin) {
-            console.log('Authentication Failed');
-            res.redirect('/');
-        }
-        return next();
-    } catch (e) {
-
-    }
 }
 
 module.exports = router;

@@ -1,9 +1,9 @@
-<% include ./partials/header %>
+<% include ../partials/header %>
         <title>Hestia | Error</title>
     </head>
     <body>
         
-            <% include ./partial/navbarStick %>>
+            <% include ../partials/navbarStick %>
             
                 <div class="navigation">
                     <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
@@ -31,17 +31,17 @@
         <div class="notfound__box">
         <div class="row">
             <div class="col-1-of-2">
-                <img src="img/error.png" alt="404error" class="notfound__img">
+                <img src="/img/error.png" alt="404error" class="notfound__img">
             </div>
             <div class="col-1-of-2">
                 <div class="notfound__content">
                     <h2 class="notfound__heading">Error!!</h2>
                     <p>
-                      <%= e.message %>
+                      <%= emessage %>
                     </p>
                 </div>
             </div>
         </div>
         </div>
     </div>
-   <% include ./partials/footer %>
+   <% include ../partials/footer %>

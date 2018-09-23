@@ -5,12 +5,12 @@
 <body>
         <div class="popup" id="addCard">
                 <div class="popup__content popup__content-login">
-                        <a href="/cards" class="popup__close">&times;</a>
+                        <a href="/user/cards" class="popup__close">&times;</a>
                         
                         <h1 class="payment_header">Add new card</h1>
                             <div class="card-wrapper"></div>
                             <div class="form-container active">
-                                <form action="/cards" method="POST" id="checkout-form" class="addcard">
+                                <form action="/user/cards" method="POST" id="checkout-form" class="addcard">
                                     <label for="number">Card Number</label>
                                     <input placeholder="Card number" type="tel" name="number" class="payment_field-input" data-name="cardNumber">
                                     <label for="name">Card Holder's name</label>
@@ -34,7 +34,7 @@
                                     <input type="hidden" name="omiseToken" />
                                 </form>
                                 <script src="https://cdn.omise.co/omise.js"></script>
-                                <script src="js/app.js"></script>
+                                <script src="/js/app.js"></script>
                                
                             </div>
                         </div>
@@ -106,7 +106,7 @@
 </section>
 
 
-<script src="js/card.js"></script>
+<script src="/js/card.js"></script>
 <script>
     new Card({
         form: document.querySelector('form.addcard'),

@@ -28,39 +28,39 @@
             <div class="account-setting">
                 <h3>Day of the week :</h3>
                 <hr>
-                    <form action="#">
+                    <form action="/sitter/day?_method=PUT" method="POST">
                      <table class="sitterAccount-table">
                             <tbody>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="day" id="monday"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" value=1 name="day" id="monday" <% if(user.daysAvailable.mon){ %> checked <% } %>></td>
                                     <td class="account-setting-td"><label for="monday">Monday</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="day" id="tuesday"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" value=2 name="day" id="tuesday" <% if(user.daysAvailable.tue){ %> checked <% } %>></td>
                                     <td class="account-setting-td"><label for="tuesday">Tuesday</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="day" id="wednesday"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" value=3 name="day" id="wednesday" <% if(user.daysAvailable.wed){ %> checked <% } %>></td>
                                     <td class="account-setting-td"><label for="wednesday">Wednesday</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="day" id="thursday"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" value=4 name="day" id="thursday" <% if(user.daysAvailable.thu){ %> checked <% } %>></td>
                                     <td class="account-setting-td"><label for="thursday">Thursday</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="day" id="friday"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" value=5 name="day" id="friday" <% if(user.daysAvailable.fri){ %> checked <% } %>></td>
                                     <td class="account-setting-td"><label for="friday">Friday</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="day" id="saturday"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" value=6 name="day" id="saturday" <% if(user.daysAvailable.sat){ %> checked <% } %>></td>
                                     <td class="account-setting-td"><label for="saturday">Saturday</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="day" id="sunday"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" value=7 name="day" id="sunday" <% if(user.daysAvailable.sun){ %> checked <% } %>></td>
                                     <td class="account-setting-td"><label for="sunday">Sunday</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="fullweek" id="fullweek"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" value=8 name="fullweek" id="fullweek"></td>
                                     <td class="account-setting-td"><label for="fullweek">Every Day</label></td>
                                 </tr>
                                 
@@ -73,31 +73,31 @@
                     </form>
                 <h3>Shifts :</h3>
                 <hr>
-                    <form action="#">
+                    <form action="/sitter/shift?_method=PUT" method="POST">
                      <table class="sitterAccount-table">
                             <tbody>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" id="timeSlot1"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" value=1 id="timeSlot1" <%if(user.shiftsAvailable.first) { %>checked <% }%>></td>
                                     <td class="account-setting-td"><label for="timeSlot1">12.00 am - 4.00 am</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" id="timeSlot2"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" value=2 id="timeSlot2" <%if(user.shiftsAvailable.second) { %>checked <% }%>></td>
                                     <td class="account-setting-td"><label for="timeSlot2">4.00 am - 8.00 am</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" id="timeSlot3"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" value=3 id="timeSlot3" <%if(user.shiftsAvailable.third) { %>checked <% }%>></td>
                                     <td class="account-setting-td"><label for="timeSlot3">8.00 am - 12.00 am</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" id="timeSlot4"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" value=4 id="timeSlot4" <%if(user.shiftsAvailable.fourth) { %>checked <% }%>></td>
                                     <td class="account-setting-td"><label for="timeSlot4">12.00 am - 4.00 pm</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" id="timeSlot5"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" value=5 id="timeSlot5" <%if(user.shiftsAvailable.fifth) { %>checked <% }%>></td>
                                     <td class="account-setting-td"><label for="timeSlot5">4.00 pm - 8.00 pm</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" id="timeSlot6"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot" value=6 id="timeSlot6" <%if(user.shiftsAvailable.sixth) { %>checked <% }%>></td>
                                     <td class="account-setting-td"><label for="timeSlot6">8.00 pm - 12.00 pm</label></td>
                                 </tr>
                                 <tr>
@@ -115,27 +115,27 @@
                     </form>
                 <h3>Services :</h3>
                 <hr>
-                    <form action="#">
+                    <form action="/sitter/service?_method=PUT" method="POST">
                      <table class="sitterAccount-table">
                             <tbody>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="houseService" id="houseService"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="radio" name="service" id="houseService" value=1 <%if(user.servicesOffered.houses) { %>checked <% }%>></td>
                                     <td class="account-setting-td"><label for="houseService">House Sitting</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="babyService" id="babyService"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="radio" name="service" id="babyService" value=2 <%if(user.servicesOffered.kids) { %>checked <% }%>></td>
                                     <td class="account-setting-td"><label for="babyService">Baby Sitting</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot3" id="timeSlot3"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="radio" name="service" id="timeSlot3" value=3 <%if(user.servicesOffered.pets) { %>checked <% }%>></td>
                                     <td class="account-setting-td"><label for="timeSlot3">Pet Sitting</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot4" id="timeSlot4"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="radio" name="service" id="timeSlot4" value=4 <%if(user.servicesOffered.aged) { %>checked <% }%>></td>
                                     <td class="account-setting-td"><label for="timeSlot4">Elderly People</label></td>
                                 </tr>
                                 <tr>
-                                    <td class="account-setting-td sitterApply-checkbox"><input type="checkbox" name="timeSlot5" id="timeSlot5"></td>
+                                    <td class="account-setting-td sitterApply-checkbox"><input type="radio" name="service" id="timeSlot5" value=5 <%if(user.servicesOffered.challenged) { %>checked <% }%>></td>
                                     <td class="account-setting-td"><label for="timeSlot5">Physically/ Mentally Challenged</label></td>
                                 </tr>
                             </tbody>
