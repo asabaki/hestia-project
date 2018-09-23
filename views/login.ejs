@@ -33,7 +33,8 @@
                 <form action="login" method="POST">
                     <p>or</p>
 
-                    <input class="signup-box-form--input" type="email" name="username"  placeholder="Email Address" required>
+                    <input class="signup-box-form--input" type="email" name="username"  placeholder="Email Address" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                    title="Username Format is wrong" required>
                     <input class="signup-box-form--input" type="password" name="password" autocomplete="true"  placeholder="Password" required>
                     <% if (messages.length > 0) { %>
                     <label class="login--error"><%= "* "+ messages %></p>

@@ -373,72 +373,7 @@ $('input#startDate').on('change', function(){
     });
     
     
-    $('#toTime').on('change',function(){
-        /*====== sitter list =======*/ 
-        $('#sitter1').empty();
-        $('#sitter1').remove();
-        _to = $(this).val();
-        isSet();
-        if($('#sitterList_table').css("visibility", "visible"))
-        {
-            $('#sitterList_table').css("visibility", "hidden");
-            $('#sitter1').empty();
-            if( $('#sitterList_table').css("visibility", "hidden"))
-            {
-
-                $('#sitterList_table').css("visibility", "visible");
-                $('table#sitterList_table').append(sitter);
-            }
-            /* ======= star ========*/
-            $('span.fa.fa-star').remove();
-            $('span.fa.fa-star').empty();
-            var newSpan='<span class="fa fa-star"></span>' + 
-                        '<span class="fa fa-star"></span>'+ 
-                        '<span class="fa fa-star"></span>'+ 
-                        '<span class="fa fa-star"></span>'+ 
-                        '<span class="fa fa-star"></span>';
     
-            $(".starr").append(newSpan);
-            var nRate=$(".starr p").size();
-            for(let j=0;j<nRate;j++)
-            {
-                var rate=$(".starr p:eq("+j+")").text();
-                for(let i=0;i<rate;i++)
-                {
-                    $( ".starr:eq("+j+") span.fa.fa-star:eq("+i+")" ).addClass("checked")
-                }
-            }
-            $('.request-sitter_star p').empty();
-        }
-        else
-        {
-            $('#sitterList_table').css("visibility", "visible");
-            $('table#sitterList_table').append(sitter);
-
-            /* ======= star ========*/
-            $('.fa.fa-star').remove();
-            var newSpan='<span class="fa fa-star"></span>' + 
-                        '<span class="fa fa-star"></span>'+ 
-                        '<span class="fa fa-star"></span>'+ 
-                        '<span class="fa fa-star"></span>'+ 
-                        '<span class="fa fa-star"></span>';
-    
-            $(".starr").append(newSpan);
-            var nRate=$(".starr p").size();
-            for(let j=0;j<nRate;j++)
-            {
-                var rate=$(".starr p:eq("+j+")").text();
-                for(let i=0;i<rate;i++)
-                {
-                    $( ".starr:eq("+j+") span.fa.fa-star:eq("+i+")" ).addClass("checked")
-                }
-            }
-            $('.request-sitter_star p').empty();
-        }
-       
-    
-            
-    });
 });
 /*
 _service = $('select#service').val();
