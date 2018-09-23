@@ -333,7 +333,7 @@
 										];
 										var myDoughnut = new Chart(document.getElementById("serverstatus01").getContext("2d")).Doughnut(doughnutData);
 								</script>
-	                      	</div><! --/grey-panel -->
+	                      	</div><!--/grey-panel -->
                       	</div><!-- /col-md-4-->
                       	
 
@@ -390,11 +390,11 @@
 								<script>
 									var doughnutData = [
 											{
-												value: <%memUsed%>,
+												value: <%=memUsed%>,
 												color:"#68dff0"
 											},
 											{
-												value : 100-<%memUsed%>,
+												value : 100-<%=memUsed%>,
 												color : "#444c57"
 											}
 										];

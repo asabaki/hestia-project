@@ -237,7 +237,22 @@ router.delete('/sitter/:id',isAdmin,async function(req,res) {
 
     }
 });
-router.delete('/user/:id',async function(req,res) {
+router.delete('/sitter',isAdmin,async function(req,res) {
+    try {
+        const remove = await Sitter.remove({});
+        if(remove) {
+            console.log('Users removed');
+            res.redirect('/admin/sitter');
+        }
+    } catch(e) {
+        console.log(e);
+        res.render('admin/page-error',{
+            user: req.user,
+            emessage:e
+        })
+    }
+})
+router.delete('/user/:id',isAdmin,async function(req,res) {
     const user = await User.findById(req.params.id);
     if(user) {
         const removed = await User.remove({_id:req.params.id});
@@ -255,6 +270,30 @@ router.delete('/user/:id',async function(req,res) {
     console.log('method called');
 
 });
+router.delete('/user',isAdmin,async function(req,res) {
+    try {
+        const remove = await User.remove({});
+        omise.customers.list(function(err, list) {
+            list.data.forEach(element => {
+                omise.customers.destroy(element.id, function(error, customer) {
+                    console.log(customer+' has been deleted');
+                  });
+            });
+          });
+        if(remove) {
+            console.log('Users removed');
+            res.redirect('/admin/user');
+        }
+    } catch(e) {
+        console.log(e);
+        res.render('admin/page-error',{
+            user: req.user,
+            emessage:e
+        })
+    }
+    
+    
+})
 
 
 
