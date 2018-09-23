@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+        
+    <!--<link rel="stylesheet" href="css/icon-font.css">-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font-icon-1.css">
+
+                
+    <script src="jQuery/jquery-2.1.4.min.js"></script>  
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png"">
+    <link rel="stylesheet" href="css/all.min.css">
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">-->
+    <script type= "text/javascript" src = "js/countries.js"></script>
+    <script type= "text/javascript" src = "js/main.js"></script>
+    <title>Hestia | Book a sitter</title>
+   
+</head>
+
+<body >
+    <nav class="navbar navbar-sticky ">
+        <div >
+            <ul>
+                <li><a href="/" class="navbar-band navbar-left">&nbsp</a></li>
+                <li><a href="/#about" class="navbar-left">About</a></li>
+                <li><a href="/#book" class="navbar-left">Our Services</a></li>
+                <li><a href="/#sitters" class="navbar-left">Sitters</a></li>
+                <li><a href="/#store" class="navbar-left">Store</a></li>
+                <li><a href="/#joinUs" class="navbar-left">Join us</a></li>
+                <li><a href="#login" class="navbar-right"><i class="fas fa-user"></i>&nbspLogin</a></li>
+                <li><a href="signUp.html" class="navbar-right"><i class="fas fa-user-plus"></i>&nbspSign up</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="navigation">
+        <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+       
+        <label for="navi-toggle" class="navigation__button">
+            <span class="navigation__icon">  </span>
+        </label>
+
+        <div class="navigation__background">&nbsp;</div>
+
+        <nav class="navigation__nav">
+            <ul class="navigation__list">
+                <li class="navigation__item" ></li><a href="/#about" class="navigation__link">About</a></li>
+                <li class="navigation__item" ><a href="/#book" class="navigation__link">Our Services</a></li>
+                <li class="navigation__item" ><a href="/#sitter" class="navigation__link">Sitters</a></li>
+                <li class="navigation__item" ><a href="/store/homepage/mainpage.html" class="navigation__link">Store</a></li>
+                <li class="navigation__item" ><a href="/#joinUs" class="navigation__link">Join us</a></li>
+                <li class="navigation__item" ><a href="signUp.html" class="navigation__link">Sign up</a></li>
+                <li class="navigation__item" ><a href="/#login" class="navigation__link">Log in</a></li>
+            </ul>
+        </nav>
+    </div>
+<section class="request-sitter">
+    <h1 class="heading-of-page">Request a Sitter</h1>
+    <div class="row">
+        <div class="col-1-of-2">
+                <p>Please note there is a 2 hour minimum for all babysitting jobs.</p>
+                <p>Cancellations: Minimum of 24 hours notice of cancellation required.</p>
+        </div>
+        <div class="col-1-of-2">
+        <div class="request-sitter_box">
+        <form action="#" class="request-sitter_content request-sitter_content-1" >
+                <table>
+                    <tbody id="booking">
+                        <tr id="service_type_selector">
+                            <td class="account-setting-td"><label for="service">Service type </label></td>
+                            <td class="account-setting-td"><select name="service" class="sitter_fillter-select" id="service">
+                                    <option value="0" selected="selected" disabled>Service type</option>
+                                    <option value="house">House Sitting</option>
+                                    <option value="baby">Baby Sitting</option>
+                                    <option value="pet">Pet Sitting</option>
+                                    <option value="elder">Elderly People</option>
+                                    <option value="disability">Physically/Mentally Challenged</option>
+                                </select></td>
+                        </tr>
+
+                        </tr>
+                        <tr>
+                           
+                            <td class="account-setting-td"><label for="language">Preferred Language </label></td>
+                            <td class="account-setting-td"><select name="language" class="sitter_fillter-select" id="language">
+                                    <option value="0" selected="selected" disabled>Language</option>
+                                    <option value="any">Any language</option>
+                                    <option value="1">English</option>
+                                    <option value="2">Hindi</option>
+                                    <option value="3">Karnada</option>
+                                </select></td>
+                        </tr>
+                        
+
+                        <tr>
+                            <td class="account-setting-td"><label>Preferred licensed sitter?</label></td>
+                            <td class="account-setting-td"><select name="sitterLicense" class="sitter_fillter-select" id="sitterLicense">
+                                    <option value="0" selected="selected" disabled>license?</option>
+                                    <option value="any">Any</option>
+                                    <option value="1">Licensed</option>
+                                    <option value="2">Unicensed</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                            <td class="account-setting-td"><label for="startDate">Date of booking </label></td>
+                            <td class="account-setting-td"><input type="date" name="startDate" id="startDate"  class="account-setting-input" ></td>
+                        </tr>
+                        <table rules="none" class="request-sitter_sitterList" id="sitterList_table">
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Service</th>
+                                <th>License</th>
+                                <th>Language</th>
+                                <th>Rate</th>
+                                <th>Price/hour</th>
+                                <th></th>
+                            </tr>
+                        </table>
+                    </tbody>
+                </table>
+        
+                <div class="request-sitter_btn">
+                    <input type="checkbox" name="term">&nbsp; I have read and agree with the terms and conditions</input><br>
+                    <input type="submit" name="save" class="account-setting-btn account-setting-btn-save" value="Submit">
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+                    
+    <script src="js/sitter_booking.js"></script>      
+
+</section>
+    <footer class="footer">
+
+        <div class="row">
+            <div class="col-1-of-2">
+                <div class="footer__navigation">
+                    <ul class="footer__list">
+                        <li class="footer__item"><a href="#" class="footer__link">company</a></li>
+                        <li class="footer__item"><a href="#" class="footer__link">contact us</a></li>
+                        <li class="footer__item"><a href="#" class="footer__link">carrers</a></li>
+                        <li class="footer__item"><a href="#" class="footer__link">privacy policy</a></li>
+                        <li class="footer__item"><a href="#" class="footer__link">terms</a></li>
+                    </ul>
+                    <div class="footer-icon__box">
+                        <a href="#" class="footer-icon footer-icon__facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-icon footer-icon__google"><i class="fab fa-google"></i></a>
+                        <a href="#" class="footer-icon footer-icon__instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-icon footer-icon__twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+               
+                <div class="footer__contact"><a href="#" class="footer-icon"><i class="fab fa-whatsapp"></i></a>+91 55555555</div>
+                <div class="footer__contact"><a href="#" class="footer-icon"><i class="fas fa-phone"></i></a>+91 55555555-2</div>
+                <div class="footer__contact"><a href="#" class="footer-icon"><i class="far fa-envelope"></i></a>customer-service@hestia.in</div>
+                <div class="footer__contact"><a href="#" class="footer-icon"><i class="fas fa-map-marker-alt"></i></a>Horsur main road, Bangalore 560029</div>
+                
+            </div>
+            <div class="col-1-of-2">
+                <p class="footer__copyright">
+                    Build by <a href="#" class="footer__link">Hestia Team</a> Student of 3rd year BCA at <a href="https://christuniversity.in/" target="_blank" class="footer__link">Christ (Deemed to be university)</a>.<br> Copyright2018 &copy;. This website is project of web technology project subject 5th semester
+                </p>
+            </div>
+        </div>
+    </footer>
+   
+</body>
+</html>
+
