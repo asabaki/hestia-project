@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-var UserInfoSchema = new mongoose.Schema({
+var TransactionSchema = new mongoose.Schema({
 	booking : {
 		type : mongoose.Schema.Types.ObjectId,
 		ref: 'Booking'
@@ -9,10 +9,6 @@ var UserInfoSchema = new mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
 		ref: 'User'
 	},
-	transaction : {
-        type : mongoose.Schema.Types.ObjectId,
-		ref: 'Transaction'
-    },
     amount: Number,
     additionalCharge: Number,
     totalAmount: Number,
@@ -21,4 +17,4 @@ var UserInfoSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model("UserInfo", UserInfoSchema);
+module.exports = mongoose.model("transaction", TransactionSchema);
