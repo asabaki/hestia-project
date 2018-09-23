@@ -74,8 +74,8 @@ router.post('/changeAddress', isLoggedIn, async function (req, res) {
                         street: addressDetails.street,
                         zipCode: addressDetails.zipCode,
                         city: addressDetails.city,
-                        state: addressDetails.state
-                        // country     : addressDetails.country
+                        state: addressDetails.state,
+                        country     : addressDetails.country
                     },
                     phoneNumber: addressDetails.phoneNumber
                 }

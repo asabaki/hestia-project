@@ -1,9 +1,9 @@
 var mongoose = require("mongoose");
 
 var UserInfoSchema = new mongoose.Schema({
-	sitter : {
+	booking : {
 		type : mongoose.Schema.Types.ObjectId,
-		ref: 'Sitter'
+		ref: 'Booking'
 	},
 	user : {
         type : mongoose.Schema.Types.ObjectId,
@@ -12,9 +12,10 @@ var UserInfoSchema = new mongoose.Schema({
 	transaction : {
         type : mongoose.Schema.Types.ObjectId,
 		ref: 'Transaction'
-	},
-	language: String,
-    service : String,
+    },
+    amount: Number,
+    additionalCharge: Number,
+    totalAmount: Number,
     date: Date,
     additional: String
 });
