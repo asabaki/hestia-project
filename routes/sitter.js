@@ -67,7 +67,7 @@ router.post('/changeAddress', isLoggedIn, async function (req, res) {
     try {
         const addressDetails = req.body;
         if (req.user) {
-            const updatedUser = await User.findByIdAndUpdate(req.user.id, {
+            const updatedUser = await Sitter.findByIdAndUpdate(req.user.id, {
                 $set: {
                     address: {
                         houseNumber: addressDetails.houseNumber,
@@ -80,9 +80,7 @@ router.post('/changeAddress', isLoggedIn, async function (req, res) {
                     phoneNumber: addressDetails.phoneNumber
                 }
             }, { $new: true });
-            res.send({
-                message: 'Update successful!'
-            });
+            res.redirect('/sitter/general');
         } else {
             throw new Error('User not sign in!')
         }

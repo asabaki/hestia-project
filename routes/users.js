@@ -29,7 +29,7 @@ router.get('/', isLoggedIn,function (req, res) {
     res.render('user/account', { user: req.user });
 
 });
-router.get('/request',async function(req,res) {
+router.get('/request',isLoggedIn,async function(req,res) {
     try {
         const sitters = await Sitter.find({});
         res.render('user/book-sitter',{
@@ -57,7 +57,10 @@ router.get('/cards', isLoggedIn, async function (req, res) {
         res.render('user/paymentmethod', { user: req.user, card: cards })
     } catch (e) {
         console.log(e);
-        res.status(400)
+        res.status(400).render('user/page-error',{
+            user:req.user,
+            emessage: e
+        })
     }
 });
 
@@ -128,7 +131,7 @@ router.post('/checkout', function (req, res) {
         message: req.body
     })
 });
-router.post('/request',async function(req,res) {
+router.post('/request',isLoggedIn,async function(req,res) {
     // console.log(req.body);
     var sitters;
     switch(req.body.service) {
@@ -164,7 +167,7 @@ router.post('/request',async function(req,res) {
    
     // res.redirect('/user/request');
 });
-router.post('/book',async function(req,res) {
+router.post('/book',isLoggedIn,async function(req,res) {
     try {
         console.log(req.body.sitter);
         res.redirect('/');
@@ -190,7 +193,7 @@ router.post('/book',async function(req,res) {
 //         /* Response. */
 //     });
 // });
-router.post('/listCard', function (req, res) {
+router.post('/listCard', isLoggedIn,function (req, res) {
     omise.customers.listCards('cust_test_5cx6z5wbpyojlaxm6td', function (error, list) {
         if (!error) {
             res.send({
@@ -203,7 +206,7 @@ router.post('/listCard', function (req, res) {
         }
     });
 })
-router.post('/cards', async function (req, res) {
+router.post('/cards',isLoggedIn,async function (req, res) {
     try {
         const customer = await omise.customers.update(
             req.user.payment.cust_id,
@@ -254,8 +257,7 @@ function isLoggedIn(req, res, next) {
 
     // if user is authenticated in the session, carry on
 
-    if (req.isAuthenticated()) {
-        console.log(req.url);
+    if (req.isAuthenticated()&&(User.prototype.isPrototypeOf(req.user)||Admin.prototype.isPrototypeOf(req.user))) {
         return next();
     }
     // if they aren't redirect them to the home page
@@ -273,21 +275,6 @@ function isNotProvideInfo(req, res, next) {
         return next();
     res.redirect('/signupInfo');
 
-}
-async function requireAdmin(req, res, next) {
-    try {
-        const user = await User.findOne({ username: req.user.username });
-        if (!user) {
-            res.redirect('/login');
-        }
-        if (!user.isAdmin) {
-            console.log('Authentication Failed');
-            res.redirect('/');
-        }
-        return next();
-    } catch (e) {
-
-    }
 }
 
 module.exports = router;

@@ -28,19 +28,19 @@ router.get('/auth/google', isNotLoggedIn,
     }));
 
 router.get('/auth/google/callback',
-    passport.authenticate('google', { failureRedirect: '/failure', successRedirect: '/signupInfo' }),
+    passport.authenticate('google', { failureRedirect: '/failure', successRedirect: '/' }),
 );
 router.get('/auth/twitter', isNotLoggedIn,
     passport.authenticate('twitter'));
 router.get('/auth/twitter/callback',
-    passport.authenticate('twitter', { failureRedirect: '/login', successRedirect: '/signupInfo' }));
+    passport.authenticate('twitter', { failureRedirect: '/login', successRedirect: '/' }));
 
 router.get('/auth/facebook', isNotLoggedIn,
     passport.authenticate('facebook', { scope: ['public_profile', 'email'] }));
 router.get('/auth/facebook/callback',
     passport.authenticate('facebook', {
         scope: ['public_profile',
-            'email'], failureRedirect: '/login', successRedirect: '/signupInfo'
+            'email'], failureRedirect: '/login', successRedirect: '/'
     }),
 );
 
