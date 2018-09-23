@@ -311,7 +311,7 @@
                       	<div class="col-md-4 col-sm-4 mb">
                       		<div class="white-panel pn donut-chart">
                       			<div class="white-header">
-						  			<h5>SERVER LOAD</h5>
+						  			<h5>CPU LOAD</h5>
                       			</div>
 								<div class="row">
 									<div class="col-sm-6 col-xs-6 goleft">
@@ -404,10 +404,10 @@
 								<p><%=now.toLocaleDateString()%></p>
 								<footer>
 									<div class="pull-left">
-										<h5><i class="fa fa-hdd-o"></i> 17 GB</h5>
+										<h5><i class="fa fa-hdd-o"></i> <%=memUsed%> GB</h5>
 									</div>
 									<div class="pull-right">
-										<h5><%=memUsed%>% Used</h5>
+										<h5><%=Math.round(memUsedPercen)%>% Used</h5>
 									</div>
 								</footer>
                       		</div><! -- /darkblue panel -->

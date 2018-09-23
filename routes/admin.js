@@ -38,14 +38,15 @@ router.get('/',isAdmin,async function(req,res) {
             cpuCount = await monitor.getCpuCount(),
             memFree =  monitor.getMemFree(),
             memTotal =  monitor.getMemTotal(),
-            memUsed = (memTotal-memFree)*100/memTotal;
+            memUsedPercen = (memTotal-memFree)*100/memTotal,
+            memUsed = (memTotal-memFree);
         const users = await User.find({})
         let count=0;
         users.forEach((user) => {
             isNew(user.createdAt) ? count++:count;
         });
 
-        res.render('admin/admin',{cpu,memUsed,user:req.user,count});
+        res.render('admin/admin',{cpu,memUsed,user:req.user,count,memUsedPercen});
         monitor.stop();
     } catch (e) {
         res.send({
