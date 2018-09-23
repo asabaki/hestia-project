@@ -228,7 +228,11 @@ router.post('/cards',isLoggedIn,async function (req, res) {
         user.save();
         res.redirect('/user/cards');
     } catch (e) {
-        res.status(400).send(e.message);
+        console.log(e);
+        res.status(400).render('user/page-error',{
+            user:req.user,
+            emessage: e
+        })
     }
 
 })
